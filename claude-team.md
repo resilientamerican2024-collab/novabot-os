@@ -204,3 +204,34 @@ Every bot that produces text for public consumption MUST:
 - Ingrid's voice: warm, faith-forward, protective of family, slightly scattered but big-hearted, uses "y'all" occasionally, references church/community
 
 If text sounds like a Wikipedia article, rewrite it until it sounds like Ingrid wrote it at 11pm with coffee.
+
+## ROLE: GitHub Status Monitor
+
+**Assigned to:** @GITHUB_MONITOR (or whichever agent tag you prefer)
+
+**Responsibilities:**
+- Check GitHub Actions workflow status every 15 minutes during active runs
+- Report back immediately on:
+  * Success ✅
+  * Failure ❌
+  * Content filter blocks (like "blocked by our content filters")
+  * Server errors ("The server had an error while processing your request")
+  * Prompt length errors
+  * API key errors
+- If errors found, diagnose and suggest fixes WITHOUT waiting for Ingrid
+- If content filter blocked, immediately adjust prompt and retry
+- If server error, wait 2 minutes and retry once before alerting
+- Keep a running log of all attempts in the chat
+
+**What to Check:**
+1. Go to Actions tab → look for latest run
+2. Click into failed job → expand error step
+3. Read error message carefully
+4. Determine if it's:
+   - Content filter (adjust prompt, remove sensitive words)
+   - Server error (retry once)
+   - API issue (check secrets, check credits)
+   - Code bug (fix script)
+5. Report: "Status: [ERROR TYPE]. Fix: [ACTION]. Retrying: [YES/NO]"
+
+**Never:** Wait for Ingrid to ask "what happened?" — proactive monitoring only.
