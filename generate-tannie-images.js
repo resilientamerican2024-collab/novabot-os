@@ -45,7 +45,7 @@ function buildPrompt(panel) {
   return base;
 }
 
-function callDallE(prompt) {
+function callDallE(prompt, attempt = 1) {
   if (!OPENAI_API_KEY) throw new Error('OPENAI_API_KEY environment variable not set');
 
   // Hard safety cap — DALL-E limit is 4000 chars
@@ -76,20 +76,39 @@ function callDallE(prompt) {
     }, res => {
       let data = '';
       res.on('data', chunk => { data += chunk; });
-      res.on('end', () => {
+      res.on('end', async () => {
         try {
           const parsed = JSON.parse(data);
           if (parsed.data && parsed.data[0] && parsed.data[0].url) {
             resolve(parsed.data[0].url);
           } else {
-            reject(new Error(parsed.error?.message || `Unexpected response: ${data.slice(0, 200)}`));
+            const msg = parsed.error?.message || `Unexpected response: ${data.slice(0, 200)}`;
+            // Retry on server errors (not content policy blocks)
+            const isRetryable = res.statusCode >= 500 || msg.includes('server') || msg.includes('Sorry');
+            if (isRetryable && attempt < 3) {
+              console.warn(`  ⚠️  Server error (attempt ${attempt}/3): ${msg.slice(0, 100)}`);
+              console.warn(`  ⏱  Retrying in 5s...`);
+              await pause(5000);
+              callDallE(prompt, attempt + 1).then(resolve).catch(reject);
+            } else {
+              reject(new Error(msg));
+            }
           }
         } catch (e) {
           reject(new Error(`JSON parse error: ${e.message}`));
         }
       });
     });
-    req.on('error', reject);
+    req.on('error', async (err) => {
+      if (attempt < 3) {
+        console.warn(`  ⚠️  Network error (attempt ${attempt}/3): ${err.message}`);
+        console.warn(`  ⏱  Retrying in 5s...`);
+        await pause(5000);
+        callDallE(prompt, attempt + 1).then(resolve).catch(reject);
+      } else {
+        reject(err);
+      }
+    });
     req.write(body);
     req.end();
   });
