@@ -39,6 +39,9 @@ jobs:
       - name: Install dependencies
         run: npm install form-data node-fetch@2
 
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+
       - name: Determine slot
         id: slot
         run: |
@@ -73,7 +76,6 @@ jobs:
           SLOT="${{ steps.slot.outputs.slot }}"
           RESULTS="${{ steps.generate.outputs.results_file }}"
           node create-reel.js "$SLOT" "$RESULTS"
-          # Copy MP4 to workspace so artifact can pick it up
           SAFE="${SLOT//-/_}"
           LOWER=$(echo "$SAFE" | tr '[:upper:]' '[:lower:]')
           cp /tmp/tannie_${LOWER}_week3.mp4 . 2>/dev/null || echo "MP4 not found in /tmp — skipping copy"
@@ -99,10 +101,12 @@ jobs:
             const fail = panels.filter(p => p.error);
             const panelLinks = ok.map(p =>
               '- **Panel ' + p.panel_number + ':** [View →](' + p.imgbb_url + ')  \`' + p.emotion + '\`'
-            ).join('\n');
+            ).join('
+');
             const errorList = fail.map(p =>
               '- Panel ' + p.panel_number + ': ' + p.error
-            ).join('\n');
+            ).join('
+');
             const lines = [
               '## 🌹 Tannie Talks — ' + slot + ' Content Ready for Review',
               '',
@@ -116,16 +120,21 @@ jobs:
               '### #️⃣ Hashtags',
               slotData.hashtags,
               '',
-              reelUrl ? '### 🎬 Reel\n[▶ View / Download Reel](' + reelUrl + ')' : '### 🎬 Reel\n_Reel generation failed or Supabase upload failed._',
+              reelUrl ? '### 🎬 Reel
+[▶ View / Download Reel](' + reelUrl + ')' : '### 🎬 Reel
+_Reel generation failed or Supabase upload failed._',
               '',
               '### 🖼️ Carousel Panels (' + ok.length + '/5)',
               panelLinks || '_No panels generated._',
-              fail.length ? '\n### ❌ Errors\n' + errorList : '',
+              fail.length ? '
+### ❌ Errors
+' + errorList : '',
               '',
               '---',
               '_Every image honors Kassandra. In memory. In love. In faith._',
             ];
-            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n'));
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('
+'));
             console.log('Summary written.');
           "
 
