@@ -1,0 +1,28 @@
+{
+  "week": 3,
+  "brand": "Tannie Talks",
+  "posts": [
+    {
+      "slot": "WED-AM",
+      "post_date": "2026-05-06",
+      "post_time_est": "08:00",
+      "video_file": "videos/tannie_w3_wed_am.mp4",
+      "thumbnail_file": "",
+      "imgbb_url": "",
+      "status": "pending",
+      "caption": "Buenos días, mi amor. ☀️\n\nBefore you check your phone, before you look at the news — take one breath and give this day to God.\n\nTannie always says: La mañana es tuya. The morning is yours.\n\nYou get to decide how it starts. 💕\n\nTag someone who needs this reminder today. 👇",
+      "hashtags": "#TannieTalks #MorningDevotion #FaithOverFear #BuenosDias #AbuelasWisdom #GodFirstEveryDay #MorningMotivation #FamiliaFirst #BilingualFaith #StartWithGod"
+    },
+    {
+      "slot": "WED-PM",
+      "post_date": "2026-05-06",
+      "post_time_est": "18:00",
+      "video_file": "videos/tannie_w3_wed_pm.mp4",
+      "thumbnail_file": "",
+      "imgbb_url": "",
+      "status": "pending",
+      "caption": "Mija, you made it through another day. 🌅\n\nWhatever was heavy today — put it down. You don't have to carry it into tonight.\n\nTannie says: Descansa. El mañana tiene su propio cuidado.\nRest. Tomorrow has its own worries.\n\nYou did enough. You ARE enough. 💛",
+      "hashtags": "#TannieTalks #EveningReflection #FaithOverFear #NightTimePrayer #AbuelasWisdom #RestInGod #YouAreEnough #FamiliaFirst #BilingualFaith #Resilience"
+    }
+  ]
+}
