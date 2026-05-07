@@ -14,33 +14,33 @@
       "panels": [
         {
           "panel_number": 1,
-          "scene_description": "A cozy bedroom at dawn. Princess Kay awake on an ivory duvet, looking toward the window with innocent wide eyes. Golden morning light streams through warm ivory curtains. Only Tannie's hand visible at the edge of frame — reaching toward Princess Kay, deep red nail polish, silver ring. Pre-reveal: no face shown.",
-          "emotion": "peaceful anticipation, the world still quiet",
-          "elements": ["Princess Kay on ivory duvet", "golden dawn light", "ivory curtains", "Tannie's hand with true red nails", "silver ring", "no face shown"]
+          "scene_description": "Princess Kay on ivory duvet at dawn, looking toward window with wide eyes. Tannie's hand reaching toward her — true red nails, silver ring. Warm golden light. No face shown.",
+          "emotion": "peaceful anticipation",
+          "elements": ["Princess Kay on ivory duvet", "Tannie's hand, red nails, silver ring", "golden dawn light", "no face shown"]
         },
         {
           "panel_number": 2,
-          "scene_description": "Princess Kay tilts her head in comic confusion looking at a glowing phone screen on the nightstand. The screen shows a chaotic swirl of notifications, alerts, and noise — abstract and overwhelming. Princess Kay's expression: innocent bewilderment, not distress. Warm shadows around her.",
-          "emotion": "gentle confusion, the world demanding attention",
-          "elements": ["Princess Kay tilting head", "glowing phone screen", "abstract notification chaos", "warm shadows", "true red harness visible"]
+          "scene_description": "Princess Kay tilts head at glowing phone on nightstand. Screen shows chaotic notification swirl — abstract, overwhelming. Innocent bewilderment, not distress. Warm shadows. True red harness visible.",
+          "emotion": "gentle confusion, world demanding attention",
+          "elements": ["Princess Kay tilting head", "glowing phone, chaotic swirl", "true red harness", "warm shadows"]
         },
         {
           "panel_number": 3,
-          "scene_description": "Tannie seen entirely from behind, sitting at the window in an ivory silk robe. Princess Kay is cradled in her arms, both looking at the sunrise. No phone anywhere. Silver cross necklace catches the light. The posture radiates quiet strength and surrender. Pre-reveal: only back and silhouette of Tannie visible.",
-          "emotion": "choosing stillness, surrendering the day to God",
-          "elements": ["Tannie from behind in ivory silk robe", "Princess Kay in her arms", "sunrise through window", "silver cross necklace catching light", "no phone", "warm golden and ivory tones"]
+          "scene_description": "Tannie from behind, ivory silk robe, seated at window. Princess Kay in her arms. Both looking at sunrise. Silver cross necklace catching light. No phone. Warm golden and ivory tones.",
+          "emotion": "choosing stillness, surrendering the day",
+          "elements": ["Tannie from behind in ivory robe", "Princess Kay in arms", "sunrise", "silver cross necklace", "no phone"]
         },
         {
           "panel_number": 4,
-          "scene_description": "Close-up portrait of Princess Kay's innocent face. Her wide eyes reflect the sunrise — tiny golden light caught in each eye. Near her red harness, a small silver cross charm. Her expression is pure trust and peace. Warm ivory and red tones. Leave clear space at the bottom for a caption text bar.",
-          "emotion": "faith, complete trust, love",
-          "elements": ["Princess Kay face close-up", "sunrise reflected in wide innocent eyes", "silver cross charm near harness", "true red harness", "warm ivory tones", "bottom space for text overlay"]
+          "scene_description": "Princess Kay close-up. Wide innocent eyes reflecting sunrise. Small silver cross charm near true red harness. Pure trust and peace. Warm ivory tones. Space at bottom for caption bar.",
+          "emotion": "faith, complete trust",
+          "elements": ["Princess Kay face close-up", "sunrise in eyes", "silver cross charm", "true red harness", "caption bar space"]
         },
         {
           "panel_number": 5,
-          "scene_description": "Tannie's open hand, palm facing up, resting on the windowsill receiving the morning light. Princess Kay's small white paw resting gently in her palm — like a gift being offered back. Tannie's true red nail polish visible. Silver ring on her finger. Warm golden light fills the frame. Leave space at the bottom for the call-to-action text.",
-          "emotion": "surrender, gratitude, invitation to the viewer",
-          "elements": ["Tannie's palm open and upward", "Princess Kay's paw in her palm", "morning golden light", "true red nail polish", "silver ring", "bottom space for CTA text"]
+          "scene_description": "Tannie's open palm on windowsill, receiving morning light. Princess Kay's paw resting in her palm. True red nail polish. Silver ring. Warm golden light. Space at bottom for CTA.",
+          "emotion": "surrender, gratitude, invitation",
+          "elements": ["Tannie's open palm", "Princess Kay's paw in palm", "true red nails", "silver ring", "CTA space at bottom"]
         }
       ]
     },
@@ -54,33 +54,33 @@
       "panels": [
         {
           "panel_number": 1,
-          "scene_description": "A warm living room at golden hour, the day winding down. Princess Kay curled up on a deep true red cushion, tired but peaceful — not stressed, just resting. Warm amber light through ivory curtains. A small silver cross visible on the wall. The room feels safe and loved.",
-          "emotion": "end of day exhaustion, but safe",
-          "elements": ["Princess Kay curled on true red cushion", "golden hour amber light", "ivory curtains", "silver cross on wall", "peaceful expression"]
+          "scene_description": "Princess Kay curled on true red cushion at golden hour. Tired but peaceful, not stressed. Amber light through ivory curtains. Silver cross on wall. Room feels safe and loved.",
+          "emotion": "end of day, safe exhaustion",
+          "elements": ["Princess Kay on red cushion", "amber golden hour light", "ivory curtains", "silver cross on wall"]
         },
         {
           "panel_number": 2,
-          "scene_description": "Comic panel: Princess Kay shaking off an invisible weight — a symbolic tiny backpack or bundle of worry falls from her back. Her expression shifts mid-shake from burdened to delighted freedom. Slightly exaggerated comic style for this panel. Items scattering around her in the warm lamplight.",
-          "emotion": "comic release, letting go, lightness",
-          "elements": ["Princess Kay mid-shake", "symbolic worry bundle falling", "comic exaggeration", "delight in her expression", "warm lamplight", "items scattering in a playful arc"]
+          "scene_description": "Comic: Princess Kay mid-shake, tiny worry bundle dropping from her back. Expression shifts burdened to delighted. Items scatter in warm lamplight. Exaggerated playful energy.",
+          "emotion": "comic release, letting go",
+          "elements": ["Princess Kay mid-shake", "worry bundle falling", "items scattering", "warm lamplight", "playful expression"]
         },
         {
           "panel_number": 3,
-          "scene_description": "Tannie from behind, seated on the floor with her back against the couch. Princess Kay settled in her lap. Both exhaling, eyes closed in rest. Tannie in a true red outfit. No phone. The evening light wraps them in warmth. Silver cross necklace just visible at her neckline. Serene and whole.",
-          "emotion": "rest, peace, the weight is gone",
-          "elements": ["Tannie from behind seated on floor", "Princess Kay in her lap", "evening warm light", "true red outfit", "no phone", "silver cross at neckline", "eyes closed in peace"]
+          "scene_description": "Tannie from behind, seated on floor against couch. Princess Kay in her lap. Evening light. True red outfit. No phone. Silver cross at neckline. Both resting, eyes closed.",
+          "emotion": "rest, peace, weight is gone",
+          "elements": ["Tannie from behind on floor", "Princess Kay in lap", "true red outfit", "silver cross", "no phone", "eyes closed"]
         },
         {
           "panel_number": 4,
-          "scene_description": "Princess Kay looking upward with complete trust — the way a child looks at the parent who says 'I've got you.' Warm lamplight glows on her white fur. The true red harness and silver hardware catch the light. Room for a scripture or quote text overlay at the bottom of the panel.",
-          "emotion": "trust, safety, being held by love",
-          "elements": ["Princess Kay looking up", "trusting upward gaze", "warm lamplight on white fur", "true red harness and silver hardware", "bottom space for scripture text"]
+          "scene_description": "Princess Kay looking upward with full trust — like a child hearing 'I've got you.' Warm lamplight on white fur. True red harness, silver hardware. Space at bottom for quote text.",
+          "emotion": "trust, safety, being held",
+          "elements": ["Princess Kay looking up", "trusting gaze", "warm lamplight", "true red harness", "silver hardware", "quote text space"]
         },
         {
           "panel_number": 5,
-          "scene_description": "Wide shot from behind: Tannie and Princess Kay silhouetted together against a warm glowing window. The sky outside shifts from gold to deep blue — the first stars appearing. The silhouette is peaceful and complete. They made it through another day. Leave generous space at the bottom for the closing CTA text.",
-          "emotion": "gratitude, hope, rest well earned",
-          "elements": ["Tannie and Princess Kay silhouetted", "warm glowing window", "gold to blue evening sky", "first stars", "peaceful complete posture", "bottom space for CTA"]
+          "scene_description": "Wide shot: Tannie and Princess Kay silhouetted against warm glowing window. Gold to deep blue sky, first stars appearing. Peaceful. Space at bottom for CTA text.",
+          "emotion": "gratitude, rest well earned",
+          "elements": ["Tannie and Princess Kay silhouette", "warm glowing window", "gold to blue sky", "first stars", "CTA space at bottom"]
         }
       ]
     }
