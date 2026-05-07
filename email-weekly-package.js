@@ -9,10 +9,10 @@ const fs = require('fs');
 const https = require('https');
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const TO_EMAIL = process.env.TO_EMAIL || 'rhismygirl@gmail.com';
+const TO_EMAIL = process.env.TO_EMAIL || 'admin@novaverseplatform.com';
 const FROM_EMAIL = process.env.FROM_EMAIL || 'onboarding@resend.dev';
 
-function buildHTML(slot, slotData, panels) {
+function buildHTML(slot, slotData, panels, reelUrl) {
   const panelCards = panels
     .filter(p => !p.error && p.imgbb_url)
     .map(p => `
@@ -33,6 +33,25 @@ function buildHTML(slot, slotData, panels) {
     .filter(p => p.error)
     .map(p => `<li>Panel ${p.panel_number}: ${p.error}</li>`)
     .join('');
+
+  const reelSection = reelUrl ? `
+    <div style="background:#fff; border-radius:10px; padding:20px; margin-bottom:20px; border:1px solid #eee;">
+      <h2 style="margin:0 0 12px; color:#8B0000; font-size:16px;">🎬 Reel (40-second MP4)</h2>
+      <p style="margin:0 0 12px; font-size:13px; color:#555;">
+        Ken Burns zoom/pan on all 5 panels. Ready for Instagram Reels and Facebook.
+      </p>
+      <a href="${reelUrl}"
+         style="display:inline-block; background:#8B0000; color:#fff; text-decoration:none;
+                padding:12px 24px; border-radius:8px; font-size:14px; font-weight:bold;">
+        ▶ View / Download Reel
+      </a>
+      <p style="margin:12px 0 0; font-size:11px; color:#aaa; word-break:break-all;">${reelUrl}</p>
+    </div>
+  ` : `
+    <div style="background:#fff3f3; border-radius:10px; padding:16px; margin-bottom:20px; border:1px solid #f5c6c6;">
+      <p style="margin:0; font-size:13px; color:#c00;">⚠️ Reel could not be generated or uploaded this run.</p>
+    </div>
+  `;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -56,8 +75,8 @@ function buildHTML(slot, slotData, panels) {
         ⚠️ Nothing has been posted.
       </p>
       <p style="margin:8px 0 0; font-size:13px; color:#555;">
-        Review the caption, hashtags, and images below.
-        Post manually when you're ready — or reply to this email to request changes.
+        Review the carousel panels and reel below — one approval covers both.
+        Post manually when ready, or reply to this email to request changes.
       </p>
       <p style="margin:8px 0 0; font-size:13px; color:#555;">
         Scheduled time: <strong>${slotData.time_est} EST on ${slotData.date}</strong>
@@ -81,9 +100,12 @@ ${slotData.caption}
       </p>
     </div>
 
-    <!-- Panels -->
+    <!-- Reel -->
+    ${reelSection}
+
+    <!-- Carousel Panels -->
     <div style="background:#fff; border-radius:10px; padding:20px; margin-bottom:20px; border:1px solid #eee;">
-      <h2 style="margin:0 0 16px; color:#8B0000; font-size:16px;">🖼️ Generated Panels (5)</h2>
+      <h2 style="margin:0 0 16px; color:#8B0000; font-size:16px;">🖼️ Carousel Panels (${panels.filter(p => !p.error).length}/5)</h2>
       ${panelCards || '<p style="color:#aaa; font-style:italic;">No panels generated yet.</p>'}
       ${errorWarnings ? `<div style="margin-top:16px; background:#fff3f3; border-radius:8px; padding:12px;">
         <p style="margin:0 0 8px; color:#c00; font-size:13px; font-weight:bold;">Panels with errors:</p>
@@ -113,12 +135,14 @@ async function sendWeeklyPackage(slot, resultsFile) {
   if (!slotData) throw new Error(`Slot "${slot}" not found in content-calendar.json`);
 
   let panels = [];
+  let reelUrl = null;
   if (resultsFile && fs.existsSync(resultsFile)) {
     const r = JSON.parse(fs.readFileSync(resultsFile, 'utf8'));
     panels = r.panels || [];
+    reelUrl = r.reel_url || null;
   }
 
-  const html = buildHTML(slot, slotData, panels);
+  const html = buildHTML(slot, slotData, panels, reelUrl);
   const subject = `🌹 Review: Tannie Talks ${slot} — Week 3 Content Ready`;
 
   const body = JSON.stringify({
@@ -169,7 +193,6 @@ if (require.main === module) {
 
   if (!slot) {
     console.error('Usage: node email-weekly-package.js <SLOT> [results-file.json]');
-    console.error('Example: node email-weekly-package.js WED-AM tannie_wed_am_results.json');
     process.exit(1);
   }
 
