@@ -1,4 +1,4 @@
-name: Tannie Talks — Weekly Content Build
+name: Tannie Talks Weekly Content Build
 
 on:
   schedule:
@@ -24,8 +24,6 @@ on:
 jobs:
   build-content:
     runs-on: ubuntu-latest
-    # Generates images → builds reel → emails review package.
-    # Nothing posts without Ingrid's manual approval.
 
     steps:
       - name: Checkout repo
@@ -60,7 +58,6 @@ jobs:
         id: generate
         run: |
           SLOT="${{ steps.slot.outputs.slot }}"
-          echo "🌹 Generating $SLOT — in memory of Kassandra, honoring the canon."
           node generate-tannie-images.js "$SLOT"
           SAFE="${SLOT//-/_}"
           LOWER=$(echo "$SAFE" | tr '[:upper:]' '[:lower:]')
@@ -69,7 +66,7 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
 
-      - name: Create reel from panels (ffmpeg Ken Burns)
+      - name: Create reel from panels
         id: reel
         if: steps.generate.outcome == 'success'
         run: |
@@ -78,7 +75,7 @@ jobs:
           node create-reel.js "$SLOT" "$RESULTS"
           SAFE="${SLOT//-/_}"
           LOWER=$(echo "$SAFE" | tr '[:upper:]' '[:lower:]')
-          cp /tmp/tannie_${LOWER}_week3.mp4 . 2>/dev/null || echo "MP4 not found in /tmp — skipping copy"
+          cp /tmp/tannie_${LOWER}_week3.mp4 . 2>/dev/null || echo "MP4 copy skipped"
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
 
@@ -100,45 +97,30 @@ jobs:
             const ok = panels.filter(p => !p.error);
             const fail = panels.filter(p => p.error);
             const panelLinks = ok.map(p =>
-              '- **Panel ' + p.panel_number + ':** [View →](' + p.imgbb_url + ')  \`' + p.emotion + '\`'
-            ).join('
-');
-            const errorList = fail.map(p =>
-              '- Panel ' + p.panel_number + ': ' + p.error
-            ).join('
-');
+              '- **Panel ' + p.panel_number + ':** [View](' + p.imgbb_url + ') ' + p.emotion
+            ).join('\n');
             const lines = [
-              '## 🌹 Tannie Talks — ' + slot + ' Content Ready for Review',
+              '## Tannie Talks ' + slot + ' Content Ready for Review',
               '',
-              '> ⚠️ **Nothing has been posted.** Review below and post manually when ready.',
+              '> Nothing has been posted. Review and post manually when ready.',
               '',
-              '### 📝 Caption',
-              '\`\`\`',
+              '### Caption',
               slotData.caption,
-              '\`\`\`',
               '',
-              '### #️⃣ Hashtags',
+              '### Hashtags',
               slotData.hashtags,
               '',
-              reelUrl ? '### 🎬 Reel
-[▶ View / Download Reel](' + reelUrl + ')' : '### 🎬 Reel
-_Reel generation failed or Supabase upload failed._',
+              reelUrl ? '### Reel\n[View/Download Reel](' + reelUrl + ')' : '### Reel\n_Reel upload failed._',
               '',
-              '### 🖼️ Carousel Panels (' + ok.length + '/5)',
+              '### Carousel Panels (' + ok.length + '/5)',
               panelLinks || '_No panels generated._',
-              fail.length ? '
-### ❌ Errors
-' + errorList : '',
-              '',
-              '---',
-              '_Every image honors Kassandra. In memory. In love. In faith._',
+              fail.length ? '\n### Errors\n' + fail.map(p => '- Panel ' + p.panel_number + ': ' + p.error).join('\n') : '',
             ];
-            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('
-'));
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n'));
             console.log('Summary written.');
           "
 
-      - name: Send review email to Ingrid
+      - name: Send review email
         if: ${{ github.event.inputs.skip_email != 'true' }}
         run: |
           SLOT="${{ steps.slot.outputs.slot }}"
