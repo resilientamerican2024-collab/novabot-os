@@ -12,26 +12,34 @@ const https = require('https');
 const { uploadImage } = require('./upload-to-imgbb');
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-const CANON_TEMPLATE = fs.readFileSync(
-  path.join(__dirname, 'tannie-prompt-template.md'), 'utf8'
-);
+// Full canon lives in tannie-prompt-template.md (reference only).
+// DALL-E prompts use the compact template below to stay under 4000 chars.
 
-function buildPrompt(panel, slotTheme) {
-  return [
-    CANON_TEMPLATE,
+function buildPrompt(panel) {
+  const base = [
+    'Comic book illustration, sketchy ink lines, subtle halftone dots in corners,',
+    'warm ivory paper texture (#FFFAEC). Panel ' + panel.panel_number + ' of 5.',
     '',
-    '---',
+    'Princess Kay: small white fluffy dog, TRUE RED harness (#8B0000), silver metal hardware,',
+    'innocent wide-eyed toddler expression — sweet, never angry, never pink.',
     '',
-    `## THIS PANEL — Panel ${panel.panel_number} of 5`,
-    `Week theme: ${slotTheme}`,
-    `Scene: ${panel.scene_description}`,
-    `Emotional tone: ${panel.emotion}`,
-    `Required elements: ${panel.elements.join(', ')}`,
+    'Tannie: Latina woman, from BEHIND or silhouette ONLY (pre-reveal). Modest, elegant,',
+    'never revealing. Silver cross necklace when visible.',
     '',
-    'Generate a single panel image that honors every canon rule above without exception.',
-    'Tannie shown from behind or in silhouette only — pre-reveal phase.',
-    'Princess Kay must be present with innocent wide-eyed expression and true red harness.',
+    'Colors: deep true red (#8B0000), silver, ivory. NO pink. NO coral. NO cold white.',
+    'No text or words inside the image. Leave 15% space at bottom for caption bar.',
+    '',
+    'Panel ' + panel.panel_number + ' scene: ' + panel.scene_description,
+    'Emotion: ' + panel.emotion,
+    'Must include: ' + panel.elements.join(', '),
   ].join('\n');
+
+  if (base.length > 3900) {
+    console.warn(`  ⚠️  Panel ${panel.panel_number} prompt is ${base.length} chars — trimming scene description.`);
+    const trimmed = panel.scene_description.slice(0, 200) + '...';
+    return base.replace(panel.scene_description, trimmed);
+  }
+  return base;
 }
 
 function callDallE(prompt) {
