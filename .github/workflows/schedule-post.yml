@@ -52,7 +52,7 @@ jobs:
             const data = JSON.parse(fs.readFileSync('week3-content.json', 'utf8'));
             const SLOT = process.env.SLOT;
             console.log('Looking for slot:', SLOT);
-            const post = data.posts.find(p => p.slot === SLOT);
+            const post = data.posts.find(p => p.slot === SLOT || p.slot === 'WED-' + SLOT);
             if (!post) {
               console.error('No post found for slot:', SLOT);
               console.error('Available slots:', data.posts.map(p => p.slot));
