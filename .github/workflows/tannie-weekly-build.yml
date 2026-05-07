@@ -1,12 +1,10 @@
 name: Tannie Talks — Weekly Content Build
 
 on:
-  # Every Wednesday: 8am EST (13:00 UTC) and 6pm EST (23:00 UTC)
   schedule:
     - cron: '0 13 * * 3'
     - cron: '0 23 * * 3'
 
-  # Manual trigger for testing and one-off runs
   workflow_dispatch:
     inputs:
       slot:
@@ -26,9 +24,8 @@ on:
 jobs:
   build-content:
     runs-on: ubuntu-latest
-    # This job generates images and emails a review package.
-    # It does NOT post to Instagram or Facebook.
-    # Nothing goes live without Ingrid's manual approval.
+    # Generates images → builds reel → emails review package.
+    # Nothing posts without Ingrid's manual approval.
 
     steps:
       - name: Checkout repo
@@ -48,7 +45,6 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "slot=${{ github.event.inputs.slot }}" >> $GITHUB_OUTPUT
           else
-            # Scheduled: 13 UTC = AM, 23 UTC = PM
             HOUR=$(date -u +%H)
             if [ "$HOUR" -ge 12 ] && [ "$HOUR" -lt 20 ]; then
               echo "slot=WED-AM" >> $GITHUB_OUTPUT
@@ -63,13 +59,26 @@ jobs:
           SLOT="${{ steps.slot.outputs.slot }}"
           echo "🌹 Generating $SLOT — in memory of Kassandra, honoring the canon."
           node generate-tannie-images.js "$SLOT"
-          # Build results filename (e.g. WED-AM → tannie_wed_am_results.json)
           SAFE="${SLOT//-/_}"
           LOWER=$(echo "$SAFE" | tr '[:upper:]' '[:lower:]')
           echo "results_file=tannie_${LOWER}_results.json" >> $GITHUB_OUTPUT
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
+
+      - name: Create reel from panels (ffmpeg Ken Burns)
+        id: reel
+        if: steps.generate.outcome == 'success'
+        run: |
+          SLOT="${{ steps.slot.outputs.slot }}"
+          RESULTS="${{ steps.generate.outputs.results_file }}"
+          node create-reel.js "$SLOT" "$RESULTS"
+          # Copy MP4 to workspace so artifact can pick it up
+          SAFE="${SLOT//-/_}"
+          LOWER=$(echo "$SAFE" | tr '[:upper:]' '[:lower:]')
+          cp /tmp/tannie_${LOWER}_week3.mp4 . 2>/dev/null || echo "MP4 not found in /tmp — skipping copy"
+        env:
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
 
       - name: Write GitHub Actions summary
         run: |
@@ -80,9 +89,11 @@ jobs:
             const calendar = require('./content-calendar.json');
             const slot = '$SLOT';
             const slotData = calendar.posts.find(p => p.slot === slot);
-            let panels = [];
+            let panels = [], reelUrl = null;
             if (fs.existsSync('$RESULTS')) {
-              panels = JSON.parse(fs.readFileSync('$RESULTS')).panels || [];
+              const r = JSON.parse(fs.readFileSync('$RESULTS'));
+              panels = r.panels || [];
+              reelUrl = r.reel_url || null;
             }
             const ok = panels.filter(p => !p.error);
             const fail = panels.filter(p => p.error);
@@ -105,7 +116,9 @@ jobs:
               '### #️⃣ Hashtags',
               slotData.hashtags,
               '',
-              '### 🖼️ Generated Panels (' + ok.length + '/5)',
+              reelUrl ? '### 🎬 Reel\n[▶ View / Download Reel](' + reelUrl + ')' : '### 🎬 Reel\n_Reel generation failed or Supabase upload failed._',
+              '',
+              '### 🖼️ Carousel Panels (' + ok.length + '/5)',
               panelLinks || '_No panels generated._',
               fail.length ? '\n### ❌ Errors\n' + errorList : '',
               '',
@@ -132,5 +145,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tannie-${{ steps.slot.outputs.slot }}-week3
-          path: tannie_*_results.json
+          path: |
+            tannie_*_results.json
+            tannie_*_week3.mp4
           retention-days: 14
