@@ -124,7 +124,7 @@ jobs:
           node email-weekly-package.js "$SLOT" "$RESULTS"
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          TO_EMAIL: rhismygirl@gmail.com
+          TO_EMAIL: admin@novaverseplatform.com
           FROM_EMAIL: onboarding@resend.dev
 
       - name: Save content artifact
