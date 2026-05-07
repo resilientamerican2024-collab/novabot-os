@@ -1,12 +1,6 @@
 name: Tannie Talks - Week 3 Content Prep
 
 on:
-  # Runs every Wednesday — 8am EST (13:00 UTC) and 6pm EST (23:00 UTC)
-  schedule:
-    - cron: '0 13 * * 3'   # Wednesday 8am EST
-    - cron: '0 23 * * 3'   # Wednesday 6pm EST
-
-  # Manual trigger — lets you pick AM or PM and test anytime
   workflow_dispatch:
     inputs:
       slot:
@@ -17,11 +11,13 @@ on:
         options:
           - AM
           - PM
+  schedule:
+    - cron: '0 13 * * 3'   # Wednesday 8am EST (13:00 UTC)
+    - cron: '0 23 * * 3'   # Wednesday 6pm EST (23:00 UTC)
 
 jobs:
   prepare-content:
     runs-on: ubuntu-latest
-    # ── No auto-posting. This job prepares content and stops for your approval.
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -37,91 +33,78 @@ jobs:
       - name: Determine slot (AM or PM)
         id: slot
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "slot=${{ github.event.inputs.slot }}" >> $GITHUB_OUTPUT
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "SLOT=${{ github.event.inputs.slot }}" >> $GITHUB_ENV
           else
-            # Scheduled: 13:00 UTC = AM, 23:00 UTC = PM
+            # For scheduled runs: 13:00 UTC = AM, 23:00 UTC = PM
             HOUR=$(date -u +%H)
-            if [ "$HOUR" -ge 12 ] && [ "$HOUR" -lt 20 ]; then
-              echo "slot=AM" >> $GITHUB_OUTPUT
+            if [ "$HOUR" == "13" ]; then
+              echo "SLOT=AM" >> $GITHUB_ENV
             else
-              echo "slot=PM" >> $GITHUB_OUTPUT
+              echo "SLOT=PM" >> $GITHUB_ENV
             fi
           fi
 
       - name: Read content for this slot
-        id: content
         run: |
-          SLOT="${{ steps.slot.outputs.slot }}"
           node -e "
-            const data = require('./week3-content.json');
-            const post = data.posts.find(p => p.slot.endsWith(SLOT));
-            if (!post) { console.error('No post found for slot: ' + SLOT); process.exit(1); }
             const fs = require('fs');
-            fs.writeFileSync('current-post.json', JSON.stringify(post, null, 2));
-            console.log('Found post for slot:', SLOT);
-            console.log('Video file:', post.video_file);
-          " SLOT="$SLOT"
+            const data = JSON.parse(fs.readFileSync('week3-content.json', 'utf8'));
+            const SLOT = process.env.SLOT;
+            console.log('Looking for slot:', SLOT);
+            const post = data.posts.find(p => p.slot === SLOT);
+            if (!post) {
+              console.error('No post found for slot:', SLOT);
+              console.error('Available slots:', data.posts.map(p => p.slot));
+              process.exit(1);
+            }
+            console.log('Found post:', JSON.stringify(post, null, 2));
+            fs.writeFileSync('post-to-prepare.json', JSON.stringify(post, null, 2));
+          "
 
       - name: Extract thumbnail from video (if video file exists)
-        id: thumbnail
-        run: |
-          VIDEO=$(node -e "const p=require('./current-post.json'); console.log(p.video_file);")
-          if [ -f "$VIDEO" ]; then
-            echo "Extracting thumbnail from $VIDEO..."
-            node extract-thumbnail.js "$VIDEO" > thumbnail-result.json
-            IMGBB_URL=$(node -e "const r=require('./thumbnail-result.json'); console.log(r.url);")
-            echo "imgbb_url=$IMGBB_URL" >> $GITHUB_OUTPUT
-          else
-            echo "⚠️  Video file '$VIDEO' not found in repo — skipping thumbnail extraction."
-            echo "imgbb_url=NOT_YET_UPLOADED" >> $GITHUB_OUTPUT
-          fi
         env:
           IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
+        run: |
+          if [ -f "videos/tannie_w3_wed_${SLOT,,}.mp4" ]; then
+            echo "Video found, extracting thumbnail..."
+            node extract-thumbnail.js videos/tannie_w3_wed_${SLOT,,}.mp4
+          else
+            echo "No video file found at videos/tannie_w3_wed_${SLOT,,}.mp4"
+            echo "Skipping thumbnail extraction"
+            echo '{"url":"placeholder","thumb":"placeholder"}' > imgbb-result.json
+          fi
 
       - name: Build content summary for review
         run: |
-          SLOT="${{ steps.slot.outputs.slot }}"
-          IMGBB_URL="${{ steps.thumbnail.outputs.imgbb_url }}"
           node -e "
-            const post = require('./current-post.json');
-            const slot = '$SLOT';
-            const imgbbUrl = '$IMGBB_URL';
-
-            const summary = [
-              '## 📋 Tannie Talks — Week 3 ' + slot + ' Content Ready for Review',
-              '',
-              '> ⚠️ **No post has been made.** Review below and approve manually when ready.',
-              '',
-              '### 🕐 Scheduled Time',
-              post.post_time_est + ' EST on ' + post.post_date,
-              '',
-              '### 🖼️ Thumbnail',
-              imgbbUrl !== 'NOT_YET_UPLOADED'
-                ? '✅ **imgbb URL:** ' + imgbbUrl
-                : '⚠️ Video not in repo — upload thumbnail manually and paste URL into week3-content.json',
-              '',
-              '### 📝 Caption',
-              '\`\`\`',
-              post.caption,
-              '\`\`\`',
-              '',
-              '### #️⃣ Hashtags',
-              post.hashtags,
-              '',
-              '---',
-              '**To post:** Copy the caption + imgbb URL into Instagram or trigger the posting workflow manually.',
-            ].join('\n');
-
-            require('fs').writeFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
-            console.log(summary);
+            const fs = require('fs');
+            const post = JSON.parse(fs.readFileSync('post-to-prepare.json', 'utf8'));
+            const imgbb = JSON.parse(fs.readFileSync('imgbb-result.json', 'utf8'));
+            
+            const summary = {
+              slot: post.slot,
+              caption: post.caption,
+              hashtags: post.hashtags,
+              imgbb_url: imgbb.url,
+              imgbb_thumb: imgbb.thumb,
+              ready_for_review: true
+            };
+            
+            console.log('=== TANNIE TALKS CONTENT SUMMARY ===');
+            console.log(JSON.stringify(summary, null, 2));
+            fs.writeFileSync('content-summary.json', JSON.stringify(summary, null, 2));
           "
 
       - name: Save content artifact
         uses: actions/upload-artifact@v4
         with:
-          name: tannie-w3-${{ steps.slot.outputs.slot }}-content
-          path: |
-            current-post.json
-            thumbnail-result.json
+          name: tannie-content-${{ env.SLOT }}
+          path: content-summary.json
           retention-days: 7
+
+      - name: Post Setup Node.js
+        run: echo "Content prep complete for ${{ env.SLOT }}"
+
+      - name: Post Checkout repo
+        run: echo "Ready for manual review and posting"
