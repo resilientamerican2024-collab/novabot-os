@@ -34,6 +34,9 @@ function buildPrompt(panel) {
     'Must include: ' + panel.elements.join(', '),
   ].join('\n');
 
+  console.log(`   📏 buildPrompt result: ${base.length} chars`);
+  console.log(`   📄 First 200 chars: ${base.slice(0, 200)}`);
+
   if (base.length > 3900) {
     console.warn(`  ⚠️  Panel ${panel.panel_number} prompt is ${base.length} chars — trimming scene description.`);
     const trimmed = panel.scene_description.slice(0, 200) + '...';
@@ -44,6 +47,12 @@ function buildPrompt(panel) {
 
 function callDallE(prompt) {
   if (!OPENAI_API_KEY) throw new Error('OPENAI_API_KEY environment variable not set');
+
+  // Hard safety cap — DALL-E limit is 4000 chars
+  if (prompt.length > 3950) {
+    console.warn(`  🚨 Prompt is ${prompt.length} chars — hard-capping at 3950 before API call.`);
+    prompt = prompt.slice(0, 3950);
+  }
 
   const body = JSON.stringify({
     model: 'dall-e-3',
@@ -121,7 +130,7 @@ async function generatePanelSet(slot) {
 
     let dalleUrl;
     try {
-      const prompt = buildPrompt(panel, slotData.theme);
+      const prompt = buildPrompt(panel);
       dalleUrl = await callDallE(prompt);
       console.log(`   ✅ DALL-E generated`);
     } catch (err) {
