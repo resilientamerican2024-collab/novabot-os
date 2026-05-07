@@ -1,0 +1,127 @@
+name: Tannie Talks - Week 3 Content Prep
+
+on:
+  # Runs every Wednesday — 8am EST (13:00 UTC) and 6pm EST (23:00 UTC)
+  schedule:
+    - cron: '0 13 * * 3'   # Wednesday 8am EST
+    - cron: '0 23 * * 3'   # Wednesday 6pm EST
+
+  # Manual trigger — lets you pick AM or PM and test anytime
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: 'Which post to prepare (AM = 8am, PM = 6pm)'
+        required: true
+        default: 'AM'
+        type: choice
+        options:
+          - AM
+          - PM
+
+jobs:
+  prepare-content:
+    runs-on: ubuntu-latest
+    # ── No auto-posting. This job prepares content and stops for your approval.
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install form-data node-fetch@2
+
+      - name: Determine slot (AM or PM)
+        id: slot
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "slot=${{ github.event.inputs.slot }}" >> $GITHUB_OUTPUT
+          else
+            # Scheduled: 13:00 UTC = AM, 23:00 UTC = PM
+            HOUR=$(date -u +%H)
+            if [ "$HOUR" -ge 12 ] && [ "$HOUR" -lt 20 ]; then
+              echo "slot=AM" >> $GITHUB_OUTPUT
+            else
+              echo "slot=PM" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Read content for this slot
+        id: content
+        run: |
+          SLOT="${{ steps.slot.outputs.slot }}"
+          node -e "
+            const data = require('./week3-content.json');
+            const post = data.posts.find(p => p.slot.endsWith(SLOT));
+            if (!post) { console.error('No post found for slot: ' + SLOT); process.exit(1); }
+            const fs = require('fs');
+            fs.writeFileSync('current-post.json', JSON.stringify(post, null, 2));
+            console.log('Found post for slot:', SLOT);
+            console.log('Video file:', post.video_file);
+          " SLOT="$SLOT"
+
+      - name: Extract thumbnail from video (if video file exists)
+        id: thumbnail
+        run: |
+          VIDEO=$(node -e "const p=require('./current-post.json'); console.log(p.video_file);")
+          if [ -f "$VIDEO" ]; then
+            echo "Extracting thumbnail from $VIDEO..."
+            node extract-thumbnail.js "$VIDEO" > thumbnail-result.json
+            IMGBB_URL=$(node -e "const r=require('./thumbnail-result.json'); console.log(r.url);")
+            echo "imgbb_url=$IMGBB_URL" >> $GITHUB_OUTPUT
+          else
+            echo "⚠️  Video file '$VIDEO' not found in repo — skipping thumbnail extraction."
+            echo "imgbb_url=NOT_YET_UPLOADED" >> $GITHUB_OUTPUT
+          fi
+        env:
+          IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
+
+      - name: Build content summary for review
+        run: |
+          SLOT="${{ steps.slot.outputs.slot }}"
+          IMGBB_URL="${{ steps.thumbnail.outputs.imgbb_url }}"
+          node -e "
+            const post = require('./current-post.json');
+            const slot = '$SLOT';
+            const imgbbUrl = '$IMGBB_URL';
+
+            const summary = [
+              '## 📋 Tannie Talks — Week 3 ' + slot + ' Content Ready for Review',
+              '',
+              '> ⚠️ **No post has been made.** Review below and approve manually when ready.',
+              '',
+              '### 🕐 Scheduled Time',
+              post.post_time_est + ' EST on ' + post.post_date,
+              '',
+              '### 🖼️ Thumbnail',
+              imgbbUrl !== 'NOT_YET_UPLOADED'
+                ? '✅ **imgbb URL:** ' + imgbbUrl
+                : '⚠️ Video not in repo — upload thumbnail manually and paste URL into week3-content.json',
+              '',
+              '### 📝 Caption',
+              '\`\`\`',
+              post.caption,
+              '\`\`\`',
+              '',
+              '### #️⃣ Hashtags',
+              post.hashtags,
+              '',
+              '---',
+              '**To post:** Copy the caption + imgbb URL into Instagram or trigger the posting workflow manually.',
+            ].join('\n');
+
+            require('fs').writeFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
+            console.log(summary);
+          "
+
+      - name: Save content artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tannie-w3-${{ steps.slot.outputs.slot }}-content
+          path: |
+            current-post.json
+            thumbnail-result.json
+          retention-days: 7
