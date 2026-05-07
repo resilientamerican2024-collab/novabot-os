@@ -1,0 +1,136 @@
+name: Tannie Talks — Weekly Content Build
+
+on:
+  # Every Wednesday: 8am EST (13:00 UTC) and 6pm EST (23:00 UTC)
+  schedule:
+    - cron: '0 13 * * 3'
+    - cron: '0 23 * * 3'
+
+  # Manual trigger for testing and one-off runs
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: 'Which slot to generate'
+        required: true
+        default: 'WED-AM'
+        type: choice
+        options:
+          - WED-AM
+          - WED-PM
+      skip_email:
+        description: 'Skip sending the review email (for dry runs)'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  build-content:
+    runs-on: ubuntu-latest
+    # This job generates images and emails a review package.
+    # It does NOT post to Instagram or Facebook.
+    # Nothing goes live without Ingrid's manual approval.
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install form-data node-fetch@2
+
+      - name: Determine slot
+        id: slot
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "slot=${{ github.event.inputs.slot }}" >> $GITHUB_OUTPUT
+          else
+            # Scheduled: 13 UTC = AM, 23 UTC = PM
+            HOUR=$(date -u +%H)
+            if [ "$HOUR" -ge 12 ] && [ "$HOUR" -lt 20 ]; then
+              echo "slot=WED-AM" >> $GITHUB_OUTPUT
+            else
+              echo "slot=WED-PM" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Generate panel images (DALL-E 3)
+        id: generate
+        run: |
+          SLOT="${{ steps.slot.outputs.slot }}"
+          echo "🌹 Generating $SLOT — in memory of Kassandra, honoring the canon."
+          node generate-tannie-images.js "$SLOT"
+          # Build results filename (e.g. WED-AM → tannie_wed_am_results.json)
+          SAFE="${SLOT//-/_}"
+          LOWER=$(echo "$SAFE" | tr '[:upper:]' '[:lower:]')
+          echo "results_file=tannie_${LOWER}_results.json" >> $GITHUB_OUTPUT
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
+
+      - name: Write GitHub Actions summary
+        run: |
+          SLOT="${{ steps.slot.outputs.slot }}"
+          RESULTS="${{ steps.generate.outputs.results_file }}"
+          node -e "
+            const fs = require('fs');
+            const calendar = require('./content-calendar.json');
+            const slot = '$SLOT';
+            const slotData = calendar.posts.find(p => p.slot === slot);
+            let panels = [];
+            if (fs.existsSync('$RESULTS')) {
+              panels = JSON.parse(fs.readFileSync('$RESULTS')).panels || [];
+            }
+            const ok = panels.filter(p => !p.error);
+            const fail = panels.filter(p => p.error);
+            const panelLinks = ok.map(p =>
+              '- **Panel ' + p.panel_number + ':** [View →](' + p.imgbb_url + ')  \`' + p.emotion + '\`'
+            ).join('\n');
+            const errorList = fail.map(p =>
+              '- Panel ' + p.panel_number + ': ' + p.error
+            ).join('\n');
+            const lines = [
+              '## 🌹 Tannie Talks — ' + slot + ' Content Ready for Review',
+              '',
+              '> ⚠️ **Nothing has been posted.** Review below and post manually when ready.',
+              '',
+              '### 📝 Caption',
+              '\`\`\`',
+              slotData.caption,
+              '\`\`\`',
+              '',
+              '### #️⃣ Hashtags',
+              slotData.hashtags,
+              '',
+              '### 🖼️ Generated Panels (' + ok.length + '/5)',
+              panelLinks || '_No panels generated._',
+              fail.length ? '\n### ❌ Errors\n' + errorList : '',
+              '',
+              '---',
+              '_Every image honors Kassandra. In memory. In love. In faith._',
+            ];
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n'));
+            console.log('Summary written.');
+          "
+
+      - name: Send review email to Ingrid
+        if: ${{ github.event.inputs.skip_email != 'true' }}
+        run: |
+          SLOT="${{ steps.slot.outputs.slot }}"
+          RESULTS="${{ steps.generate.outputs.results_file }}"
+          node email-weekly-package.js "$SLOT" "$RESULTS"
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          TO_EMAIL: rhismygirl@gmail.com
+          FROM_EMAIL: onboarding@resend.dev
+
+      - name: Save content artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tannie-${{ steps.slot.outputs.slot }}-week3
+          path: tannie_*_results.json
+          retention-days: 14
