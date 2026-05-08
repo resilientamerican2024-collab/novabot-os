@@ -38,7 +38,7 @@ function buildPrompt(panel) {
   const lines = [
     scene,
     '',
-    'Style: Warm oil painting illustration, soft brushstrokes, textured canvas, gentle morning light. NOT comic. NOT graphic novel. NOT pop art. NOT halftone. NOT cartoon.',
+    'Style: Warm oil painting illustration, soft brushstrokes, textured canvas. Muted warm tones, low saturation, cozy intimate lighting — NOT bright, NOT overexposed, NOT white light, NOT harsh sunlight. Rich amber and ivory shadows. NOT comic. NOT graphic novel. NOT pop art. NOT halftone. NOT cartoon.',
     '',
     'Princess Kay: Small white fluffy Maltese dog. Round innocent dark eyes like a toddler. Short cloud-like white fur, soft and fluffy. Small black button nose. Gentle happy expression, slight sweet smile. TRUE RED harness, mesh texture, SILVER D-ring hardware, silver buckle, adjustable straps. NO text on harness. NO text on collar. NO embroidered names. NO labels of any kind. IDENTICAL dog face and body in every panel.',
   ];
