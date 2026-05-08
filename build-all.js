@@ -9,17 +9,13 @@ const path = require('path');
 const { generatePanelSet } = require('./generate-tannie-images');
 const { createReel } = require('./create-reel');
 
-const LEGACY_SLOTS = ['WED-AM', 'WED-PM'];
-
 function pause(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function buildAll() {
   const calendar = JSON.parse(fs.readFileSync('./content-calendar.json', 'utf8'));
-  const slots = calendar.posts
-    .map(p => p.slot)
-    .filter(s => !LEGACY_SLOTS.includes(s));
+  const slots = calendar.posts.map(p => p.slot);
 
   console.log(`\n🌹 Tannie Talks — Batch Build`);
   console.log(`   ${slots.length} slots: ${slots.join(', ')}`);
