@@ -185,9 +185,9 @@
         },
         {
           "panel_number": 2,
-          "scene_description": "Princess Kay mid-bark. Full dramatic energy. Mouth open, ears back. Expressing everything she has been holding since the door closed. Red harness on.",
+          "scene_description": "Princess Kay mid-bark, full dramatic energy, mouth open, ears alert and expressive. Warm lamp light from behind glows through her white fur like a halo. Red harness on. Round silver collar tag catching the warm light.",
           "emotion": "full lecture mode, maximum drama",
-          "elements": ["Princess Kay mid-bark", "dramatic expression", "true red harness", "silver collar tag"]
+          "elements": ["Princess Kay mid-bark", "warm lamp light from behind", "true red harness", "round silver collar tag in warm light"]
         },
         {
           "panel_number": 3,
@@ -197,15 +197,15 @@
         },
         {
           "panel_number": 4,
-          "scene_description": "Lone sock on the floor. Princess Kay standing over it, staring at it accusingly as if it is evidence. The red harness visible. The case is being made.",
-          "emotion": "exhibit A, building the case",
-          "elements": ["lone sock on floor", "Princess Kay staring accusingly", "true red harness"]
+          "scene_description": "Princess Kay nosing a lone sock on the floor, head tilted with wide round innocent curious eyes — not sad, not distressed, purely fascinated. Expression: 'I found this. What is this?' Genuinely delighted by the discovery. Warm window light from the side. Red harness on.",
+          "emotion": "innocent curiosity, fascinated not distressed",
+          "elements": ["Princess Kay head tilted curious", "lone sock", "innocent wide eyes", "warm window light", "true red harness"]
         },
         {
           "panel_number": 5,
-          "scene_description": "Princess Kay sitting regally on the couch, red harness on, silver collar tag bright and still. Lecture concluded. The cushion back in place. Dignity fully restored.",
-          "emotion": "justice served, dignity restored",
-          "elements": ["Princess Kay sitting regally", "true red harness", "silver collar tag still", "couch"]
+          "scene_description": "Princess Kay sitting regally on the couch, red harness on, round silver collar tag bright and still. Lecture concluded. Tannie's ivory-sleeved hand with candy apple red nails rests on the couch cushion beside her. Warm lamp light. Dignity fully restored.",
+          "emotion": "justice served, dignity restored, Tannie present",
+          "elements": ["Princess Kay sitting regally", "true red harness", "round silver collar tag", "Tannie ivory sleeve and red nails on couch", "warm lamp light"]
         }
       ]
     },
