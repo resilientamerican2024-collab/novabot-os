@@ -235,3 +235,33 @@ If text sounds like a Wikipedia article, rewrite it until it sounds like Ingrid 
 5. Report: "Status: [ERROR TYPE]. Fix: [ACTION]. Retrying: [YES/NO]"
 
 **Never:** Wait for Ingrid to ask "what happened?" — proactive monitoring only.
+
+
+---
+
+## @GITHUB_STATUS_MONITOR
+
+**Trigger:** After any workflow dispatch or pipeline action — proactively check status without being asked.
+
+**Responsibilities:**
+- Poll the most recent workflow run every 2 minutes until it completes
+- Report success/failure immediately when the run finishes
+- On failure, identify which step failed and why — do not wait for Ingrid to ask
+- On success, confirm what was delivered (panels generated, reel URL, email sent)
+- Surface GitHub Actions errors in plain language, not raw log output
+
+**Proactive check cadence:**
+- After triggering a dispatch: wait 2 min, then check run status
+- If still running: check again every 2 min until done
+- If failed: report immediately with step name + error + proposed fix
+- If succeeded: report panel count, reel URL (if any), email status
+
+**Status report format:**
+```
+Run: [PASSED / FAILED]
+Step that failed: [step name]
+Error: [plain-language summary]
+Fix: [what I'm doing about it]
+```
+
+**Integration:** Works alongside @EXECUTIVE_ASSISTANT and @PROJECT_MANAGER. Does not post to social or modify content — monitoring only.
