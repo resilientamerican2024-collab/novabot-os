@@ -17,59 +17,50 @@ const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 function buildPrompt(panel) {
   const base = [
-    'Comic book illustration, sketchy ink lines, subtle halftone dots in corners,',
-    'warm ivory paper texture (#FFFAEC). Panel ' + panel.panel_number + ' of 5.',
+    // STYLE
+    'Warm painterly illustration, subtle sketchy ink lines, soft halftone dots only in corners,',
+    'textured warm ivory background. Intimate, story-driven, pre-reveal mood.',
+    'Slightly melancholy but hopeful. NOT comedic. NOT pop art. NOT loud.',
     '',
-    'Princess Kay: small white fluffy dog, TRUE RED harness (#8B0000), silver metal hardware,',
-    'innocent wide-eyed toddler expression — sweet, never angry, never pink.',
+    // NO TEXT — listed first so DALL-E prioritizes it
+    'NO text. NO words. NO letters. NO numbers. NO color swatches.',
+    'NO captions. NO speech bubbles. NO labels. NO headers.',
+    'NO panel borders. NO layout grids. NO comic book elements.',
+    'Pure visual scene only. All text added in post-production.',
     '',
-    'Tannie: Latina woman, from BEHIND or silhouette ONLY (pre-reveal). Modest, elegant,',
-    'never revealing. Silver cross necklace when visible.',
+    // LOCKED: Princess Kay
+    'Princess Kay: small white fluffy Maltese dog, photorealistic fur texture,',
+    'innocent expressive eyes, deep red harness with silver metal hardware.',
+    'Real dog in every panel. NOT cartoon. NOT mascot. NOT stylized.',
     '',
-    'Colors: deep true red (#8B0000), silver, ivory. NO pink. NO coral. NO cold white.',
-    'No text or words inside the image. Leave 15% space at bottom for caption bar.',
+    // LOCKED: Tannie
+    'Tannie: Latina woman, warm brown skin, long wavy dark hair.',
+    'Seen from behind or partial view only — face always hidden by angle or hair.',
+    'Modest, elegant. Silver cross necklace when lighting allows.',
     '',
-    'Panel ' + panel.panel_number + ' scene: ' + panel.scene_description,
-    'Emotion: ' + panel.emotion,
-    'Must include: ' + panel.elements.join(', '),
+    // COLORS — descriptive, no hex codes, no negatives
+    'Color palette: deep crimson red, warm silver, ivory cream, golden warm light.',
+    '',
+    // SCENE
+    'Scene: ' + panel.scene_description,
+    'Mood: ' + panel.emotion,
+    'Visual elements: ' + panel.elements.join(', '),
+    '',
+    'Leave clear 15% space at bottom for caption overlay added in post-production.',
   ].join('\n');
 
-  console.log(`   📏 buildPrompt result: ${base.length} chars`);
-  console.log(`   📄 First 200 chars: ${base.slice(0, 200)}`);
-
-  if (base.length > 3900) {
-    console.warn(`  ⚠️  Panel ${panel.panel_number} prompt is ${base.length} chars — trimming scene description.`);
+  if (base.length > 3950) {
+    console.warn(`  ⚠️  Panel ${panel.panel_number} prompt is ${base.length} chars — trimming scene.`);
     const trimmed = panel.scene_description.slice(0, 200) + '...';
     return base.replace(panel.scene_description, trimmed);
   }
+
+  console.log(`  📏 Panel ${panel.panel_number} prompt: ${base.length} chars`);
   return base;
 }
 
-function adjustPromptForFilter(prompt) {
-  return prompt
-    .replace(/\bblood\b/gi, 'deep crimson')
-    .replace(/\battack\b/gi, 'challenge')
-    .replace(/\bunconsci\w+/gi, 'resting peacefully')
-    .replace(/\bdead\b/gi, 'at rest')
-    .replace(/\bdeath\b/gi, 'stillness')
-    .replace(/\bnarcissistic\b/gi, 'self-focused')
-    .replace(/\babusive\b/gi, 'difficult')
-    .replace(/\bJesus\b/gi, 'a sacred figure')
-    .replace(/\bBible\b/gi, 'sacred scripture')
-    .replace(/\bfaith\b/gi, 'devotion')
-    .replace(/\bGod\b/gi, 'the divine')
-    .replace(/\bduvet\b/gi, 'cushion')
-    .replace(/\bbed\b/gi, 'seat')
-    .replace(/\bbedroom\b/gi, 'room');
-}
-
-function callDallE(prompt, attempt = 1) {
+function callDallE(prompt) {
   if (!OPENAI_API_KEY) throw new Error('OPENAI_API_KEY environment variable not set');
-
-  if (prompt.length > 3950) {
-    console.warn(`  🚨 Prompt is ${prompt.length} chars — hard-capping at 3950.`);
-    prompt = prompt.slice(0, 3950);
-  }
 
   const body = JSON.stringify({
     model: 'dall-e-3',
@@ -93,48 +84,25 @@ function callDallE(prompt, attempt = 1) {
     }, res => {
       let data = '';
       res.on('data', chunk => { data += chunk; });
-      res.on('end', async () => {
+      res.on('end', () => {
         try {
           const parsed = JSON.parse(data);
           if (parsed.data && parsed.data[0] && parsed.data[0].url) {
             resolve(parsed.data[0].url);
-            return;
-          }
-
-          const msg = parsed.error?.message || `Unexpected response: ${data.slice(0, 200)}`;
-          const isContentFilter = /content.?filter|blocked|policy|safety/i.test(msg);
-          const isServerError = res.statusCode >= 500 || /server.*(error|had)|sorry about/i.test(msg);
-
-          if (isContentFilter && attempt < 3) {
-            console.warn(`  🚫 Attempt ${attempt}: Content filter — adjusting prompt and retrying...`);
-            const adjusted = adjustPromptForFilter(prompt);
-            await pause(3000);
-            callDallE(adjusted, attempt + 1).then(resolve).catch(reject);
-          } else if (isServerError && attempt < 3) {
-            console.warn(`  ⚠️  Attempt ${attempt}: Server error — waiting 2 minutes before retry...`);
-            await pause(120000);
-            callDallE(prompt, attempt + 1).then(resolve).catch(reject);
           } else {
-            reject(new Error(msg));
+            reject(new Error(parsed.error?.message || `Unexpected response: ${data.slice(0, 200)}`));
           }
         } catch (e) {
           reject(new Error(`JSON parse error: ${e.message}`));
         }
       });
     });
-    req.on('error', async (err) => {
-      if (attempt < 3) {
-        console.warn(`  ⚠️  Attempt ${attempt}: Network error — retrying in 5s...`);
-        await pause(5000);
-        callDallE(prompt, attempt + 1).then(resolve).catch(reject);
-      } else {
-        reject(err);
-      }
-    });
+    req.on('error', reject);
     req.write(body);
     req.end();
   });
 }
+
 function downloadToTemp(url, filename) {
   const localPath = path.join('/tmp', filename);
   return new Promise((resolve, reject) => {
@@ -170,7 +138,7 @@ async function generatePanelSet(slot) {
 
     let dalleUrl;
     try {
-      const prompt = buildPrompt(panel);
+      const prompt = buildPrompt(panel, slotData.theme);
       dalleUrl = await callDallE(prompt);
       console.log(`   ✅ DALL-E generated`);
     } catch (err) {
