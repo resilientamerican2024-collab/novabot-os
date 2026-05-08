@@ -17,32 +17,67 @@
           "panel_number": 1,
           "scene_description": "New balcony at dawn. Ivory chair empty. Red mug on small side table. Silver wind chime catching first light. Total quiet. No people.",
           "emotion": "still morning, peace before the world wakes",
-          "elements": ["ivory chair", "red mug", "silver wind chime", "dawn light"]
+          "elements": [
+            "ivory chair",
+            "red mug",
+            "silver wind chime",
+            "dawn light"
+          ]
         },
         {
           "panel_number": 2,
           "scene_description": "Princess Kay on ivory blanket at feet of the chair. Alert and curious. Watching the silver wind chime move in the morning breeze. Red harness on.",
           "emotion": "curious presence, peaceful attention",
-          "elements": ["Princess Kay on ivory blanket", "silver wind chime in background", "true red harness"]
+          "elements": [
+            "Princess Kay on ivory blanket",
+            "silver wind chime in background",
+            "true red harness"
+          ]
         },
         {
           "panel_number": 3,
           "scene_description": "Close-up of red mug held in hands — deep red nails wrapped around the warm ceramic. Morning steam rising. Balcony railing behind.",
           "emotion": "warmth, grounding, quiet ritual",
-          "elements": ["red mug", "deep red nails", "morning steam", "balcony railing"]
+          "elements": [
+            "red mug",
+            "deep red nails",
+            "morning steam",
+            "balcony railing"
+          ]
         },
         {
           "panel_number": 4,
           "scene_description": "Silver wind chime close-up. Each ring catching soft morning light. Slight blur of breeze. Ivory chair edge visible. Quiet beauty.",
           "emotion": "grace in the ordinary, peace made visible",
-          "elements": ["silver wind chime", "morning light", "ivory chair edge"]
+          "elements": [
+            "silver wind chime",
+            "morning light",
+            "ivory chair edge"
+          ]
         },
         {
           "panel_number": 5,
           "scene_description": "Wide balcony scene. Princess Kay curled on ivory blanket. Red mug on table. Silver chime still. Morning light full. No other sound. No other presence.",
           "emotion": "peace chosen, solitude as sanctuary",
-          "elements": ["Princess Kay on ivory blanket", "red mug", "silver wind chime", "morning light", "true red harness"]
+          "elements": [
+            "Princess Kay on ivory blanket",
+            "red mug",
+            "silver wind chime",
+            "morning light",
+            "true red harness"
+          ]
         }
+      ],
+      "hook": "Monday hit different in an apartment I actually love.",
+      "on_screen_lines": [
+        "Monday.",
+        "My coffee. My balcony. My view.",
+        "No one's clothes on the floor but mine.",
+        "No one's moods to manage but mine.",
+        "This is peace.",
+        "Peace is not boring.",
+        "Peace is loud — once you've had the other thing.",
+        "Comment PEACE if this is new to you too."
       ]
     },
     {
@@ -58,32 +93,62 @@
           "panel_number": 1,
           "scene_description": "Apartment interior during a showing. Empty rooms, hollow feeling. Afternoon light through uncovered windows. No warmth. Too much space.",
           "emotion": "wrong place, hollow feeling",
-          "elements": ["empty apartment", "uncovered windows", "afternoon light"]
+          "elements": [
+            "empty apartment",
+            "uncovered windows",
+            "afternoon light"
+          ]
         },
         {
           "panel_number": 2,
           "scene_description": "Realtor's hand extending a business card with silver edging toward the camera. Professional, persistent. The card is elegant but unwanted.",
           "emotion": "the pitch, the familiar pressure",
-          "elements": ["realtor's hand", "silver-edged business card"]
+          "elements": [
+            "realtor's hand",
+            "silver-edged business card"
+          ]
         },
         {
           "panel_number": 3,
           "scene_description": "Tannie's ivory sleeve and red-nailed hand gently declining the card — a polite push back. The card between two sets of hands. Refusal without drama.",
           "emotion": "knowing better, quiet refusal",
-          "elements": ["ivory sleeve", "deep red nails", "business card being declined"]
+          "elements": [
+            "ivory sleeve",
+            "deep red nails",
+            "business card being declined"
+          ]
         },
         {
           "panel_number": 4,
           "scene_description": "Princess Kay in Tannie's arm, red harness visible. Looking at the business card with the side-eye of someone who recognizes a script they've heard before.",
           "emotion": "recognition, instinct confirmed",
-          "elements": ["Princess Kay", "true red harness", "side-eye expression"]
+          "elements": [
+            "Princess Kay",
+            "true red harness",
+            "side-eye expression"
+          ]
         },
         {
           "panel_number": 5,
           "scene_description": "Business card resting on an ivory surface. Tannie's red-nailed hand leaving frame. The card left behind. Decision made. Princess Kay at the edge of the shot.",
           "emotion": "walking away, pattern broken",
-          "elements": ["business card on ivory surface", "deep red nails leaving frame", "Princess Kay edge of shot"]
+          "elements": [
+            "business card on ivory surface",
+            "deep red nails leaving frame",
+            "Princess Kay edge of shot"
+          ]
         }
+      ],
+      "hook": "A realtor love-bombed me at a showing today. I know that energy. I fell for it once.",
+      "on_screen_lines": [
+        "Realtor at a showing today.",
+        "'You're SO different from my other clients.'",
+        "'I've never felt this connection so fast.'",
+        "'I'll make exceptions for YOU.'",
+        "Red flags dressed in compliments.",
+        "I know that script.",
+        "I fell for it once.",
+        "Never again. Comment FLAG if you know this script too."
       ]
     },
     {
@@ -99,32 +164,66 @@
           "panel_number": 1,
           "scene_description": "Wide flatlay on ivory bedspread. Exactly 5 items arranged cleanly: a soft blouse, dark jeans, red sweater, silver hoop earrings, deep red heels. Clean, intentional, simple.",
           "emotion": "clarity, chosen identity",
-          "elements": ["ivory bedspread", "blouse", "jeans", "red sweater", "silver hoops", "red heels", "flatlay arrangement"]
+          "elements": [
+            "ivory bedspread",
+            "blouse",
+            "jeans",
+            "red sweater",
+            "silver hoops",
+            "red heels",
+            "flatlay arrangement"
+          ]
         },
         {
           "panel_number": 2,
           "scene_description": "Red-nailed hand reaching into the flatlay, touching the red sweater. Making a choice. The rest of the items undisturbed. Deliberate.",
           "emotion": "decisive, intentional",
-          "elements": ["deep red nails", "red sweater", "ivory bedspread"]
+          "elements": [
+            "deep red nails",
+            "red sweater",
+            "ivory bedspread"
+          ]
         },
         {
           "panel_number": 3,
           "scene_description": "Silver hoop earrings close-up on ivory fabric. Elegant and simple. Light catching the curve of each hoop. Nothing extra needed.",
           "emotion": "refinement, less is more",
-          "elements": ["silver hoop earrings", "ivory fabric"]
+          "elements": [
+            "silver hoop earrings",
+            "ivory fabric"
+          ]
         },
         {
           "panel_number": 4,
           "scene_description": "Deep red heels close-up on ivory bedspread. Rich color against the cream. Confident and grounded. The shoes of a woman who knows who she is.",
           "emotion": "confidence, groundedness",
-          "elements": ["deep red heels", "ivory bedspread"]
+          "elements": [
+            "deep red heels",
+            "ivory bedspread"
+          ]
         },
         {
           "panel_number": 5,
           "scene_description": "Complete flatlay — all 5 items arranged. Red-nailed hands resting at the edge of the shot, done arranging. Princess Kay nosing one corner of the spread, curious.",
           "emotion": "complete, at peace with the choice",
-          "elements": ["ivory bedspread", "all 5 items flatlay", "deep red nails at edge", "Princess Kay corner"]
+          "elements": [
+            "ivory bedspread",
+            "all 5 items flatlay",
+            "deep red nails at edge",
+            "Princess Kay corner"
+          ]
         }
+      ],
+      "hook": "The 5-piece wardrobe that built my confidence back.",
+      "on_screen_lines": [
+        "5 pieces. That's all I needed.",
+        "One ivory blouse.",
+        "One pair of dark jeans.",
+        "One candy apple red sweater.",
+        "One silver hoops set.",
+        "One pair of heels that make me walk differently.",
+        "I stopped trying to be a different woman every day.",
+        "Comment FIVE for the full capsule."
       ]
     },
     {
@@ -140,32 +239,68 @@
           "panel_number": 1,
           "scene_description": "Phone held in red-nailed hands. Screen showing a blurred text thread — readable shape but no legible words. Ivory coffee cup nearby. Still and tense.",
           "emotion": "quiet dilemma, reading something heavy",
-          "elements": ["phone with blurred screen", "deep red nails", "ivory coffee cup"]
+          "elements": [
+            "phone with blurred screen",
+            "deep red nails",
+            "ivory coffee cup"
+          ]
         },
         {
           "panel_number": 2,
           "scene_description": "Close-up of red nails scrolling the phone screen. The text thread long, blurred. Careful reading. The hand pauses. Deliberate attention.",
           "emotion": "absorbing information, weighing",
-          "elements": ["deep red nails", "phone screen blurred text thread"]
+          "elements": [
+            "deep red nails",
+            "phone screen blurred text thread"
+          ]
         },
         {
           "panel_number": 3,
           "scene_description": "Open notebook on an ivory surface. Silver pen. The letters A, B, C written out. Considering options. The coffee cup behind it, still steaming.",
           "emotion": "considering options, making a list",
-          "elements": ["open notebook", "silver pen", "A B C written", "ivory surface", "coffee cup"]
+          "elements": [
+            "open notebook",
+            "silver pen",
+            "A B C written",
+            "ivory surface",
+            "coffee cup"
+          ]
         },
         {
           "panel_number": 4,
           "scene_description": "Ivory coffee cup, half-drunk. Steam still rising. Princess Kay sitting nearby, watching the situation with full attention. Quiet dilemma energy.",
           "emotion": "pause, stillness in the middle of deciding",
-          "elements": ["ivory coffee cup half-drunk", "steam", "Princess Kay watching", "true red harness"]
+          "elements": [
+            "ivory coffee cup half-drunk",
+            "steam",
+            "Princess Kay watching",
+            "true red harness"
+          ]
         },
         {
           "panel_number": 5,
           "scene_description": "Phone face-down on ivory surface. Notebook with A-B-C still open beside it. Red pen marking something on the page. Princess Kay alert at the edge.",
           "emotion": "decision pending, the choice is forming",
-          "elements": ["phone face-down", "ivory surface", "open notebook with A-B-C", "red pen", "Princess Kay alert"]
+          "elements": [
+            "phone face-down",
+            "ivory surface",
+            "open notebook with A-B-C",
+            "red pen",
+            "Princess Kay alert"
+          ]
         }
+      ],
+      "hook": "Friend drama: she's dating a man who's already showing her who he is. Do I speak up?",
+      "on_screen_lines": [
+        "Friend's new boyfriend.",
+        "Already telling her who to hang with.",
+        "Already texting 24/7.",
+        "Already saying 'I've never felt this way before.'",
+        "Do I say something?",
+        "A — Yes, gently.",
+        "B — No, it's not my place.",
+        "C — Send her the red flag list anonymously.",
+        "Vote. I'll tell you what I did Wednesday."
       ]
     },
     {
@@ -181,32 +316,71 @@
           "panel_number": 1,
           "scene_description": "Living room. Cushion knocked to floor, ivory throw askew on couch, lone sock on rug. Princess Kay sits in the middle of the mess, looking up with wide round innocent eyes — guilty but also very pleased with herself. Tannie's ivory sleeve and hand with candy apple red nails visible at the right edge of frame, just returned home.",
           "emotion": "the aftermath, beloved disorder",
-          "elements": ["cushion on floor", "ivory throw askew", "lone sock on rug", "Princess Kay guilty innocent expression", "Tannie ivory sleeve", "Tannie red nails entering frame"]
+          "elements": [
+            "cushion on floor",
+            "ivory throw askew",
+            "lone sock on rug",
+            "Princess Kay guilty innocent expression",
+            "Tannie ivory sleeve",
+            "Tannie red nails entering frame"
+          ]
         },
         {
           "panel_number": 2,
           "scene_description": "Princess Kay mid-bark, full dramatic energy, mouth open, ears alert and expressive. Warm lamp light from behind glows through her white fur like a halo. Red harness on. Round silver collar tag catching the warm light.",
           "emotion": "full lecture mode, maximum drama",
-          "elements": ["Princess Kay mid-bark", "warm lamp light from behind", "true red harness", "round silver collar tag in warm light"]
+          "elements": [
+            "Princess Kay mid-bark",
+            "warm lamp light from behind",
+            "true red harness",
+            "round silver collar tag in warm light"
+          ]
         },
         {
           "panel_number": 3,
           "scene_description": "Silver collar tag jingling, catching light as Princess Kay shakes her head with emphasis. The tag in motion. The argument is making a point.",
           "emotion": "punctuating the lecture, making herself heard",
-          "elements": ["silver collar tag in motion", "true red harness", "Princess Kay shaking head"]
+          "elements": [
+            "silver collar tag in motion",
+            "true red harness",
+            "Princess Kay shaking head"
+          ]
         },
         {
           "panel_number": 4,
           "scene_description": "Princess Kay nosing a lone sock on the floor, head tilted with wide round innocent curious eyes — not sad, not distressed, purely fascinated. Expression: 'I found this. What is this?' Genuinely delighted by the discovery. Warm window light from the side. Red harness on.",
           "emotion": "innocent curiosity, fascinated not distressed",
-          "elements": ["Princess Kay head tilted curious", "lone sock", "innocent wide eyes", "warm window light", "true red harness"]
+          "elements": [
+            "Princess Kay head tilted curious",
+            "lone sock",
+            "innocent wide eyes",
+            "warm window light",
+            "true red harness"
+          ]
         },
         {
           "panel_number": 5,
           "scene_description": "Princess Kay sitting regally on the couch, red harness on, round silver collar tag bright and still. Lecture concluded. Tannie's ivory-sleeved hand with candy apple red nails rests on the couch cushion beside her. Warm lamp light. Dignity fully restored.",
           "emotion": "justice served, dignity restored, Tannie present",
-          "elements": ["Princess Kay sitting regally", "true red harness", "round silver collar tag", "Tannie ivory sleeve and red nails on couch", "warm lamp light"]
+          "elements": [
+            "Princess Kay sitting regally",
+            "true red harness",
+            "round silver collar tag",
+            "Tannie ivory sleeve and red nails on couch",
+            "warm lamp light"
+          ]
         }
+      ],
+      "hook": "Princess Kay's first full day home-alone. She survived. Barely.",
+      "on_screen_lines": [
+        "I left for 4 hours.",
+        "FOUR hours.",
+        "She treated it like I moved overseas.",
+        "I came home to:",
+        "Couch cushion on the floor.",
+        "One sock missing.",
+        "A very personal lecture (bark).",
+        "I apologized. We're fine now."
       ]
     },
     {
@@ -222,32 +396,65 @@
           "panel_number": 1,
           "scene_description": "Ivory table. Phone face-down. Red mug, half-empty, still warm. Silver bracelet resting on the table edge. Quiet. The kind of quiet after something heavy.",
           "emotion": "aftermath of honesty, waiting",
-          "elements": ["ivory table", "phone face-down", "red mug half-empty", "silver bracelet"]
+          "elements": [
+            "ivory table",
+            "phone face-down",
+            "red mug half-empty",
+            "silver bracelet"
+          ]
         },
         {
           "panel_number": 2,
           "scene_description": "Silver bracelet on a wrist, elbow resting on the ivory table. The weight of thinking. Head bent slightly. The mug nearby, cooling.",
           "emotion": "deep contemplation, sitting with the weight",
-          "elements": ["silver bracelet on wrist", "elbow on ivory table", "red mug cooling"]
+          "elements": [
+            "silver bracelet on wrist",
+            "elbow on ivory table",
+            "red mug cooling"
+          ]
         },
         {
           "panel_number": 3,
           "scene_description": "Princess Kay at her feet, looking upward with concern. Reading the mood completely. Not playful. Present. The red harness is on but she is very still.",
           "emotion": "companionship in the quiet, love that stays",
-          "elements": ["Princess Kay looking up", "true red harness", "concerned expression"]
+          "elements": [
+            "Princess Kay looking up",
+            "true red harness",
+            "concerned expression"
+          ]
         },
         {
           "panel_number": 4,
           "scene_description": "Close-up of the red mug, last bit of warmth. Red-nailed hands wrapped around it. Holding on to something warm when everything else is uncertain.",
           "emotion": "holding warmth, steadiness",
-          "elements": ["red mug", "deep red nails", "warmth"]
+          "elements": [
+            "red mug",
+            "deep red nails",
+            "warmth"
+          ]
         },
         {
           "panel_number": 5,
           "scene_description": "The phone still face-down on the ivory table. Princess Kay now on the chair beside her — red harness off, fully at rest. Staying. No answer has come. But she is not alone.",
           "emotion": "waiting without despair, love that shows up",
-          "elements": ["phone face-down", "ivory table", "Princess Kay on chair beside", "quiet presence"]
+          "elements": [
+            "phone face-down",
+            "ivory table",
+            "Princess Kay on chair beside",
+            "quiet presence"
+          ]
         }
+      ],
+      "hook": "I told my friend what I saw. She got quiet. That's the cost of honesty.",
+      "on_screen_lines": [
+        "She asked what I thought.",
+        "I told her.",
+        "She got quiet.",
+        "She said 'I'll think about it.'",
+        "We haven't texted since.",
+        "Telling the truth sometimes costs the thing you were trying to save.",
+        "But I'd rather lose the friendship than lose HER.",
+        "Comment TRUTH if you've made this call."
       ]
     },
     {
@@ -263,32 +470,59 @@
           "panel_number": 1,
           "scene_description": "Three car listing photos spread on an ivory surface. Laid out side by side. Red pen hovering above them. The decision has not been made yet.",
           "emotion": "surveying options, before the choice",
-          "elements": ["three car photos", "ivory surface", "red pen hovering"]
+          "elements": [
+            "three car photos",
+            "ivory surface",
+            "red pen hovering"
+          ]
         },
         {
           "panel_number": 2,
           "scene_description": "Red pen crossing out the first car listing. Clean, decisive X. Silver thermos in background. The first one is gone.",
           "emotion": "first elimination, clarity beginning",
-          "elements": ["red pen crossing out listing", "silver thermos in background"]
+          "elements": [
+            "red pen crossing out listing",
+            "silver thermos in background"
+          ]
         },
         {
           "panel_number": 3,
           "scene_description": "Red pen crossing out the second listing. Firm. Silver thermos closer now, being reached for. The process is clear. This one too.",
           "emotion": "pattern recognized, second elimination",
-          "elements": ["red pen crossing out second listing", "silver thermos"]
+          "elements": [
+            "red pen crossing out second listing",
+            "silver thermos"
+          ]
         },
         {
           "panel_number": 4,
           "scene_description": "Red pen circling the third listing. The circle bold and clean. Ivory notebook open beside it with handwritten notes. The right choice becomes clear.",
           "emotion": "recognition, the right answer emerges",
-          "elements": ["red pen circling third listing", "ivory notebook with notes"]
+          "elements": [
+            "red pen circling third listing",
+            "ivory notebook with notes"
+          ]
         },
         {
           "panel_number": 5,
           "scene_description": "Clipboard holding the circled listing. Silver thermos to one side. Red pen resting across the notebook. Done. The decision was never about the car.",
           "emotion": "decided, patience rewarded",
-          "elements": ["clipboard with circled listing", "silver thermos", "red pen resting", "ivory notebook"]
+          "elements": [
+            "clipboard with circled listing",
+            "silver thermos",
+            "red pen resting",
+            "ivory notebook"
+          ]
         }
+      ],
+      "hook": "Three dealers. Three pitches. Two immediate NOs. One maybe.",
+      "on_screen_lines": [
+        "Dealer one: 'This is the last one in the state.' Lie.",
+        "Dealer two: 'You can't get better at your budget.' Also lie.",
+        "Dealer three: actually listened. Quoted fair. Didn't push.",
+        "I am going back to dealer three.",
+        "The ones who rush you are the ones you walk from.",
+        "Comment RUSH if you've learned this."
       ]
     },
     {
@@ -304,32 +538,65 @@
           "panel_number": 1,
           "scene_description": "Ivory table in low evening light. Red Bible closed. Silver cross resting beside it. Phone nearby, screen blurred. Quiet and holy. Nothing urgent.",
           "emotion": "stillness, the sacred ordinary",
-          "elements": ["ivory table", "red Bible closed", "silver cross", "phone screen blurred", "low evening light"]
+          "elements": [
+            "ivory table",
+            "red Bible closed",
+            "silver cross",
+            "phone screen blurred",
+            "low evening light"
+          ]
         },
         {
           "panel_number": 2,
           "scene_description": "Red Bible open. Pages catching soft evening light. A red-nailed hand resting flat on the open page. Not searching. Resting.",
           "emotion": "found, at rest in the word",
-          "elements": ["red Bible open", "deep red nails", "pages in soft light"]
+          "elements": [
+            "red Bible open",
+            "deep red nails",
+            "pages in soft light"
+          ]
         },
         {
           "panel_number": 3,
           "scene_description": "Silver cross close-up on the ivory table. Low evening light catching the edges. The cross is simple, plain, silver. Holy in its ordinariness.",
           "emotion": "faith, plain and real",
-          "elements": ["silver cross", "ivory table", "low evening light"]
+          "elements": [
+            "silver cross",
+            "ivory table",
+            "low evening light"
+          ]
         },
         {
           "panel_number": 4,
           "scene_description": "Phone held in red-nailed hands. Screen blurred but the shape of a long text is clear. Reading carefully. Something in it lands.",
           "emotion": "recognition, the receipt moment",
-          "elements": ["phone in red-nailed hands", "blurred screen text", "deep red nails"]
+          "elements": [
+            "phone in red-nailed hands",
+            "blurred screen text",
+            "deep red nails"
+          ]
         },
         {
           "panel_number": 5,
           "scene_description": "Red Bible closed again. Silver cross resting on top of it. Evening quiet. The testimony holds. The table holds both: the word and the cross.",
           "emotion": "settled, the ministry is real",
-          "elements": ["red Bible closed", "silver cross on top", "ivory table", "evening quiet"]
+          "elements": [
+            "red Bible closed",
+            "silver cross on top",
+            "ivory table",
+            "evening quiet"
+          ]
         }
+      ],
+      "hook": "I was her once. Jesus found me somewhere I won't go back to.",
+      "on_screen_lines": [
+        "My friend finally texted back.",
+        "She asked: 'How did you know?'",
+        "I told her: because I was her once.",
+        "Jesus found me somewhere I won't go back to.",
+        "I'm not her teacher.",
+        "I'm her receipt.",
+        "Comment RECEIPT if you've been the proof for someone."
       ]
     },
     {
@@ -345,32 +612,64 @@
           "panel_number": 1,
           "scene_description": "Wide aerial sky shot. Open blue in every direction. A few white clouds far below. Total freedom. The world not yet visible — just sky.",
           "emotion": "pure possibility, before the fear falls away",
-          "elements": ["wide blue sky", "clouds below", "aerial perspective"]
+          "elements": [
+            "wide blue sky",
+            "clouds below",
+            "aerial perspective"
+          ]
         },
         {
           "panel_number": 2,
           "scene_description": "Red helmet strap visible at the top of frame. The edge of an ivory jumpsuit. Wind in the fabric. Still climbing. The ground not visible yet.",
           "emotion": "in the climb, committed",
-          "elements": ["red helmet strap", "ivory jumpsuit edge", "wind in fabric"]
+          "elements": [
+            "red helmet strap",
+            "ivory jumpsuit edge",
+            "wind in fabric"
+          ]
         },
         {
           "panel_number": 3,
           "scene_description": "Silver carabiners glinting in bright sunlight against the open sky. Sharp and strong. The only thing between flight and fall — and they hold.",
           "emotion": "trust in what holds you",
-          "elements": ["silver carabiners", "bright sunlight", "open sky"]
+          "elements": [
+            "silver carabiners",
+            "bright sunlight",
+            "open sky"
+          ]
         },
         {
           "panel_number": 4,
           "scene_description": "Looking down from the paraglider. The land below small and far. The old life the size of a hand. Red helmet strap visible at the top of frame.",
           "emotion": "elevation, perspective shift",
-          "elements": ["aerial view looking down", "land far below", "red helmet strap visible"]
+          "elements": [
+            "aerial view looking down",
+            "land far below",
+            "red helmet strap visible"
+          ]
         },
         {
           "panel_number": 5,
           "scene_description": "Wide sky again. Red helmet strap at the edge. Ivory jumpsuit sleeve. The full open sky. Wind. Everything below that once felt enormous: tiny.",
           "emotion": "free, perspective changed permanently",
-          "elements": ["wide open sky", "red helmet strap", "ivory jumpsuit edge", "wind"]
+          "elements": [
+            "wide open sky",
+            "red helmet strap",
+            "ivory jumpsuit edge",
+            "wind"
+          ]
         }
+      ],
+      "hook": "Paragliding. Because the view up there reminds me how small the old life was.",
+      "on_screen_lines": [
+        "I paraglided today.",
+        "Yes, from a cliff.",
+        "Yes, I was terrified.",
+        "Yes, I did it anyway.",
+        "From up there, my old life looked tiny.",
+        "Maybe it always was.",
+        "Maybe I just couldn't see it from inside.",
+        "Comment FLY if you need the reminder."
       ]
     },
     {
@@ -386,32 +685,68 @@
           "panel_number": 1,
           "scene_description": "Dim room. A wall calendar visible. One date circled in red. The circle deliberate, old. Low quiet light. No drama.",
           "emotion": "the date exists, holding it quietly",
-          "elements": ["wall calendar", "date circled in red", "dim room", "low quiet light"]
+          "elements": [
+            "wall calendar",
+            "date circled in red",
+            "dim room",
+            "low quiet light"
+          ]
         },
         {
           "panel_number": 2,
           "scene_description": "Ivory Bible closed on a table. Silver cross beside it. Dim and still. Nothing opened yet. The Bible is there. That is enough.",
           "emotion": "faith present without performance",
-          "elements": ["ivory Bible closed", "silver cross", "dim light", "table"]
+          "elements": [
+            "ivory Bible closed",
+            "silver cross",
+            "dim light",
+            "table"
+          ]
         },
         {
           "panel_number": 3,
           "scene_description": "Princess Kay curled at her feet. Red harness off, fully at rest. Sensing the weight without understanding it. Choosing to stay anyway.",
           "emotion": "companionship in tenderness",
-          "elements": ["Princess Kay curled", "red harness off", "at feet", "present without words"]
+          "elements": [
+            "Princess Kay curled",
+            "red harness off",
+            "at feet",
+            "present without words"
+          ]
         },
         {
           "panel_number": 4,
           "scene_description": "Red-nailed hand resting on the Bible cover. Not opening it. Just resting a palm on the leather. Present with it. The cross visible nearby.",
           "emotion": "not needing answers, just presence",
-          "elements": ["deep red nails", "hand on Bible cover", "silver cross nearby"]
+          "elements": [
+            "deep red nails",
+            "hand on Bible cover",
+            "silver cross nearby"
+          ]
         },
         {
           "panel_number": 5,
           "scene_description": "Calendar, Bible, silver cross, and Princess Kay — all in one quiet frame. Dim light. The date circled in red visible in the background. Weight without drama. Tender.",
           "emotion": "the whole truth held gently",
-          "elements": ["calendar with red circle", "ivory Bible", "silver cross", "Princess Kay", "dim light"]
+          "elements": [
+            "calendar with red circle",
+            "ivory Bible",
+            "silver cross",
+            "Princess Kay",
+            "dim light"
+          ]
         }
+      ],
+      "hook": "Tomorrow is a hard anniversary. I'm going to let it be hard.",
+      "on_screen_lines": [
+        "Tomorrow used to be 'our' anniversary.",
+        "I don't celebrate it anymore.",
+        "But my body remembers the date.",
+        "So I'm going to let tomorrow be hard.",
+        "Not destroyed-hard.",
+        "Just tender.",
+        "If the body remembers, the soul needs room.",
+        "Comment TENDER if you know this date too."
       ]
     },
     {
@@ -427,32 +762,63 @@
           "panel_number": 1,
           "scene_description": "Red sweater sleeves — just the arms. No face. No body above the shoulders. Ivory blanket behind. The sweater is deep red, soft. Cropped tight.",
           "emotion": "the reveal, before we see her reaction",
-          "elements": ["red sweater sleeves", "ivory blanket", "cropped shot no face"]
+          "elements": [
+            "red sweater sleeves",
+            "ivory blanket",
+            "cropped shot no face"
+          ]
         },
         {
           "panel_number": 2,
           "scene_description": "Princess Kay in a tiny matching red dog sweater. Expression: deeply unimpressed. Silver collar tag visible. The sweater fits. She is not grateful.",
           "emotion": "betrayal, dignified protest",
-          "elements": ["Princess Kay in tiny red sweater", "unimpressed expression", "silver collar tag"]
+          "elements": [
+            "Princess Kay in tiny red sweater",
+            "unimpressed expression",
+            "silver collar tag"
+          ]
         },
         {
           "panel_number": 3,
           "scene_description": "Silver collar tag close-up, catching light. The tiny red sweater visible around the neck. Very small. Very red. Very real.",
           "emotion": "the commitment is official",
-          "elements": ["silver collar tag", "tiny red sweater neckline", "light catching silver"]
+          "elements": [
+            "silver collar tag",
+            "tiny red sweater neckline",
+            "light catching silver"
+          ]
         },
         {
           "panel_number": 4,
           "scene_description": "Two red sweater cuffs side by side on ivory blanket. One human-sized sleeve end. One very small dog-sized sleeve end. Matching. Undeniable.",
           "emotion": "the match is complete",
-          "elements": ["human red sleeve cuff", "tiny dog red sleeve cuff", "ivory blanket"]
+          "elements": [
+            "human red sleeve cuff",
+            "tiny dog red sleeve cuff",
+            "ivory blanket"
+          ]
         },
         {
           "panel_number": 5,
           "scene_description": "Princess Kay sitting on ivory blanket in the tiny red sweater. Silver collar bright. Expression: barely holding onto her dignity. The sweater will not be removed.",
           "emotion": "acceptance, dignity intact by a thread",
-          "elements": ["Princess Kay on ivory blanket", "tiny red sweater", "silver collar tag bright", "stoic expression"]
+          "elements": [
+            "Princess Kay on ivory blanket",
+            "tiny red sweater",
+            "silver collar tag bright",
+            "stoic expression"
+          ]
         }
+      ],
+      "hook": "Princess Kay and I are matching today. She hates it. I love it.",
+      "on_screen_lines": [
+        "Matching day.",
+        "Me: red sweater.",
+        "Her: red sweater (dog-sized).",
+        "Her opinion: she is HUMILIATED.",
+        "Mine: this is the best day of my life.",
+        "She'll forgive me.",
+        "She always does."
       ]
     },
     {
@@ -468,32 +834,65 @@
           "panel_number": 1,
           "scene_description": "Dim bedroom. Ivory duvet on the bed. Silver cross necklace resting against the fabric. Low quiet light. No face. The room holds something heavy.",
           "emotion": "the weight before the comfort arrives",
-          "elements": ["dim bedroom", "ivory duvet", "silver cross necklace", "low light"]
+          "elements": [
+            "dim bedroom",
+            "ivory duvet",
+            "silver cross necklace",
+            "low light"
+          ]
         },
         {
           "panel_number": 2,
           "scene_description": "Princess Kay curled on the ivory duvet. Red harness off. Fully at rest. Not playing. Not asking for anything. Simply present.",
           "emotion": "faithful presence, no words needed",
-          "elements": ["Princess Kay curled on ivory duvet", "red harness off", "at rest"]
+          "elements": [
+            "Princess Kay curled on ivory duvet",
+            "red harness off",
+            "at rest"
+          ]
         },
         {
           "panel_number": 3,
           "scene_description": "Silver cross necklace close-up on the ivory duvet. Resting against the white fabric. Faith visible and still. The cross is plain and real.",
           "emotion": "faith in the quiet, held without performance",
-          "elements": ["silver cross necklace close-up", "ivory duvet fabric"]
+          "elements": [
+            "silver cross necklace close-up",
+            "ivory duvet fabric"
+          ]
         },
         {
           "panel_number": 4,
           "scene_description": "Princess Kay curled on Tannie's chest. No face shown — only the silver cross necklace at the collarbone and the small dog above it. The dog chose this spot.",
           "emotion": "the gift of being chosen, loved in the dark",
-          "elements": ["Princess Kay on chest", "silver cross necklace at collarbone", "no face", "dim light"]
+          "elements": [
+            "Princess Kay on chest",
+            "silver cross necklace at collarbone",
+            "no face",
+            "dim light"
+          ]
         },
         {
           "panel_number": 5,
           "scene_description": "Dim room. Ivory duvet. Silver cross. Princess Kay still curled in place. The whole scene quiet and complete. She didn't leave. She never left.",
           "emotion": "held, not alone, the anniversary survived",
-          "elements": ["dim room", "ivory duvet", "silver cross", "Princess Kay curled and staying"]
+          "elements": [
+            "dim room",
+            "ivory duvet",
+            "silver cross",
+            "Princess Kay curled and staying"
+          ]
         }
+      ],
+      "hook": "The anniversary. Princess Kay didn't leave my side. She knew before I did.",
+      "on_screen_lines": [
+        "The anniversary.",
+        "I didn't say anything.",
+        "She didn't leave my side.",
+        "Not once.",
+        "Followed me to the bathroom.",
+        "Laid on my chest during the cry.",
+        "She knew before I did that today was the day.",
+        "Dogs are prophets in fur. 🤍"
       ]
     },
     {
@@ -509,32 +908,67 @@
           "panel_number": 1,
           "scene_description": "Church interior seen from the back rows. Warm light filtering through high windows. Rows of wooden pews. The kind of quiet that holds history.",
           "emotion": "entering the sacred, arriving",
-          "elements": ["church interior from behind", "wooden pews", "warm light through windows"]
+          "elements": [
+            "church interior from behind",
+            "wooden pews",
+            "warm light through windows"
+          ]
         },
         {
           "panel_number": 2,
           "scene_description": "Ivory dress visible from behind, standing in the church aisle. Deep red heels on the stone floor. The stance is steady. She belongs here.",
           "emotion": "present, unafraid, arrived",
-          "elements": ["ivory dress from behind", "deep red heels", "church aisle", "stone floor"]
+          "elements": [
+            "ivory dress from behind",
+            "deep red heels",
+            "church aisle",
+            "stone floor"
+          ]
         },
         {
           "panel_number": 3,
           "scene_description": "Silver cross necklace catching the warm church light. Seen from behind and slightly below. Simple and real against the ivory fabric.",
           "emotion": "faith worn openly, not performing",
-          "elements": ["silver cross necklace", "warm church light", "ivory fabric"]
+          "elements": [
+            "silver cross necklace",
+            "warm church light",
+            "ivory fabric"
+          ]
         },
         {
           "panel_number": 4,
           "scene_description": "Red carnation held in red-nailed hands. Bible resting on the pew beside it. Warm church light on the petals. Red on red — the color of becoming.",
           "emotion": "honoring, becoming, choosing herself",
-          "elements": ["red carnation", "deep red nails", "Bible on pew", "warm church light"]
+          "elements": [
+            "red carnation",
+            "deep red nails",
+            "Bible on pew",
+            "warm church light"
+          ]
         },
         {
           "panel_number": 5,
           "scene_description": "Wide shot from behind. Ivory dress. Deep red heels. Silver cross at neckline. Red carnation held at her side. Warm golden church light. A woman becoming the mother she needed.",
           "emotion": "arrival, grace, the healing visible",
-          "elements": ["ivory dress from behind wide shot", "deep red heels", "silver cross", "red carnation at side", "warm church light"]
+          "elements": [
+            "ivory dress from behind wide shot",
+            "deep red heels",
+            "silver cross",
+            "red carnation at side",
+            "warm church light"
+          ]
         }
+      ],
+      "hook": "Mother's Day. Hard day. Wearing red anyway.",
+      "on_screen_lines": [
+        "Mother's Day.",
+        "Complicated for a lot of us.",
+        "I wore red today.",
+        "Because I'm becoming the woman I needed.",
+        "Because my mother did her best.",
+        "Because God is the mother where moms fall short.",
+        "Happy Mother's Day to every woman parenting her own healing.",
+        "Comment HER if that's you. 🤍"
       ]
     },
     {
@@ -550,32 +984,68 @@
           "panel_number": 1,
           "scene_description": "Candle lit on a surface. Warm flame, steady. Ivory blanket folded nearby. Evening light soft. The beginning of the ending of a week.",
           "emotion": "the week settling, warmth earned",
-          "elements": ["lit candle", "warm flame", "ivory blanket", "evening light"]
+          "elements": [
+            "lit candle",
+            "warm flame",
+            "ivory blanket",
+            "evening light"
+          ]
         },
         {
           "panel_number": 2,
           "scene_description": "Open journal on an ivory surface. Red pen mid-write, caught in motion. Silver cross beside the journal. Words being set down. The week going onto the page.",
           "emotion": "processing, releasing, recording",
-          "elements": ["open journal", "red pen mid-write", "silver cross", "ivory surface"]
+          "elements": [
+            "open journal",
+            "red pen mid-write",
+            "silver cross",
+            "ivory surface"
+          ]
         },
         {
           "panel_number": 3,
           "scene_description": "Princess Kay sleeping on the ivory blanket. Deep sleep. Fully at rest. The week has been long for both of them.",
           "emotion": "rest earned, faithful companion at peace",
-          "elements": ["Princess Kay sleeping", "ivory blanket", "deep rest"]
+          "elements": [
+            "Princess Kay sleeping",
+            "ivory blanket",
+            "deep rest"
+          ]
         },
         {
           "panel_number": 4,
           "scene_description": "Red pen resting across the open journal. Not writing anymore. Words on the page but not legible. Silver cross prominent beside it. Done.",
           "emotion": "finished, set down, released",
-          "elements": ["red pen resting on journal", "journal with writing", "silver cross prominent"]
+          "elements": [
+            "red pen resting on journal",
+            "journal with writing",
+            "silver cross prominent"
+          ]
         },
         {
           "panel_number": 5,
           "scene_description": "Wide quiet scene. Candle burning low. Open journal. Red pen. Silver cross. Princess Kay sleeping. The whole week in one frame. Still here. Still burning.",
           "emotion": "witness, survival, faith still lit",
-          "elements": ["candle burning low", "open journal", "red pen", "silver cross", "Princess Kay sleeping", "ivory blanket"]
+          "elements": [
+            "candle burning low",
+            "open journal",
+            "red pen",
+            "silver cross",
+            "Princess Kay sleeping",
+            "ivory blanket"
+          ]
         }
+      ],
+      "hook": "Week three. Hard week. Still here. Still red-lipped. Still praying.",
+      "on_screen_lines": [
+        "Week 3.",
+        "I was her once.",
+        "Somewhere I won't go back to.",
+        "The anniversary came.",
+        "I let it be tender.",
+        "Princess Kay kept watch.",
+        "Still here. Still red-lipped. Still praying.",
+        "Comment STILLHERE."
       ]
     }
   ]
