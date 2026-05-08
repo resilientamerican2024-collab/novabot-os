@@ -4,11 +4,11 @@
 //   - Generates Panel 5 as a branded text card (cream/yellow/red design)
 //   - Re-uploads all finished panels to imgbb and updates the results JSON
 //
-// Requires: ImageMagick — auto-installed if missing (GitHub Actions runner has sudo)
+// Requires: ImageMagick — auto-installed and policy.xml removed if needed
 
 'use strict';
 
-const { execSync } = require('child_process');
+const { execSync, spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const { uploadImage } = require('./upload-to-imgbb');
@@ -18,23 +18,26 @@ const YELLOW = '#FFEB3B';
 const RED    = '#8B0000';
 const BLACK  = '#1a1a1a';
 
-const FONT_DIR    = '/tmp/tannie_fonts';
-const BANGERS     = path.join(FONT_DIR, 'Bangers-Regular.ttf');
-const LATO_BOLD   = path.join(FONT_DIR, 'Lato-Bold.ttf');
+const FONT_DIR  = '/tmp/tannie_fonts';
+const BANGERS   = path.join(FONT_DIR, 'Bangers-Regular.ttf');
+const LATO_BOLD = path.join(FONT_DIR, 'Lato-Bold.ttf');
 
-// ─── Ensure ImageMagick is available ─────────────────────────────────────────
+// ─── Ensure ImageMagick ───────────────────────────────────────────────────────
 
 function ensureImageMagick() {
   try {
     execSync('which convert', { stdio: 'pipe' });
-    console.log('  ✅ ImageMagick already installed');
   } catch (e) {
-    console.log('  📦 ImageMagick not found — installing...');
-    execSync('sudo apt-get update -qq && sudo apt-get install -y imagemagick', {
-      stdio: 'inherit',
-    });
-    console.log('  ✅ ImageMagick installed');
+    console.log('  📦 Installing ImageMagick...');
+    execSync('sudo apt-get update -qq && sudo apt-get install -y imagemagick', { stdio: 'inherit' });
   }
+  // Ubuntu ships IM with a restrictive policy.xml that blocks @file reads and /tmp paths.
+  // Remove it entirely — this is a CI runner, not a production server.
+  execSync(
+    'sudo rm -f /etc/ImageMagick-6/policy.xml /etc/ImageMagick-7/policy.xml 2>/dev/null; true',
+    { stdio: 'pipe', shell: true }
+  );
+  console.log('  ✅ ImageMagick ready');
 }
 
 // ─── Font setup ──────────────────────────────────────────────────────────────
@@ -71,7 +74,6 @@ function wrapText(text, maxChars) {
   return lines.join('\n');
 }
 
-// Write text to temp file — completely avoids shell quoting issues
 function writeTmp(text) {
   const fp = `/tmp/im_text_${Date.now()}_${Math.random().toString(36).slice(2)}.txt`;
   fs.writeFileSync(fp, text, 'utf8');
@@ -87,6 +89,16 @@ function distributeLines(lines) {
   return panels.map(p => p.join('\n'));
 }
 
+// Run a convert command using spawnSync to avoid shell interpretation issues
+function imConvert(args) {
+  const result = spawnSync('convert', args, { stdio: ['pipe', 'pipe', 'pipe'] });
+  if (result.status !== 0) {
+    const stderr = result.stderr ? result.stderr.toString() : '';
+    const stdout = result.stdout ? result.stdout.toString() : '';
+    throw new Error(`convert failed (${result.status}): ${stderr || stdout}`);
+  }
+}
+
 // ─── Panel 1–4: text overlay ──────────────────────────────────────────────────
 
 function addTextOverlay(inputPath, outputPath, text) {
@@ -97,17 +109,17 @@ function addTextOverlay(inputPath, outputPath, text) {
 
   const tmp = writeTmp(text);
   try {
-    execSync([
-      `convert "${inputPath}"`,
-      `-fill "rgba(0,0,0,0.55)"`,
-      `-draw "rectangle 0,800 1024,1024"`,
-      `-font "${LATO_BOLD}"`,
-      `-pointsize 46`,
-      `-fill white`,
-      `-gravity South`,
-      `-annotate +0+30 "@${tmp}"`,
-      `"${outputPath}"`,
-    ].join(' '));
+    imConvert([
+      inputPath,
+      '-fill', 'rgba(0,0,0,0.55)',
+      '-draw', 'rectangle 0,800 1024,1024',
+      '-font', LATO_BOLD,
+      '-pointsize', '46',
+      '-fill', 'white',
+      '-gravity', 'South',
+      '-annotate', '+0+30', `@${tmp}`,
+      outputPath,
+    ]);
   } finally {
     if (fs.existsSync(tmp)) fs.unlinkSync(tmp);
   }
@@ -128,35 +140,35 @@ function generateTextCard(outputPath, hook, bodyLines, ctaLine) {
 
   try {
     const hookLineCount = hookText.split('\n').length;
-    const headerY2 = 60 + 90 + hookLineCount * 60;
+    const headerY2 = String(60 + 90 + hookLineCount * 60);
 
-    execSync([
-      `convert -size 1024x1024 "xc:${CREAM}"`,
-      `-fill "${YELLOW}"`,
-      `-draw "roundrectangle 40,40 984,${headerY2} 12,12"`,
-      `-fill none -stroke "${BLACK}" -strokewidth 4`,
-      `-draw "roundrectangle 40,40 984,${headerY2} 12,12"`,
-      `-stroke none -fill "${BLACK}"`,
-      `-font "${LATO_BOLD}" -pointsize 42`,
-      `-gravity North -annotate +0+60 "@${hookFile}"`,
-      `"${baseFile}"`,
-    ].join(' '));
+    imConvert([
+      '-size', '1024x1024', `xc:${CREAM}`,
+      '-fill', YELLOW,
+      '-draw', `roundrectangle 40,40 984,${headerY2} 12,12`,
+      '-fill', 'none', '-stroke', BLACK, '-strokewidth', '4',
+      '-draw', `roundrectangle 40,40 984,${headerY2} 12,12`,
+      '-stroke', 'none', '-fill', BLACK,
+      '-font', LATO_BOLD, '-pointsize', '42',
+      '-gravity', 'North', '-annotate', '+0+60', `@${hookFile}`,
+      baseFile,
+    ]);
 
-    execSync([
-      `convert "${baseFile}"`,
-      `-font "${BANGERS}" -pointsize 88`,
-      `-fill "${BLACK}"`,
-      `-gravity Center -annotate +0-60 "@${bodyFile}"`,
-      `"${bodyOut}"`,
-    ].join(' '));
+    imConvert([
+      baseFile,
+      '-font', BANGERS, '-pointsize', '88',
+      '-fill', BLACK,
+      '-gravity', 'Center', '-annotate', '+0-60', `@${bodyFile}`,
+      bodyOut,
+    ]);
 
-    execSync([
-      `convert "${bodyOut}"`,
-      `-font "${BANGERS}" -pointsize 58`,
-      `-fill "${RED}"`,
-      `-gravity South -annotate +0+50 "@${ctaFile}"`,
-      `"${outputPath}"`,
-    ].join(' '));
+    imConvert([
+      bodyOut,
+      '-font', BANGERS, '-pointsize', '58',
+      '-fill', RED,
+      '-gravity', 'South', '-annotate', '+0+50', `@${ctaFile}`,
+      outputPath,
+    ]);
 
   } finally {
     [hookFile, bodyFile, ctaFile, baseFile, bodyOut].forEach(f => {
