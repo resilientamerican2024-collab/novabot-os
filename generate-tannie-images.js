@@ -1,10 +1,9 @@
 // generate-tannie-images.js
 // Generates Tannie Talks panel images using DALL-E 3
-// Every image honors tannie-canon.md and the memory of Kassandra.
+// Prompt template is LOCKED — do not modify without Ingrid's approval.
 //
 // Usage:
 //   node generate-tannie-images.js WED-AM
-//   node generate-tannie-images.js WED-PM
 
 const fs = require('fs');
 const path = require('path');
@@ -12,52 +11,70 @@ const https = require('https');
 const { uploadImage } = require('./upload-to-imgbb');
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-// Full canon lives in tannie-prompt-template.md (reference only).
-// DALL-E prompts use the compact template below to stay under 4000 chars.
+
+// Detect whether Tannie appears in the panel (hand, sleeve, back only)
+function tannієLine(panel) {
+  const text = (panel.scene_description + ' ' + (panel.elements || []).join(' ')).toLowerCase();
+  const hasTannie = text.includes('tannie') || text.includes('red nail') || text.includes('ivory sleeve') || text.includes('ivory robe');
+  if (!hasTannie) return null;
+
+  // Determine which element of Tannie is visible
+  if (text.includes('palm') || text.includes('hand') || text.includes('nail')) {
+    return 'Tannie: hand with deep red nails and silver ring entering frame. No face. No full body.';
+  }
+  if (text.includes('sleeve') || text.includes('robe') || text.includes('behind') || text.includes('back')) {
+    return 'Tannie: seen strictly from behind — ivory satin robe, long dark wavy hair flowing down. Full curvaceous figure, tasteful. Camera angle makes face physically impossible to see. NEVER profile. NEVER 3/4 view.';
+  }
+  return 'Tannie: ivory sleeve or hand with red nails only. No face. No profile.';
+}
 
 function buildPrompt(panel) {
-  // Sanitize: remove sacred name, replace silhouette
   const scene = panel.scene_description
     .replace(/kassandra['s]*/gi, '')
-    .replace(/\bsilhouette\b/gi, 'seen from behind, face never visible');
+    .trim();
 
-  const base = [
-    // STYLE — matches the working reference images exactly
-    'Modern graphic novel illustration with halftone dot texture, thick black ink outlines.',
-    'Deep crimson red halftone dots in corners. Warm amber and ivory tones. 9:16 vertical.',
-    '',
-    // SCENE — narrative, characters embedded
+  const tannie = tannієLine(panel);
+
+  const lines = [
     scene,
     '',
-    // PRINCESS KAY LOCK
-    'Princess Kay is a small white fluffy Maltese dog with textured painterly fur,',
-    'innocent wide expressive eyes, deep crimson red harness with silver D-ring hardware.',
-    'One dog only. Consistent real dog — not cartoon, not chibi, not mascot.',
+    'Style: Warm oil painting illustration, soft brushstrokes, textured canvas, gentle morning light. NOT comic. NOT graphic novel. NOT pop art. NOT halftone. NOT cartoon.',
     '',
-    // TANNIE LOCK — seen from behind only, never front-facing
-    'If Tannie appears: show her strictly from behind — flowing ivory white satin robe,',
-    'long flowing wavy dark hair, full curvaceous figure, tasteful and elegant.',
-    'Face is NEVER visible. NEVER front-facing. NEVER a silhouette — show fabric and hair detail.',
-    'When only her hand is shown: warm brown skin, deep red manicured nails, gold or silver jewelry.',
-    '',
-    // NO TEXT — explicit, no design elements of any kind
-    'NO text. NO words. NO letters. NO numbers. NO captions. NO caption bars.',
-    'NO speech bubbles. NO labels. NO panel borders. NO color swatches. NO color palettes.',
-    'NO design overlays. NO logos. Pure visual scene only.',
-  ].join('\n');
+    'Princess Kay: Small white fluffy dog, photorealistic soft fur, round innocent eyes like a toddler, gentle happy expression. TRUE RED harness with SILVER ring hardware. Same exact dog in every image.',
+  ];
 
-  if (base.length > 3950) {
-    console.warn(`  ⚠️  Panel ${panel.panel_number} prompt is ${base.length} chars — trimming scene.`);
-    const trimmed = scene.slice(0, 200) + '...';
-    return base.replace(scene, trimmed);
+  if (tannie) {
+    lines.push('');
+    lines.push(tannie);
   }
 
-  console.log(`  📏 Panel ${panel.panel_number} prompt: ${base.length} chars`);
-  return base;
+  lines.push(
+    '',
+    'Colors: Deep red, warm ivory, subtle silver. NO pink. NO coral. NO bright red.',
+    '',
+    'NO text. NO words. NO letters. NO numbers. NO swatches. NO panels. NO split images. NO strangers. NO background people. NO fake screens. NO UI elements. NO jewelry except silver cross and silver ring.',
+    '',
+    'Output: Single image, 1024x1024, clean, no borders.'
+  );
+
+  const prompt = lines.join('\n');
+  console.log(`\n  📋 EXACT PROMPT SENT TO DALL-E (Panel ${panel.panel_number}):`);
+  console.log('  ' + '─'.repeat(60));
+  console.log(prompt.split('\n').map(l => '  ' + l).join('\n'));
+  console.log('  ' + '─'.repeat(60));
+  console.log(`  📏 Length: ${prompt.length} chars`);
+
+  if (prompt.length > 3950) {
+    console.warn(`  ⚠️  Prompt too long — trimming scene.`);
+    const trimmed = scene.slice(0, 180) + '.';
+    return buildPrompt({ ...panel, scene_description: trimmed });
+  }
+
+  return prompt;
 }
 
 function callDallE(prompt) {
-  if (!OPENAI_API_KEY) throw new Error('OPENAI_API_KEY environment variable not set');
+  if (!OPENAI_API_KEY) throw new Error('OPENAI_API_KEY not set');
 
   const body = JSON.stringify({
     model: 'dall-e-3',
@@ -87,7 +104,7 @@ function callDallE(prompt) {
           if (parsed.data && parsed.data[0] && parsed.data[0].url) {
             resolve(parsed.data[0].url);
           } else {
-            reject(new Error(parsed.error?.message || `Unexpected response: ${data.slice(0, 200)}`));
+            reject(new Error(parsed.error?.message || `Unexpected: ${data.slice(0, 200)}`));
           }
         } catch (e) {
           reject(new Error(`JSON parse error: ${e.message}`));
@@ -121,9 +138,7 @@ function pause(ms) {
 async function generatePanelSet(slot) {
   const calendar = JSON.parse(fs.readFileSync('./content-calendar.json', 'utf8'));
   const slotData = calendar.posts.find(p => p.slot === slot);
-  if (!slotData) {
-    throw new Error(`Slot "${slot}" not found in content-calendar.json`);
-  }
+  if (!slotData) throw new Error(`Slot "${slot}" not found in content-calendar.json`);
 
   console.log(`\n🌹 Tannie Talks — ${slot} | ${slotData.theme}`);
   console.log('   In memory of Kassandra. Honoring the canon.\n');
@@ -131,27 +146,56 @@ async function generatePanelSet(slot) {
   const results = [];
 
   for (const panel of slotData.panels) {
-    console.log(`🎨 Panel ${panel.panel_number}/5: ${panel.scene_description.slice(0, 70)}...`);
+    console.log(`\n🎨 Panel ${panel.panel_number}/5`);
 
+    const prompt = buildPrompt(panel);
     let dalleUrl;
+
     try {
-      const prompt = buildPrompt(panel, slotData.theme);
       dalleUrl = await callDallE(prompt);
       console.log(`   ✅ DALL-E generated`);
     } catch (err) {
-      console.error(`   ❌ DALL-E error: ${err.message}`);
-      results.push({ panel_number: panel.panel_number, scene: panel.scene_description, error: err.message });
-      continue;
+      // Content filter retry — strip scene, keep character locks only
+      if (err.message && err.message.toLowerCase().includes('content')) {
+        console.warn(`   ⚠️  Content filter hit — retrying with simplified scene`);
+        const simplePrompt = buildPrompt({
+          ...panel,
+          scene_description: panel.scene_description.split('.')[0] + '.',
+        });
+        try {
+          dalleUrl = await callDallE(simplePrompt);
+          console.log(`   ✅ Retry succeeded`);
+        } catch (err2) {
+          console.error(`   ❌ Retry failed: ${err2.message}`);
+          results.push({ panel_number: panel.panel_number, error: err2.message });
+          continue;
+        }
+      } else if (err.message && (err.message.includes('500') || err.message.includes('server'))) {
+        console.warn(`   ⚠️  Server error — waiting 2 min then retrying`);
+        await pause(120000);
+        try {
+          dalleUrl = await callDallE(prompt);
+          console.log(`   ✅ Retry succeeded`);
+        } catch (err2) {
+          console.error(`   ❌ Retry failed: ${err2.message}`);
+          results.push({ panel_number: panel.panel_number, error: err2.message });
+          continue;
+        }
+      } else {
+        console.error(`   ❌ DALL-E error: ${err.message}`);
+        results.push({ panel_number: panel.panel_number, error: err.message });
+        continue;
+      }
     }
 
-    const filename = `tannie_${slot.toLowerCase().replace('-', '_')}_panel${panel.panel_number}.jpg`;
+    const filename = `tannie_${slot.toLowerCase().replace(/-/g, '_')}_panel${panel.panel_number}.jpg`;
     let localPath;
     try {
       localPath = await downloadToTemp(dalleUrl, filename);
       console.log(`   ✅ Downloaded: ${localPath}`);
     } catch (err) {
       console.error(`   ❌ Download failed: ${err.message}`);
-      results.push({ panel_number: panel.panel_number, scene: panel.scene_description, dalle_url: dalleUrl, error: `download: ${err.message}` });
+      results.push({ panel_number: panel.panel_number, dalle_url: dalleUrl, error: `download: ${err.message}` });
       continue;
     }
 
@@ -163,7 +207,7 @@ async function generatePanelSet(slot) {
       thumbUrl = uploaded.thumb || uploaded.url;
       console.log(`   ✅ imgbb: ${imgbbUrl}`);
     } catch (err) {
-      console.error(`   ⚠️  imgbb upload failed (using DALL-E URL as fallback): ${err.message}`);
+      console.error(`   ⚠️  imgbb failed (using DALL-E URL): ${err.message}`);
     }
 
     results.push({
@@ -175,9 +219,8 @@ async function generatePanelSet(slot) {
       thumb_url: thumbUrl,
     });
 
-    // Respect OpenAI rate limits between panels
     if (panel.panel_number < slotData.panels.length) {
-      console.log('   ⏱  Waiting 3s before next panel...');
+      console.log('   ⏱  Waiting 3s...');
       await pause(3000);
     }
   }
@@ -191,13 +234,13 @@ async function generatePanelSet(slot) {
     panels: results,
   };
 
-  const outFile = `tannie_${slot.toLowerCase().replace('-', '_')}_results.json`;
+  const outFile = `tannie_${slot.toLowerCase().replace(/-/g, '_')}_results.json`;
   fs.writeFileSync(outFile, JSON.stringify(output, null, 2));
 
   const ok = results.filter(r => !r.error).length;
   const fail = results.filter(r => r.error).length;
-  console.log(`\n✅ Complete: ${ok} panels generated, ${fail} failed`);
-  console.log(`📄 Results saved: ${outFile}\n`);
+  console.log(`\n✅ Complete: ${ok} panels OK, ${fail} failed`);
+  console.log(`📄 Results: ${outFile}\n`);
 
   return output;
 }
@@ -206,10 +249,8 @@ if (require.main === module) {
   const slot = process.argv[2];
   if (!slot) {
     console.error('Usage: node generate-tannie-images.js <SLOT>');
-    console.error('Example: node generate-tannie-images.js WED-AM');
     process.exit(1);
   }
-
   generatePanelSet(slot)
     .then(output => {
       console.log('Caption:\n', output.caption);
