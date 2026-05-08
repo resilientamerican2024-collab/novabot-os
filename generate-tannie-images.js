@@ -40,7 +40,7 @@ function buildPrompt(panel) {
     '',
     'Style: Warm oil painting illustration, soft brushstrokes, textured canvas, gentle morning light. NOT comic. NOT graphic novel. NOT pop art. NOT halftone. NOT cartoon.',
     '',
-    'Princess Kay: Small white fluffy dog, photorealistic soft fur, round innocent eyes like a toddler, gentle happy expression. TRUE RED harness with SILVER ring hardware. Same exact dog in every image.',
+    'Princess Kay: Small white fluffy Maltese dog. Round innocent dark eyes like a toddler. Short cloud-like white fur, soft and fluffy. Small black button nose. Gentle happy expression, slight sweet smile. TRUE RED harness, mesh texture, SILVER D-ring hardware, silver buckle, adjustable straps. NO text on harness. NO text on collar. NO embroidered names. NO labels of any kind. IDENTICAL dog face and body in every panel.',
   ];
 
   if (tannie) {
