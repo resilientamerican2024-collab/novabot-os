@@ -73,17 +73,19 @@ function buildPrompt(panel) {
   return prompt;
 }
 
-function callDallE(prompt) {
+// gpt-image-1 returns base64 data directly — no URL to download
+function callImageAPI(prompt, filename) {
   if (!OPENAI_API_KEY) throw new Error('OPENAI_API_KEY not set');
 
   const body = JSON.stringify({
-    model: 'dall-e-3',
+    model: 'gpt-image-1',
     prompt,
     n: 1,
     size: '1024x1024',
-    quality: 'hd',
-    style: 'vivid',
+    quality: 'high',
   });
+
+  const localPath = path.join('/tmp', filename);
 
   return new Promise((resolve, reject) => {
     const req = https.request({
@@ -101,8 +103,10 @@ function callDallE(prompt) {
       res.on('end', () => {
         try {
           const parsed = JSON.parse(data);
-          if (parsed.data && parsed.data[0] && parsed.data[0].url) {
-            resolve(parsed.data[0].url);
+          if (parsed.data && parsed.data[0] && parsed.data[0].b64_json) {
+            const buf = Buffer.from(parsed.data[0].b64_json, 'base64');
+            fs.writeFileSync(localPath, buf);
+            resolve(localPath);
           } else {
             reject(new Error(parsed.error?.message || `Unexpected: ${data.slice(0, 200)}`));
           }
@@ -149,11 +153,12 @@ async function generatePanelSet(slot) {
     console.log(`\n🎨 Panel ${panel.panel_number}/5`);
 
     const prompt = buildPrompt(panel);
-    let dalleUrl;
+    const filename = `tannie_${slot.toLowerCase().replace(/-/g, '_')}_panel${panel.panel_number}.jpg`;
+    let localPath;
 
     try {
-      dalleUrl = await callDallE(prompt);
-      console.log(`   ✅ DALL-E generated`);
+      localPath = await callImageAPI(prompt, filename);
+      console.log(`   ✅ gpt-image-1 generated: ${localPath}`);
     } catch (err) {
       // Content filter retry — strip scene, keep character locks only
       if (err.message && err.message.toLowerCase().includes('content')) {
@@ -163,7 +168,7 @@ async function generatePanelSet(slot) {
           scene_description: panel.scene_description.split('.')[0] + '.',
         });
         try {
-          dalleUrl = await callDallE(simplePrompt);
+          localPath = await callImageAPI(simplePrompt, filename);
           console.log(`   ✅ Retry succeeded`);
         } catch (err2) {
           console.error(`   ❌ Retry failed: ${err2.message}`);
@@ -174,7 +179,7 @@ async function generatePanelSet(slot) {
         console.warn(`   ⚠️  Server error — waiting 2 min then retrying`);
         await pause(120000);
         try {
-          dalleUrl = await callDallE(prompt);
+          localPath = await callImageAPI(prompt, filename);
           console.log(`   ✅ Retry succeeded`);
         } catch (err2) {
           console.error(`   ❌ Retry failed: ${err2.message}`);
@@ -182,25 +187,14 @@ async function generatePanelSet(slot) {
           continue;
         }
       } else {
-        console.error(`   ❌ DALL-E error: ${err.message}`);
+        console.error(`   ❌ Image API error: ${err.message}`);
         results.push({ panel_number: panel.panel_number, error: err.message });
         continue;
       }
     }
 
-    const filename = `tannie_${slot.toLowerCase().replace(/-/g, '_')}_panel${panel.panel_number}.jpg`;
-    let localPath;
-    try {
-      localPath = await downloadToTemp(dalleUrl, filename);
-      console.log(`   ✅ Downloaded: ${localPath}`);
-    } catch (err) {
-      console.error(`   ❌ Download failed: ${err.message}`);
-      results.push({ panel_number: panel.panel_number, dalle_url: dalleUrl, error: `download: ${err.message}` });
-      continue;
-    }
-
-    let imgbbUrl = dalleUrl;
-    let thumbUrl = dalleUrl;
+    let imgbbUrl = localPath;
+    let thumbUrl = localPath;
     try {
       const uploaded = await uploadImage(localPath);
       imgbbUrl = uploaded.url;
