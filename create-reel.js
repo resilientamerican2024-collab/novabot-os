@@ -1,6 +1,7 @@
 // create-reel.js
-// Creates a 40-second 9:16 reel from 5 DALL-E panel JPGs
+// Creates a 48-second 9:16 reel from 5 DALL-E panel JPGs
 // Ken Burns zoom/pan on each panel, crossfaded together
+// 10s per panel × 5 panels − 4 × 0.5s crossfades = 48s total
 // Uploads MP4 to Supabase, returns public URL
 //
 // Usage:
@@ -16,9 +17,9 @@ const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const BUCKET = 'tannie';
 
 const FPS = 24;
-const CLIP_DURATION = 8.4;  // 5 × 8.4 − 4 × 0.5 = 40.0s total
+const CLIP_DURATION = 10;   // 5 × 10 − 4 × 0.5 = 48s total (above 45s monetization threshold)
 const TRANSITION = 0.5;
-const FRAMES = Math.round(CLIP_DURATION * FPS); // 202 frames
+const FRAMES = Math.round(CLIP_DURATION * FPS); // 240 frames
 
 // Ken Burns variants — different direction per panel
 const KB_VARIANTS = [
@@ -45,7 +46,7 @@ function buildClip(inputJpg, outputMp4, variantIndex) {
 
 function stitchClips(clipPaths, outputMp4) {
   const inputs = clipPaths.map(p => `-i "${p}"`).join(' ');
-  const visibleDuration = CLIP_DURATION - TRANSITION;
+  const visibleDuration = CLIP_DURATION - TRANSITION; // 9.5s
 
   let filterParts = [];
   for (let i = 1; i < clipPaths.length; i++) {
@@ -102,7 +103,7 @@ async function createReel(slot, resultsJsonPath) {
 
   if (panels.length === 0) throw new Error('No successful panels to build reel from');
 
-  console.log(`\n🎬 Creating reel for ${slot} — ${panels.length} panels`);
+  console.log(`\n🎬 Creating reel for ${slot} — ${panels.length} panels (${CLIP_DURATION}s each = ${panels.length * CLIP_DURATION - (panels.length - 1) * TRANSITION}s total)`);
 
   // Build one Ken Burns clip per panel
   const clipPaths = [];
@@ -114,8 +115,8 @@ async function createReel(slot, resultsJsonPath) {
   }
 
   // Stitch clips with crossfades
-  const safeSlot = slot.toLowerCase().replace('-', '_');
-  const reelFilename = `tannie_${safeSlot}_week3.mp4`;
+  const safeSlot = slot.toLowerCase().replace(/-/g, '_');
+  const reelFilename = `tannie_${safeSlot}_reel.mp4`;
   const reelPath = path.join('/tmp', reelFilename);
   console.log(`\n  🔗 Stitching ${clipPaths.length} clips → ${reelFilename}`);
   stitchClips(clipPaths, reelPath);
@@ -139,7 +140,7 @@ async function createReel(slot, resultsJsonPath) {
   results.reel_filename = reelFilename;
   fs.writeFileSync(resultsJsonPath, JSON.stringify(results, null, 2));
 
-  return { reelPath, reelUrl, reelFilename };
+  return { reelPath, reelUrl, reelFilename, local_path: reelPath };
 }
 
 if (require.main === module) {
