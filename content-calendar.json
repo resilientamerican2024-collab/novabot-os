@@ -1,71 +1,211 @@
 {
-  "week": "3-4",
+  "week": 3,
   "brand": "Tannie Talks",
-  "arc": "pre-reveal",
-  "note": "Every post is a love letter to Kassandra and a testimony of faith. Honor the canon.",
+  "arc": "JOB — Emerges as Archetype",
+  "note": "All captions, hashtags, and visual directions are from the official spreadsheet. Do not modify.",
   "posts": [
     {
-      "slot": "WED-AM",
-      "date": "2026-05-06",
-      "time_est": "08:00",
-      "theme": "Morning Devotion — La Manana Es Tuya",
-      "caption": "Buenos dias, mi amor.\n\nBefore you check your phone, before you look at the news — take one breath and give this day to God.\n\nTannie always says: La manana es tuya. The morning is yours.\n\nYou get to decide how it starts.\n\nTag someone who needs this reminder today.",
-      "hashtags": "#TannieTalks #MorningDevotion #FaithOverFear #BuenosDias #AbuelasWisdom #GodFirstEveryDay #MorningMotivation #FamiliaFirst #BilingualFaith #StartWithGod",
+      "slot": "MON-AM",
+      "date": "2026-05-04",
+      "time_est": "09:00",
+      "filename": "tannie_mon_am_peaceisloud.mp4",
+      "theme": "Peace Is Loud",
+      "caption": "Peace is loud — once you've had the other thing. 🌅\n\nPeople raised around chaos think peace is boring. It's not. It's the loudest thing in the world when you've spent years managing someone else's mood.\n\nComment PEACE if you've learned this too. ❤️",
+      "hashtags": "#peaceofmind #leftthechaos #christianwomen #quietmornings #healingjourney #singlewoman #tanniespeaks",
       "panels": [
         {
           "panel_number": 1,
-          "scene_description": "Princess Kay curled on ivory cushion beside sunlit window at dawn, wide eyes toward light. Tannie's hand resting nearby — true red nails, silver ring. No face shown.",
-          "emotion": "peaceful anticipation",
-          "elements": [
-            "Princess Kay on ivory cushion",
-            "sunlit window at dawn",
-            "Tannie's hand with red nails silver ring",
-            "no face shown"
-          ]
+          "scene_description": "New balcony at dawn. Ivory chair empty. Red mug on small side table. Silver wind chime catching first light. Total quiet. No people.",
+          "emotion": "still morning, peace before the world wakes",
+          "elements": ["ivory chair", "red mug", "silver wind chime", "dawn light"]
         },
         {
           "panel_number": 2,
-          "scene_description": "Princess Kay tilts head at glowing phone on nightstand. Screen shows chaotic notification swirl. Innocent bewilderment. True red harness visible. Warm shadows.",
-          "emotion": "gentle confusion, world demanding attention",
-          "elements": [
-            "Princess Kay tilting head",
-            "glowing phone chaotic swirl",
-            "true red harness",
-            "warm shadows"
-          ]
+          "scene_description": "Princess Kay on ivory blanket at feet of the chair. Alert and curious. Watching the silver wind chime move in the morning breeze. Red harness on.",
+          "emotion": "curious presence, peaceful attention",
+          "elements": ["Princess Kay on ivory blanket", "silver wind chime in background", "true red harness"]
         },
         {
           "panel_number": 3,
-          "scene_description": "Tannie from behind, ivory silk robe, seated at window. Princess Kay in her arms. Both looking at sunrise. Silver cross necklace catching light. No phone.",
-          "emotion": "choosing stillness, surrendering the day",
-          "elements": [
-            "Tannie from behind ivory robe",
-            "Princess Kay in arms",
-            "sunrise",
-            "silver cross necklace"
-          ]
+          "scene_description": "Close-up of red mug held in hands — deep red nails wrapped around the warm ceramic. Morning steam rising. Balcony railing behind.",
+          "emotion": "warmth, grounding, quiet ritual",
+          "elements": ["red mug", "deep red nails", "morning steam", "balcony railing"]
         },
         {
           "panel_number": 4,
-          "scene_description": "Princess Kay close-up. Wide innocent eyes reflecting sunrise. Small silver cross charm near true red harness. Pure trust and peace. Space at bottom for caption bar.",
-          "emotion": "faith, complete trust",
-          "elements": [
-            "Princess Kay face close-up",
-            "sunrise in eyes",
-            "silver cross charm",
-            "true red harness"
-          ]
+          "scene_description": "Silver wind chime close-up. Each ring catching soft morning light. Slight blur of breeze. Ivory chair edge visible. Quiet beauty.",
+          "emotion": "grace in the ordinary, peace made visible",
+          "elements": ["silver wind chime", "morning light", "ivory chair edge"]
         },
         {
           "panel_number": 5,
-          "scene_description": "Tannie's open palm on windowsill receiving morning light. Princess Kay's paw resting in her palm. True red nail polish. Silver ring. Warm golden light. CTA space.",
-          "emotion": "surrender, gratitude, invitation",
-          "elements": [
-            "Tannie's open palm",
-            "Princess Kay's paw in palm",
-            "true red nails silver ring",
-            "CTA space"
-          ]
+          "scene_description": "Wide balcony scene. Princess Kay curled on ivory blanket. Red mug on table. Silver chime still. Morning light full. No other sound. No other presence.",
+          "emotion": "peace chosen, solitude as sanctuary",
+          "elements": ["Princess Kay on ivory blanket", "red mug", "silver wind chime", "morning light", "true red harness"]
+        }
+      ]
+    },
+    {
+      "slot": "MON-PM",
+      "date": "2026-05-04",
+      "time_est": "18:00",
+      "filename": "tannie_mon_pm_lovebomb.mp4",
+      "theme": "Red Flags Dressed in Compliments",
+      "caption": "Red flags dressed in compliments. 🚩\n\nI've heard this script before. Not from a realtor. From someone who broke me.\n\nThe pattern is the pattern, no matter who's running it.\n\nComment FLAG if you recognize it too. ❤️",
+      "hashtags": "#redflags #lovebombing #knowthepattern #christianwomen #healingjourney #wisewomen #tanniespeaks",
+      "panels": [
+        {
+          "panel_number": 1,
+          "scene_description": "Apartment interior during a showing. Empty rooms, hollow feeling. Afternoon light through uncovered windows. No warmth. Too much space.",
+          "emotion": "wrong place, hollow feeling",
+          "elements": ["empty apartment", "uncovered windows", "afternoon light"]
+        },
+        {
+          "panel_number": 2,
+          "scene_description": "Realtor's hand extending a business card with silver edging toward the camera. Professional, persistent. The card is elegant but unwanted.",
+          "emotion": "the pitch, the familiar pressure",
+          "elements": ["realtor's hand", "silver-edged business card"]
+        },
+        {
+          "panel_number": 3,
+          "scene_description": "Tannie's ivory sleeve and red-nailed hand gently declining the card — a polite push back. The card between two sets of hands. Refusal without drama.",
+          "emotion": "knowing better, quiet refusal",
+          "elements": ["ivory sleeve", "deep red nails", "business card being declined"]
+        },
+        {
+          "panel_number": 4,
+          "scene_description": "Princess Kay in Tannie's arm, red harness visible. Looking at the business card with the side-eye of someone who recognizes a script they've heard before.",
+          "emotion": "recognition, instinct confirmed",
+          "elements": ["Princess Kay", "true red harness", "side-eye expression"]
+        },
+        {
+          "panel_number": 5,
+          "scene_description": "Business card resting on an ivory surface. Tannie's red-nailed hand leaving frame. The card left behind. Decision made. Princess Kay at the edge of the shot.",
+          "emotion": "walking away, pattern broken",
+          "elements": ["business card on ivory surface", "deep red nails leaving frame", "Princess Kay edge of shot"]
+        }
+      ]
+    },
+    {
+      "slot": "TUE-AM",
+      "date": "2026-05-05",
+      "time_est": "09:00",
+      "filename": "tannie_tue_am_fivepiece.mp4",
+      "theme": "The 5-Piece Wardrobe",
+      "caption": "The 5-piece wardrobe that built my confidence back. 👗\n\nI stopped trying to be a different woman every day. I chose who I am and dressed accordingly.\n\nConfidence is consistency.\n\nComment FIVE if you want the full breakdown of how to build yours. ❤️",
+      "hashtags": "#capsulewardrobe #fashionfortheover30 #confidencethroughclothes #minimalistwardrobe #latinafashion #christianfashion #tanniespeaks",
+      "panels": [
+        {
+          "panel_number": 1,
+          "scene_description": "Wide flatlay on ivory bedspread. Exactly 5 items arranged cleanly: a soft blouse, dark jeans, red sweater, silver hoop earrings, deep red heels. Clean, intentional, simple.",
+          "emotion": "clarity, chosen identity",
+          "elements": ["ivory bedspread", "blouse", "jeans", "red sweater", "silver hoops", "red heels", "flatlay arrangement"]
+        },
+        {
+          "panel_number": 2,
+          "scene_description": "Red-nailed hand reaching into the flatlay, touching the red sweater. Making a choice. The rest of the items undisturbed. Deliberate.",
+          "emotion": "decisive, intentional",
+          "elements": ["deep red nails", "red sweater", "ivory bedspread"]
+        },
+        {
+          "panel_number": 3,
+          "scene_description": "Silver hoop earrings close-up on ivory fabric. Elegant and simple. Light catching the curve of each hoop. Nothing extra needed.",
+          "emotion": "refinement, less is more",
+          "elements": ["silver hoop earrings", "ivory fabric"]
+        },
+        {
+          "panel_number": 4,
+          "scene_description": "Deep red heels close-up on ivory bedspread. Rich color against the cream. Confident and grounded. The shoes of a woman who knows who she is.",
+          "emotion": "confidence, groundedness",
+          "elements": ["deep red heels", "ivory bedspread"]
+        },
+        {
+          "panel_number": 5,
+          "scene_description": "Complete flatlay — all 5 items arranged. Red-nailed hands resting at the edge of the shot, done arranging. Princess Kay nosing one corner of the spread, curious.",
+          "emotion": "complete, at peace with the choice",
+          "elements": ["ivory bedspread", "all 5 items flatlay", "deep red nails at edge", "Princess Kay corner"]
+        }
+      ]
+    },
+    {
+      "slot": "TUE-PM",
+      "date": "2026-05-05",
+      "time_est": "18:00",
+      "filename": "tannie_tue_pm_friendquiz.mp4",
+      "theme": "Y'all I Need Your Wisdom",
+      "caption": "Y'all. I need your wisdom. 🚩\n\nA — Say something gently\nB — Stay out of it\nC — Send her the red flag list anonymously\n\nComment your letter. Wednesday I'll tell you what I did and why.\n\nThis one matters. ❤️",
+      "hashtags": "#friendshipquestion #redflags #lovebombing #christianfriendship #wisdomneeded #tanniespeaks #sheshouldknow",
+      "panels": [
+        {
+          "panel_number": 1,
+          "scene_description": "Phone held in red-nailed hands. Screen showing a blurred text thread — readable shape but no legible words. Ivory coffee cup nearby. Still and tense.",
+          "emotion": "quiet dilemma, reading something heavy",
+          "elements": ["phone with blurred screen", "deep red nails", "ivory coffee cup"]
+        },
+        {
+          "panel_number": 2,
+          "scene_description": "Close-up of red nails scrolling the phone screen. The text thread long, blurred. Careful reading. The hand pauses. Deliberate attention.",
+          "emotion": "absorbing information, weighing",
+          "elements": ["deep red nails", "phone screen blurred text thread"]
+        },
+        {
+          "panel_number": 3,
+          "scene_description": "Open notebook on an ivory surface. Silver pen. The letters A, B, C written out. Considering options. The coffee cup behind it, still steaming.",
+          "emotion": "considering options, making a list",
+          "elements": ["open notebook", "silver pen", "A B C written", "ivory surface", "coffee cup"]
+        },
+        {
+          "panel_number": 4,
+          "scene_description": "Ivory coffee cup, half-drunk. Steam still rising. Princess Kay sitting nearby, watching the situation with full attention. Quiet dilemma energy.",
+          "emotion": "pause, stillness in the middle of deciding",
+          "elements": ["ivory coffee cup half-drunk", "steam", "Princess Kay watching", "true red harness"]
+        },
+        {
+          "panel_number": 5,
+          "scene_description": "Phone face-down on ivory surface. Notebook with A-B-C still open beside it. Red pen marking something on the page. Princess Kay alert at the edge.",
+          "emotion": "decision pending, the choice is forming",
+          "elements": ["phone face-down", "ivory surface", "open notebook with A-B-C", "red pen", "Princess Kay alert"]
+        }
+      ]
+    },
+    {
+      "slot": "WED-AM",
+      "date": "2026-05-06",
+      "time_est": "09:00",
+      "filename": "tannie_wed_am_homealone.mp4",
+      "theme": "She Gave Me a Lecture",
+      "caption": "She gave me a LECTURE. In bark form. 🐕\n\nPrincess Kay does not believe in separation. We are working on it.\n\nAlso working on: accepting I'm her whole universe. Wild pressure. ❤️\n\nComment CLINGY if yours does this too.",
+      "hashtags": "#separationanxiety #dogmom #princesskay #maltese #rescuedog #dogslife #tanniespeaks",
+      "panels": [
+        {
+          "panel_number": 1,
+          "scene_description": "Living room after someone has come home. Cushion knocked to floor. Ivory throw askew on the couch. Lone sock visible on rug. The room holds the evidence of dramatic protest.",
+          "emotion": "the aftermath, beloved disorder",
+          "elements": ["cushion on floor", "ivory throw askew", "lone sock on rug", "true red harness on couch"]
+        },
+        {
+          "panel_number": 2,
+          "scene_description": "Princess Kay mid-bark. Full dramatic energy. Mouth open, ears back. Expressing everything she has been holding since the door closed. Red harness on.",
+          "emotion": "full lecture mode, maximum drama",
+          "elements": ["Princess Kay mid-bark", "dramatic expression", "true red harness", "silver collar tag"]
+        },
+        {
+          "panel_number": 3,
+          "scene_description": "Silver collar tag jingling, catching light as Princess Kay shakes her head with emphasis. The tag in motion. The argument is making a point.",
+          "emotion": "punctuating the lecture, making herself heard",
+          "elements": ["silver collar tag in motion", "true red harness", "Princess Kay shaking head"]
+        },
+        {
+          "panel_number": 4,
+          "scene_description": "Lone sock on the floor. Princess Kay standing over it, staring at it accusingly as if it is evidence. The red harness visible. The case is being made.",
+          "emotion": "exhibit A, building the case",
+          "elements": ["lone sock on floor", "Princess Kay staring accusingly", "true red harness"]
+        },
+        {
+          "panel_number": 5,
+          "scene_description": "Princess Kay sitting regally on the couch, red harness on, silver collar tag bright and still. Lecture concluded. The cushion back in place. Dignity fully restored.",
+          "emotion": "justice served, dignity restored",
+          "elements": ["Princess Kay sitting regally", "true red harness", "silver collar tag still", "couch"]
         }
       ]
     },
@@ -73,1234 +213,368 @@
       "slot": "WED-PM",
       "date": "2026-05-06",
       "time_est": "18:00",
-      "theme": "Evening Reflection — Descansa",
-      "caption": "Mija, you made it through another day.\n\nWhatever was heavy today — put it down. You don't have to carry it into tonight.\n\nTannie says: Descansa. El manana tiene su propio cuidado.\nRest. Tomorrow has its own worries.\n\nYou did enough. You ARE enough.",
-      "hashtags": "#TannieTalks #EveningReflection #FaithOverFear #NightTimePrayer #AbuelasWisdom #RestInGod #YouAreEnough #FamiliaFirst #BilingualFaith #Resilience",
+      "filename": "tannie_wed_pm_truthcost.mp4",
+      "theme": "Telling the Truth Sometimes Costs",
+      "caption": "Telling the truth sometimes costs the thing you were trying to save. 🤍\n\nShe asked what I thought. I told her. It's been quiet since.\n\nI'd rather lose the friendship than lose HER. She may not see it now. She will.\n\nComment TRUTH if you've made this call. ❤️",
+      "hashtags": "#toughlove #truefriendship #christianfriendship #honesty #lovinghard #sheneedstoknow #tanniespeaks",
       "panels": [
         {
           "panel_number": 1,
-          "scene_description": "Princess Kay curled on true red cushion at golden hour. Tired but peaceful. Amber light through ivory curtains. Silver cross on wall. Room feels safe and loved.",
-          "emotion": "end of day, safe exhaustion",
-          "elements": [
-            "Princess Kay on red cushion",
-            "amber golden hour light",
-            "ivory curtains",
-            "silver cross on wall"
-          ]
+          "scene_description": "Ivory table. Phone face-down. Red mug, half-empty, still warm. Silver bracelet resting on the table edge. Quiet. The kind of quiet after something heavy.",
+          "emotion": "aftermath of honesty, waiting",
+          "elements": ["ivory table", "phone face-down", "red mug half-empty", "silver bracelet"]
         },
         {
           "panel_number": 2,
-          "scene_description": "Comic: Princess Kay mid-shake, tiny worry bundle dropping from back. Expression shifts burdened to delighted. Items scatter in warm lamplight. Playful energy.",
-          "emotion": "comic release, letting go",
-          "elements": [
-            "Princess Kay mid-shake",
-            "worry bundle falling",
-            "items scattering",
-            "warm lamplight"
-          ]
+          "scene_description": "Silver bracelet on a wrist, elbow resting on the ivory table. The weight of thinking. Head bent slightly. The mug nearby, cooling.",
+          "emotion": "deep contemplation, sitting with the weight",
+          "elements": ["silver bracelet on wrist", "elbow on ivory table", "red mug cooling"]
         },
         {
           "panel_number": 3,
-          "scene_description": "Tannie from behind, seated on floor against couch. Princess Kay in lap. Evening light. True red outfit. No phone. Silver cross at neckline. Both resting eyes closed.",
-          "emotion": "rest, peace, weight is gone",
-          "elements": [
-            "Tannie from behind on floor",
-            "Princess Kay in lap",
-            "true red outfit",
-            "silver cross"
-          ]
+          "scene_description": "Princess Kay at her feet, looking upward with concern. Reading the mood completely. Not playful. Present. The red harness is on but she is very still.",
+          "emotion": "companionship in the quiet, love that stays",
+          "elements": ["Princess Kay looking up", "true red harness", "concerned expression"]
         },
         {
           "panel_number": 4,
-          "scene_description": "Princess Kay looking upward with full trust. Warm lamplight on white fur. True red harness, silver hardware. Space at bottom for quote text.",
-          "emotion": "trust, safety, being held",
-          "elements": [
-            "Princess Kay looking up",
-            "trusting gaze",
-            "true red harness silver hardware",
-            "quote text space"
-          ]
+          "scene_description": "Close-up of the red mug, last bit of warmth. Red-nailed hands wrapped around it. Holding on to something warm when everything else is uncertain.",
+          "emotion": "holding warmth, steadiness",
+          "elements": ["red mug", "deep red nails", "warmth"]
         },
         {
           "panel_number": 5,
-          "scene_description": "Wide shot: Tannie and Princess Kay silhouetted against warm glowing window. Gold to deep blue sky, first stars appearing. Peaceful. CTA text space.",
-          "emotion": "gratitude, rest well earned",
-          "elements": [
-            "Tannie and Princess Kay silhouette",
-            "warm glowing window",
-            "gold to blue sky first stars",
-            "CTA space"
-          ]
+          "scene_description": "The phone still face-down on the ivory table. Princess Kay now on the chair beside her — red harness off, fully at rest. Staying. No answer has come. But she is not alone.",
+          "emotion": "waiting without despair, love that shows up",
+          "elements": ["phone face-down", "ivory table", "Princess Kay on chair beside", "quiet presence"]
         }
       ]
     },
     {
-      "slot": "W3-THU-AM",
+      "slot": "THU-AM",
       "date": "2026-05-07",
-      "time_est": "08:00",
-      "theme": "Morning Courage — No Tengas Miedo",
-      "caption": "Buenos dias, mija.\n\nBefore your feet hit the floor — He already went ahead of you.\n\nTannie didn't wake up brave today. She woke up tired and a little scared. But God's promise isn't 'I'll give you courage.' It's 'I go before you.'\n\nNo tengas miedo. He's already there.\n\nTag someone who needs this courage today.",
-      "hashtags": "#TannieTalks #MorningCourage #NoTengasMiedo #FaithOverFear #AbuelasWisdom #GodGoesFirst #MorningMotivation #FamiliaFirst #BilingualFaith #BraveWithGod",
+      "time_est": "09:00",
+      "filename": "tannie_thu_am_threedealers.mp4",
+      "theme": "The Ones Who Rush You",
+      "caption": "The ones who rush you are the ones you walk from. 🚗\n\nDealer one lied about supply. Dealer two lied about value. Dealer three listened.\n\nGoing back to three.\n\nComment RUSH if you've learned that urgency is almost always a tactic. ❤️",
+      "hashtags": "#carhunting #smartbuying #walkaway #womenbuyingcars #christianwomen #negotiation #tanniespeaks",
       "panels": [
         {
           "panel_number": 1,
-          "scene_description": "Princess Kay at front door, one paw on threshold, looking into golden morning. Tannie's hand on doorframe, true red nails. Brave hesitation. Warm amber light.",
-          "emotion": "courage at the threshold",
-          "elements": [
-            "Princess Kay at front door",
-            "one paw on threshold",
-            "Tannie's hand with red nails on doorframe",
-            "golden morning light"
-          ]
+          "scene_description": "Three car listing photos spread on an ivory surface. Laid out side by side. Red pen hovering above them. The decision has not been made yet.",
+          "emotion": "surveying options, before the choice",
+          "elements": ["three car photos", "ivory surface", "red pen hovering"]
         },
         {
           "panel_number": 2,
-          "scene_description": "Princess Kay facing exaggerated wall shadows — much bigger than her. Eyes wide but unimpressed. True red harness bright. Not fooled by fear. Warm lamplight.",
-          "emotion": "facing fears that look bigger than they are",
-          "elements": [
-            "Princess Kay facing large wall shadows",
-            "unimpressed wide eyes",
-            "true red harness",
-            "warm lamplight"
-          ]
+          "scene_description": "Red pen crossing out the first car listing. Clean, decisive X. Silver thermos in background. The first one is gone.",
+          "emotion": "first elimination, clarity beginning",
+          "elements": ["red pen crossing out listing", "silver thermos in background"]
         },
         {
           "panel_number": 3,
-          "scene_description": "Tannie from behind in true red dress, kneeling in prayer. Princess Kay sitting beside her, paw on knee. Morning light through window. Silver cross necklace.",
-          "emotion": "praying courage together",
-          "elements": [
-            "Tannie from behind kneeling red dress",
-            "Princess Kay paw on knee",
-            "morning light window",
-            "silver cross necklace"
-          ]
+          "scene_description": "Red pen crossing out the second listing. Firm. Silver thermos closer now, being reached for. The process is clear. This one too.",
+          "emotion": "pattern recognized, second elimination",
+          "elements": ["red pen crossing out second listing", "silver thermos"]
         },
         {
           "panel_number": 4,
-          "scene_description": "Princess Kay close-up, eyes forward, chin slightly raised. Determined toddler expression. True red harness. Morning light. Quote space at bottom.",
-          "emotion": "small but unshakeable",
-          "elements": [
-            "Princess Kay determined chin raised",
-            "eyes forward",
-            "true red harness morning light",
-            "quote text space"
-          ]
+          "scene_description": "Red pen circling the third listing. The circle bold and clean. Ivory notebook open beside it with handwritten notes. The right choice becomes clear.",
+          "emotion": "recognition, the right answer emerges",
+          "elements": ["red pen circling third listing", "ivory notebook with notes"]
         },
         {
           "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted walking out open door into bright morning. Wide shot. True red visible. Stepping out together. CTA space.",
-          "emotion": "stepping out together in courage",
-          "elements": [
-            "Tannie and Princess Kay silhouette",
-            "walking out open door",
-            "bright morning ahead",
-            "CTA space"
-          ]
+          "scene_description": "Clipboard holding the circled listing. Silver thermos to one side. Red pen resting across the notebook. Done. The decision was never about the car.",
+          "emotion": "decided, patience rewarded",
+          "elements": ["clipboard with circled listing", "silver thermos", "red pen resting", "ivory notebook"]
         }
       ]
     },
     {
-      "slot": "W3-THU-PM",
+      "slot": "THU-PM",
       "date": "2026-05-07",
       "time_est": "18:00",
-      "theme": "Evening Trust — En Tus Manos",
-      "caption": "Mija, did you survive today?\n\nOf course you did. You always do.\n\nBut tonight Tannie asks — did you give it to God, or white-knuckle it alone?\n\nEn tus manos, Senor. In Your hands, Lord.\n\nThat's not weakness. That's the smartest thing you can do.\n\nOpen your hands tonight.\n\nDrop a hand if you're letting go tonight.",
-      "hashtags": "#TannieTalks #EveningTrust #EnTusManos #FaithOverFear #AbuelasWisdom #OpenHands #NightTimePrayer #FamiliaFirst #BilingualFaith #TrustInGod",
+      "filename": "tannie_thu_pm_receipt.mp4",
+      "theme": "I Was Her Once",
+      "caption": "I was her once. 🤍\n\nJesus found me somewhere I won't go back to. I don't preach from the front of the class. I preach from the back of it.\n\nI'm the receipt. That's my ministry.\n\nComment RECEIPT if you've been the proof for someone else. ❤️",
+      "hashtags": "#testimony #godfoundme #christianwomen #iwashetonce #faithjourney #godsgrace #tanniespeaks",
       "panels": [
         {
           "panel_number": 1,
-          "scene_description": "Princess Kay curled on true red cushion, one eye half-open at end of day. Warm amber evening light. Silver cross on wall. Peaceful exhaustion.",
-          "emotion": "end of day, barely holding on",
-          "elements": [
-            "Princess Kay curled on red cushion",
-            "one eye half-open",
-            "amber evening light",
-            "silver cross on wall"
-          ]
+          "scene_description": "Ivory table in low evening light. Red Bible closed. Silver cross resting beside it. Phone nearby, screen blurred. Quiet and holy. Nothing urgent.",
+          "emotion": "stillness, the sacred ordinary",
+          "elements": ["ivory table", "red Bible closed", "silver cross", "phone screen blurred", "low evening light"]
         },
         {
           "panel_number": 2,
-          "scene_description": "Comic: Princess Kay dramatically dropping imaginary heavy bag. Exaggerated relief. Items floating away. Lamplight. Wide toddler grin.",
-          "emotion": "the absurdity of carrying what God already holds",
-          "elements": [
-            "Princess Kay dropping heavy bag",
-            "items floating away",
-            "exaggerated relief expression",
-            "warm lamplight"
-          ]
+          "scene_description": "Red Bible open. Pages catching soft evening light. A red-nailed hand resting flat on the open page. Not searching. Resting.",
+          "emotion": "found, at rest in the word",
+          "elements": ["red Bible open", "deep red nails", "pages in soft light"]
         },
         {
           "panel_number": 3,
-          "scene_description": "Tannie from behind, arms slightly raised in surrender posture at window. Princess Kay in lap. Evening sky. True red outfit. Silver cross necklace.",
-          "emotion": "surrender as strength",
-          "elements": [
-            "Tannie from behind arms slightly raised",
-            "Princess Kay in lap",
-            "evening sky",
-            "silver cross true red outfit"
-          ]
+          "scene_description": "Silver cross close-up on the ivory table. Low evening light catching the edges. The cross is simple, plain, silver. Holy in its ordinariness.",
+          "emotion": "faith, plain and real",
+          "elements": ["silver cross", "ivory table", "low evening light"]
         },
         {
           "panel_number": 4,
-          "scene_description": "Princess Kay looking up with complete trust — child who has been caught every time she fell. True red harness. Warm lamplight. Quote space at bottom.",
-          "emotion": "absolute trust, no backup plan needed",
-          "elements": [
-            "Princess Kay upward trusting gaze",
-            "caught-every-time expression",
-            "true red harness",
-            "quote text space"
-          ]
+          "scene_description": "Phone held in red-nailed hands. Screen blurred but the shape of a long text is clear. Reading carefully. Something in it lands.",
+          "emotion": "recognition, the receipt moment",
+          "elements": ["phone in red-nailed hands", "blurred screen text", "deep red nails"]
         },
         {
           "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted against deep amber to purple sky. First stars appearing. CTA space at bottom.",
-          "emotion": "resting in the One who holds it all",
-          "elements": [
-            "Tannie and Princess Kay silhouette",
-            "amber to purple sky",
-            "first stars appearing",
-            "CTA space"
-          ]
+          "scene_description": "Red Bible closed again. Silver cross resting on top of it. Evening quiet. The testimony holds. The table holds both: the word and the cross.",
+          "emotion": "settled, the ministry is real",
+          "elements": ["red Bible closed", "silver cross on top", "ivory table", "evening quiet"]
         }
       ]
     },
     {
-      "slot": "W3-FRI-AM",
+      "slot": "FRI-AM",
       "date": "2026-05-08",
-      "time_est": "08:00",
-      "theme": "Morning Joy — El Gozo Es Mi Fuerza",
-      "caption": "Buenos dias!\n\nDid you know joy and happiness are NOT the same thing?\n\nHappiness needs something good to happen. Joy just IS — because He IS.\n\nEl gozo del Senor es mi fortaleza. The joy of the Lord is my strength.\n\nFind one reason to smile today. Just one.\n\nTag someone who needs a Friday joy boost!",
-      "hashtags": "#TannieTalks #FridayJoy #ElGozoDelSenor #JoyOfTheLord #AbuelasWisdom #FaithOverFear #FridayFeeling #FamiliaFirst #BilingualFaith #JoyIsStrength",
+      "time_est": "09:00",
+      "filename": "tannie_fri_am_paraglide.mp4",
+      "theme": "Paragliding Today",
+      "caption": "Paragliding today. 🪂\n\nFrom up there, the old life looked TINY. Maybe it always was. Maybe I just couldn't see it from inside.\n\nElevation changes perspective. That's not just a metaphor.\n\nComment FLY if you need this reminder. ❤️",
+      "hashtags": "#paragliding #adventurewomen #faceyourfears #singlewoman #outdoorwomen #christianadventure #tanniespeaks",
       "panels": [
         {
           "panel_number": 1,
-          "scene_description": "Princess Kay mid-zoomie — pure joy spin in morning sunlight. All paws off ground. True red harness flying. Expression of absolute delight. Ivory warm tones.",
-          "emotion": "unbridled joy, no reason needed",
-          "elements": [
-            "Princess Kay mid-zoomie spin",
-            "all paws off ground",
-            "true red harness flying",
-            "warm morning sunlight"
-          ]
+          "scene_description": "Wide aerial sky shot. Open blue in every direction. A few white clouds far below. Total freedom. The world not yet visible — just sky.",
+          "emotion": "pure possibility, before the fear falls away",
+          "elements": ["wide blue sky", "clouds below", "aerial perspective"]
         },
         {
           "panel_number": 2,
-          "scene_description": "Princess Kay spots something wonderful off-panel — ears perked, tail blur, eyes lit up. Warm morning light. Toddler wonder. Absolute present-moment joy.",
-          "emotion": "joy in the small things God puts in our path",
-          "elements": [
-            "Princess Kay ears perked",
-            "eyes lit up off-panel",
-            "tail blur of excitement",
-            "warm morning light"
-          ]
+          "scene_description": "Red helmet strap visible at the top of frame. The edge of an ivory jumpsuit. Wind in the fabric. Still climbing. The ground not visible yet.",
+          "emotion": "in the climb, committed",
+          "elements": ["red helmet strap", "ivory jumpsuit edge", "wind in fabric"]
         },
         {
           "panel_number": 3,
-          "scene_description": "Tannie from behind dancing slightly — joyful posture, arms loose, ivory robe moving. Princess Kay jumping beside her. Morning light. Silver cross catching light.",
-          "emotion": "choosing joy as an act of faith",
-          "elements": [
-            "Tannie from behind dancing",
-            "ivory robe in motion",
-            "Princess Kay jumping beside",
-            "silver cross catching light"
-          ]
+          "scene_description": "Silver carabiners glinting in bright sunlight against the open sky. Sharp and strong. The only thing between flight and fall — and they hold.",
+          "emotion": "trust in what holds you",
+          "elements": ["silver carabiners", "bright sunlight", "open sky"]
         },
         {
           "panel_number": 4,
-          "scene_description": "Princess Kay close-up, mouth open in happy pant — pure present-moment joy. Wide innocent eyes. True red harness. Morning light. Quote space.",
-          "emotion": "joy that needs no explanation",
-          "elements": [
-            "Princess Kay happy pant expression",
-            "wide joyful innocent eyes",
-            "true red harness",
-            "quote text space"
-          ]
+          "scene_description": "Looking down from the paraglider. The land below small and far. The old life the size of a hand. Red helmet strap visible at the top of frame.",
+          "emotion": "elevation, perspective shift",
+          "elements": ["aerial view looking down", "land far below", "red helmet strap visible"]
         },
         {
           "panel_number": 5,
-          "scene_description": "Princess Kay and Tannie silhouetted against bright morning window, both in motion — energy and light. Friday morning joy. CTA space.",
-          "emotion": "joyful together, ready for the day",
-          "elements": [
-            "Tannie and Princess Kay silhouette in motion",
-            "bright morning window",
-            "energy and movement",
-            "CTA space"
-          ]
+          "scene_description": "Wide sky again. Red helmet strap at the edge. Ivory jumpsuit sleeve. The full open sky. Wind. Everything below that once felt enormous: tiny.",
+          "emotion": "free, perspective changed permanently",
+          "elements": ["wide open sky", "red helmet strap", "ivory jumpsuit edge", "wind"]
         }
       ]
     },
     {
-      "slot": "W3-FRI-PM",
+      "slot": "FRI-PM",
       "date": "2026-05-08",
       "time_est": "18:00",
-      "theme": "Evening Rest — Reposo en El",
-      "caption": "Mija, you made it to Friday.\n\nYou carried things this week nobody saw. You held it together. You showed up.\n\nReposa esta noche. Rest tonight.\n\nNot because everything is solved. But because God doesn't sleep — He has the night shift.\n\nYou did enough this week.\n\nDrop a Friday heart if you made it through.",
-      "hashtags": "#TannieTalks #FridayRest #ReposoEnEl #FaithOverFear #AbuelasWisdom #YouDidEnough #WeekendRelease #FamiliaFirst #BilingualFaith #RestInGod",
+      "filename": "tannie_fri_pm_anniversary.mp4",
+      "theme": "Tomorrow Is an Anniversary",
+      "caption": "Tomorrow is an anniversary I don't celebrate anymore. 📅\n\nMy body still remembers the date. So I'm going to let it be tender. Not destroyed. Tender.\n\nIf the body remembers, the soul needs room.\n\nComment TENDER if you know a date like this. ❤️",
+      "hashtags": "#griefhasnotimeline #healingjourney #thebodyremembers #traumaversary #christianhealing #tanniespeaks #soulwork",
       "panels": [
         {
           "panel_number": 1,
-          "scene_description": "Princess Kay sprawled flat on true red cushion — maximum Friday exhaustion. Completely peaceful. Amber light. Silver hardware glinting. Comedic exhaustion.",
-          "emotion": "Friday done, no apologies",
-          "elements": [
-            "Princess Kay sprawled on red cushion",
-            "maximum relaxation pose",
-            "amber light",
-            "silver harness hardware"
-          ]
+          "scene_description": "Dim room. A wall calendar visible. One date circled in red. The circle deliberate, old. Low quiet light. No drama.",
+          "emotion": "the date exists, holding it quietly",
+          "elements": ["wall calendar", "date circled in red", "dim room", "low quiet light"]
         },
         {
           "panel_number": 2,
-          "scene_description": "Comic: Princess Kay shaking off the entire week — papers and worries flying everywhere. Delighted expression. Lamplight. The week is gone.",
-          "emotion": "shaking off the week with comic relief",
-          "elements": [
-            "Princess Kay shaking everything off",
-            "papers and worries flying",
-            "delighted expression",
-            "warm lamplight"
-          ]
+          "scene_description": "Ivory Bible closed on a table. Silver cross beside it. Dim and still. Nothing opened yet. The Bible is there. That is enough.",
+          "emotion": "faith present without performance",
+          "elements": ["ivory Bible closed", "silver cross", "dim light", "table"]
         },
         {
           "panel_number": 3,
-          "scene_description": "Tannie from behind, seated on floor back against couch. Princess Kay belly-up in arms. Both still. Evening light. True red elements. No phone.",
-          "emotion": "Friday evening stillness, permission to stop",
-          "elements": [
-            "Tannie from behind on floor",
-            "Princess Kay belly-up in arms",
-            "evening window light",
-            "no phone present"
-          ]
+          "scene_description": "Princess Kay curled at her feet. Red harness off, fully at rest. Sensing the weight without understanding it. Choosing to stay anyway.",
+          "emotion": "companionship in tenderness",
+          "elements": ["Princess Kay curled", "red harness off", "at feet", "present without words"]
         },
         {
           "panel_number": 4,
-          "scene_description": "Princess Kay close-up — eyes almost closed, completely surrendered to rest. True red harness, silver hardware. Warm amber light. Total peace. Quote space.",
-          "emotion": "the rest of someone fully surrendered",
-          "elements": [
-            "Princess Kay eyes almost closed",
-            "surrendered to rest",
-            "true red harness silver hardware",
-            "quote text space"
-          ]
+          "scene_description": "Red-nailed hand resting on the Bible cover. Not opening it. Just resting a palm on the leather. Present with it. The cross visible nearby.",
+          "emotion": "not needing answers, just presence",
+          "elements": ["deep red nails", "hand on Bible cover", "silver cross nearby"]
         },
         {
           "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted against rich amber-gold sunset. End of week. Stars beginning. Peace earned. CTA space.",
-          "emotion": "the week is in God's hands now",
-          "elements": [
-            "Tannie and Princess Kay silhouette",
-            "rich amber sunset",
-            "stars beginning",
-            "CTA space"
-          ]
+          "scene_description": "Calendar, Bible, silver cross, and Princess Kay — all in one quiet frame. Dim light. The date circled in red visible in the background. Weight without drama. Tender.",
+          "emotion": "the whole truth held gently",
+          "elements": ["calendar with red circle", "ivory Bible", "silver cross", "Princess Kay", "dim light"]
         }
       ]
     },
     {
-      "slot": "W4-MON-AM",
-      "date": "2026-05-11",
-      "time_est": "08:00",
-      "theme": "New Mercies — Misericordias Nuevas",
-      "caption": "Buenos dias, amor.\n\nLast week is DONE. God's mercies reset at midnight.\n\nMisericordias nuevas cada manana. New mercies every morning. Lamentations 3:23.\n\nTannie started this week with that promise on her lips — not 'I hope it gets better' but 'His mercy is already here.'\n\nLeave last week at His feet, mija.\n\nTag someone who needs a fresh start today.",
-      "hashtags": "#TannieTalks #NewMercies #MisericordiasNuevas #Lamentations323 #FaithOverFear #AbuelasWisdom #MondayMotivation #FamiliaFirst #BilingualFaith #FreshStartMonday",
+      "slot": "SAT-AM",
+      "date": "2026-05-09",
+      "time_est": "09:00",
+      "filename": "tannie_sat_am_matching.mp4",
+      "theme": "Matching Day",
+      "caption": "Matching day. She is NOT thrilled. 🐕❤️\n\nPrincess Kay thinks I've betrayed her with a tiny sweater. I think it's the cutest thing I've ever owned.\n\nShe'll get over it. She always does.\n\nComment MATCH if you dress your dog up too. ❤️",
+      "hashtags": "#dogsofinstagram #princesskay #matchingoutfits #dogmom #smalldog #maltese #tanniespeaks",
       "panels": [
         {
           "panel_number": 1,
-          "scene_description": "Princess Kay at window watching sunrise — brand new day light on white fur. Fresh. Rested. Eyes open with anticipation. True red harness. Ivory tones.",
-          "emotion": "standing at the edge of a fresh start",
-          "elements": [
-            "Princess Kay at window watching sunrise",
-            "fresh day light on white fur",
-            "true red harness",
-            "ivory tones new beginning"
-          ]
+          "scene_description": "Red sweater sleeves — just the arms. No face. No body above the shoulders. Ivory blanket behind. The sweater is deep red, soft. Cropped tight.",
+          "emotion": "the reveal, before we see her reaction",
+          "elements": ["red sweater sleeves", "ivory blanket", "cropped shot no face"]
         },
         {
           "panel_number": 2,
-          "scene_description": "Princess Kay sniffing something new — flowers or morning breeze. Nose working. Eyes wide. Comic curiosity. Warm morning light. Discovery.",
-          "emotion": "discovering what God placed fresh in this moment",
-          "elements": [
-            "Princess Kay sniffing something new",
-            "nose working curiosity",
-            "wide investigating eyes",
-            "warm morning light"
-          ]
+          "scene_description": "Princess Kay in a tiny matching red dog sweater. Expression: deeply unimpressed. Silver collar tag visible. The sweater fits. She is not grateful.",
+          "emotion": "betrayal, dignified protest",
+          "elements": ["Princess Kay in tiny red sweater", "unimpressed expression", "silver collar tag"]
         },
         {
           "panel_number": 3,
-          "scene_description": "Tannie from behind opening curtains wide to morning light. Princess Kay watching beside her. Silver cross catching new light. Ivory robe. New day welcomed.",
-          "emotion": "choosing to receive the new mercy",
-          "elements": [
-            "Tannie from behind opening curtains",
-            "morning light flooding in",
-            "Princess Kay watching",
-            "silver cross catching light"
-          ]
+          "scene_description": "Silver collar tag close-up, catching light. The tiny red sweater visible around the neck. Very small. Very red. Very real.",
+          "emotion": "the commitment is official",
+          "elements": ["silver collar tag", "tiny red sweater neckline", "light catching silver"]
         },
         {
           "panel_number": 4,
-          "scene_description": "Princess Kay close-up — eyes clear and alert, full of fresh-day energy. True red harness. Pure morning light. The face of someone who woke forgiven. Quote space.",
-          "emotion": "mercy received, ready to begin",
-          "elements": [
-            "Princess Kay alert fresh expression",
-            "clear bright eyes",
-            "true red harness",
-            "quote text space"
-          ]
+          "scene_description": "Two red sweater cuffs side by side on ivory blanket. One human-sized sleeve end. One very small dog-sized sleeve end. Matching. Undeniable.",
+          "emotion": "the match is complete",
+          "elements": ["human red sleeve cuff", "tiny dog red sleeve cuff", "ivory blanket"]
         },
         {
           "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted against wide bright Monday morning. Open welcoming posture. New week ahead. CTA space.",
-          "emotion": "new week, new mercy, new beginning",
-          "elements": [
-            "Tannie and Princess Kay silhouette",
-            "wide bright Monday morning",
-            "open welcoming posture",
-            "CTA space"
-          ]
+          "scene_description": "Princess Kay sitting on ivory blanket in the tiny red sweater. Silver collar bright. Expression: barely holding onto her dignity. The sweater will not be removed.",
+          "emotion": "acceptance, dignity intact by a thread",
+          "elements": ["Princess Kay on ivory blanket", "tiny red sweater", "silver collar tag bright", "stoic expression"]
         }
       ]
     },
     {
-      "slot": "W4-MON-PM",
-      "date": "2026-05-11",
+      "slot": "SAT-PM",
+      "date": "2026-05-09",
       "time_est": "18:00",
-      "theme": "Grace for Today — La Gracia de Hoy",
-      "caption": "How was your Monday, mija?\n\nDid you do it perfectly? No? Good. Neither did Tannie.\n\nGod's grace wasn't designed for perfect days. It was designed for days like today — messy, complicated, real.\n\nLa gracia de hoy es suficiente. Today's grace is enough.\n\nYou survived. That's the grace.\n\nDrop a hand if Monday didn't break you!",
-      "hashtags": "#TannieTalks #MondayGrace #LaGraciaDeHoy #FaithOverFear #AbuelasWisdom #GraceIsEnough #NightTimePrayer #FamiliaFirst #BilingualFaith #MondayReal",
+      "filename": "tannie_sat_pm_anniversaryangel.mp4",
+      "theme": "She Didn't Leave My Side",
+      "caption": "She didn't leave my side. 🤍\n\nI didn't tell her what today was. She knew. She always knows.\n\nDogs are prophets in fur. Rescued me as much as I rescued her.\n\nComment ANGEL if your dog has done this for you. ❤️",
+      "hashtags": "#dogismyangel #princesskay #rescuedog #griefcompanion #godsendspeace #christianhealing #tanniespeaks",
       "panels": [
         {
           "panel_number": 1,
-          "scene_description": "Princess Kay curled on ivory cushion at day's end, tired but at peace. Monday survived. Warm amber light. True red harness. Soft content expression.",
-          "emotion": "Monday done, grace was enough",
-          "elements": [
-            "Princess Kay curled on ivory cushion",
-            "tired but at peace",
-            "amber evening light",
-            "true red harness"
-          ]
+          "scene_description": "Dim bedroom. Ivory duvet on the bed. Silver cross necklace resting against the fabric. Low quiet light. No face. The room holds something heavy.",
+          "emotion": "the weight before the comfort arrives",
+          "elements": ["dim bedroom", "ivory duvet", "silver cross necklace", "low light"]
         },
         {
           "panel_number": 2,
-          "scene_description": "Comic: Princess Kay with tiny Monday crown sliding off her head, laughing at herself. Warm lamplight. Imperfect day, complete grace.",
-          "emotion": "laughing at Monday rather than being crushed by it",
-          "elements": [
-            "Princess Kay sliding crown",
-            "laughing at herself",
-            "warm lamplight",
-            "playful Monday energy"
-          ]
+          "scene_description": "Princess Kay curled on the ivory duvet. Red harness off. Fully at rest. Not playing. Not asking for anything. Simply present.",
+          "emotion": "faithful presence, no words needed",
+          "elements": ["Princess Kay curled on ivory duvet", "red harness off", "at rest"]
         },
         {
           "panel_number": 3,
-          "scene_description": "Tannie from behind at table, hands wrapped around mug. Princess Kay in lap. Evening. Silver cross. True red elements. No phone. Present and at rest.",
-          "emotion": "grace enough to stop for the evening",
-          "elements": [
-            "Tannie from behind with mug",
-            "Princess Kay in lap",
-            "evening soft light",
-            "silver cross neckline"
-          ]
+          "scene_description": "Silver cross necklace close-up on the ivory duvet. Resting against the white fabric. Faith visible and still. The cross is plain and real.",
+          "emotion": "faith in the quiet, held without performance",
+          "elements": ["silver cross necklace close-up", "ivory duvet fabric"]
         },
         {
           "panel_number": 4,
-          "scene_description": "Princess Kay looking up with heavy-lidded trusting eyes — end of day surrender. True red harness. Warm lamplight. Quote space.",
-          "emotion": "entrusting Monday's mess to God",
-          "elements": [
-            "Princess Kay heavy-lidded trusting gaze",
-            "end of day expression",
-            "true red harness",
-            "quote text space"
-          ]
+          "scene_description": "Princess Kay curled on Tannie's chest. No face shown — only the silver cross necklace at the collarbone and the small dog above it. The dog chose this spot.",
+          "emotion": "the gift of being chosen, loved in the dark",
+          "elements": ["Princess Kay on chest", "silver cross necklace at collarbone", "no face", "dim light"]
         },
         {
           "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted against deep amber Monday evening. Stars appearing. Grace earned the rest. CTA space.",
-          "emotion": "Monday released to God",
-          "elements": [
-            "Tannie and Princess Kay silhouette",
-            "deep amber Monday evening",
-            "stars appearing",
-            "CTA space"
-          ]
+          "scene_description": "Dim room. Ivory duvet. Silver cross. Princess Kay still curled in place. The whole scene quiet and complete. She didn't leave. She never left.",
+          "emotion": "held, not alone, the anniversary survived",
+          "elements": ["dim room", "ivory duvet", "silver cross", "Princess Kay curled and staying"]
         }
       ]
     },
     {
-      "slot": "W4-TUE-AM",
-      "date": "2026-05-12",
-      "time_est": "08:00",
-      "theme": "Called — Mi Proposito",
-      "caption": "Buenos dias, mija.\n\nSome people spend their whole life looking for purpose. Tannie spent years doing the same.\n\nThen she realized: purpose isn't a destination. It's a Person.\n\nMi proposito es conocerte, Senor. My purpose is to know You, Lord.\n\nYou were called before you were born. Walk in it today.\n\nTag someone walking in their purpose!",
-      "hashtags": "#TannieTalks #TuesdayPurpose #MiProposito #CalledAndChosen #FaithOverFear #AbuelasWisdom #TuesdayTruth #FamiliaFirst #BilingualFaith #WalkInYourCalling",
+      "slot": "SUN-AM",
+      "date": "2026-05-10",
+      "time_est": "09:00",
+      "filename": "tannie_sun_am_mothersday.mp4",
+      "theme": "Mother's Day Is Complicated",
+      "caption": "Mother's Day is complicated for a lot of us. 🌹\n\nI wore red. Because I'm becoming the woman I needed. Because my mother did her best. Because God is the mother where moms fall short.\n\nHappy Mother's Day to every woman parenting her own healing.\n\nComment HER if that's you. ❤️",
+      "hashtags": "#mothersday #healinginnerchild #christianwomen #godmothersus #complicatedmothersday #tanniespeaks #becomingher",
       "panels": [
         {
           "panel_number": 1,
-          "scene_description": "Princess Kay sniffing a path forward — nose to ground, following where called. Determined but curious. True red harness. Morning sunlight ahead.",
-          "emotion": "following the call even when path isn't fully clear",
-          "elements": [
-            "Princess Kay nose to path",
-            "following where called",
-            "true red harness",
-            "morning light ahead"
-          ]
+          "scene_description": "Church interior seen from the back rows. Warm light filtering through high windows. Rows of wooden pews. The kind of quiet that holds history.",
+          "emotion": "entering the sacred, arriving",
+          "elements": ["church interior from behind", "wooden pews", "warm light through windows"]
         },
         {
           "panel_number": 2,
-          "scene_description": "Princess Kay looking at two doors — not anxious, just attentive. Head tilted, innocent discernment. True red. Warm morning. Waiting for the right door.",
-          "emotion": "discernment without anxiety",
-          "elements": [
-            "Princess Kay looking at two doors",
-            "head tilted discerning",
-            "true red harness",
-            "warm morning light"
-          ]
+          "scene_description": "Ivory dress visible from behind, standing in the church aisle. Deep red heels on the stone floor. The stance is steady. She belongs here.",
+          "emotion": "present, unafraid, arrived",
+          "elements": ["ivory dress from behind", "deep red heels", "church aisle", "stone floor"]
         },
         {
           "panel_number": 3,
-          "scene_description": "Tannie from behind, purposeful posture at window — shoulders back, silver cross catching light. Princess Kay beside her. Red dress. They know where they're going.",
-          "emotion": "walking in calling with confidence",
-          "elements": [
-            "Tannie from behind purposeful posture",
-            "shoulders back silver cross",
-            "Princess Kay beside",
-            "true red dress"
-          ]
+          "scene_description": "Silver cross necklace catching the warm church light. Seen from behind and slightly below. Simple and real against the ivory fabric.",
+          "emotion": "faith worn openly, not performing",
+          "elements": ["silver cross necklace", "warm church light", "ivory fabric"]
         },
         {
           "panel_number": 4,
-          "scene_description": "Princess Kay close-up with toddler-on-a-mission expression — focused, present, alive. True red harness. Morning light. Quote space.",
-          "emotion": "born for this, walking in it now",
-          "elements": [
-            "Princess Kay mission expression",
-            "focused alert eyes",
-            "true red harness morning light",
-            "quote text space"
-          ]
+          "scene_description": "Red carnation held in red-nailed hands. Bible resting on the pew beside it. Warm church light on the petals. Red on red — the color of becoming.",
+          "emotion": "honoring, becoming, choosing herself",
+          "elements": ["red carnation", "deep red nails", "Bible on pew", "warm church light"]
         },
         {
           "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted walking together toward morning light. Both purposeful. Both certain. The calling is clear. CTA space.",
-          "emotion": "walking in purpose side by side",
-          "elements": [
-            "Tannie and Princess Kay silhouette",
-            "walking toward morning light",
-            "purposeful stride",
-            "CTA space"
-          ]
+          "scene_description": "Wide shot from behind. Ivory dress. Deep red heels. Silver cross at neckline. Red carnation held at her side. Warm golden church light. A woman becoming the mother she needed.",
+          "emotion": "arrival, grace, the healing visible",
+          "elements": ["ivory dress from behind wide shot", "deep red heels", "silver cross", "red carnation at side", "warm church light"]
         }
       ]
     },
     {
-      "slot": "W4-TUE-PM",
-      "date": "2026-05-12",
+      "slot": "SUN-PM",
+      "date": "2026-05-10",
       "time_est": "18:00",
-      "theme": "Surrender — Me Rindo",
-      "caption": "Mija.\n\nStop fighting the wave. You know which one.\n\nThe thing you've been holding. The plan you've been protecting. The outcome you've been controlling.\n\nMe rindo. I surrender. Not because I give up — but because I trust the One who holds it.\n\nOpen your hands tonight. Let God be God.\n\nDrop a hand if you're letting something go tonight.",
-      "hashtags": "#TannieTalks #TuesdaySurrender #MeRindo #FaithOverFear #AbuelasWisdom #OpenHands #NightTimePrayer #FamiliaFirst #BilingualFaith #LetGodBeGod",
+      "filename": "tannie_sun_pm_week3wrap.mp4",
+      "theme": "Week 3",
+      "caption": "Week 3. 🕯️\n\nHard week. Honest week. I let the anniversary be tender. I told the truth to a friend. I found Jesus in the quiet again.\n\nStill here. Still red-lipped. Still praying.\n\nComment STILLHERE. ❤️",
+      "hashtags": "#rebuildyourlife #weeklyreflection #christianwomen #testimonyinthemaking #faithjourney #tanniespeaks #stillhere",
       "panels": [
         {
           "panel_number": 1,
-          "scene_description": "Princess Kay with tiny bundle clutched to chest — then deliberately, gently putting it down. Warm amber light. Expression shifts from holding to releasing.",
-          "emotion": "the moment before surrender",
-          "elements": [
-            "Princess Kay clutching small bundle",
-            "deliberate release expression",
-            "amber evening light",
-            "warm ivory tones"
-          ]
+          "scene_description": "Candle lit on a surface. Warm flame, steady. Ivory blanket folded nearby. Evening light soft. The beginning of the ending of a week.",
+          "emotion": "the week settling, warmth earned",
+          "elements": ["lit candle", "warm flame", "ivory blanket", "evening light"]
         },
         {
           "panel_number": 2,
-          "scene_description": "Comic: Princess Kay wrestling huge worry boulder — then it pops like a bubble the moment she stops pushing. Delighted surprise. Warm lamplight.",
-          "emotion": "the comedy of fighting what God already dissolved",
-          "elements": [
-            "Princess Kay wrestling huge worry bubble",
-            "bubble popping dramatically",
-            "delighted surprise",
-            "warm lamplight"
-          ]
+          "scene_description": "Open journal on an ivory surface. Red pen mid-write, caught in motion. Silver cross beside the journal. Words being set down. The week going onto the page.",
+          "emotion": "processing, releasing, recording",
+          "elements": ["open journal", "red pen mid-write", "silver cross", "ivory surface"]
         },
         {
           "panel_number": 3,
-          "scene_description": "Tannie from behind, palms turned upward — surrender posture. Princess Kay nestled in lap. Evening light. Silver cross. True red dress. Peace in stillness.",
-          "emotion": "palms up is a prayer",
-          "elements": [
-            "Tannie from behind palms upward",
-            "surrender posture",
-            "Princess Kay in lap",
-            "silver cross evening light"
-          ]
+          "scene_description": "Princess Kay sleeping on the ivory blanket. Deep sleep. Fully at rest. The week has been long for both of them.",
+          "emotion": "rest earned, faithful companion at peace",
+          "elements": ["Princess Kay sleeping", "ivory blanket", "deep rest"]
         },
         {
           "panel_number": 4,
-          "scene_description": "Princess Kay looking upward with open trusting face. True red harness. The gaze of someone who just let something go and feels lighter. Warm lamplight. Quote space.",
-          "emotion": "lighter after letting go",
-          "elements": [
-            "Princess Kay upward trusting gaze",
-            "lighter expression after release",
-            "true red harness",
-            "quote text space"
-          ]
+          "scene_description": "Red pen resting across the open journal. Not writing anymore. Words on the page but not legible. Silver cross prominent beside it. Done.",
+          "emotion": "finished, set down, released",
+          "elements": ["red pen resting on journal", "journal with writing", "silver cross prominent"]
         },
         {
           "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted, both with open posture. Tuesday evening. Stars beginning. Surrender is not defeat. CTA space.",
-          "emotion": "open hands, open heart, God takes the rest",
-          "elements": [
-            "Tannie and Princess Kay open posture",
-            "Tuesday evening silhouette",
-            "stars beginning",
-            "CTA space"
-          ]
-        }
-      ]
-    },
-    {
-      "slot": "W4-WED-AM",
-      "date": "2026-05-13",
-      "time_est": "08:00",
-      "theme": "Faithful — Fiel Es El",
-      "caption": "Buenos dias, amor.\n\nLook back for a moment. Just a moment.\n\nEvery hard thing you survived — He was there. Every door that closed — He had the next one.\n\nFiel es El. He is faithful.\n\nNot faithful when it's easy. Faithful always. Even when you couldn't see it.\n\nWalk into this Wednesday knowing He hasn't changed.\n\nTag someone who needs this reminder today!",
-      "hashtags": "#TannieTalks #WednesdayFaith #FielEsEl #HeIsFaithful #FaithOverFear #AbuelasWisdom #MidweekTruth #FamiliaFirst #BilingualFaith #Faithful",
-      "panels": [
-        {
-          "panel_number": 1,
-          "scene_description": "Princess Kay looking at trail of her own paw prints stretching behind her — she made it this far. True red harness. Morning sunlight. Evidence of the journey.",
-          "emotion": "looking back to see faithfulness",
-          "elements": [
-            "Princess Kay looking at own paw prints",
-            "trail stretching behind",
-            "true red harness",
-            "morning sunlight"
-          ]
-        },
-        {
-          "panel_number": 2,
-          "scene_description": "Princess Kay at a closed door — not sad, just present. Window of light opening beside her. Warm morning. Trust in the next opening.",
-          "emotion": "trust when one door closes",
-          "elements": [
-            "Princess Kay at closed door",
-            "window of light opening beside",
-            "trusting expression",
-            "warm morning light"
-          ]
-        },
-        {
-          "panel_number": 3,
-          "scene_description": "Tannie from behind at morning window, hand on glass — looking at new day. Princess Kay beside her. Reflective, grateful posture. Silver cross. Ivory robe.",
-          "emotion": "remembering His faithfulness, meeting the new day",
-          "elements": [
-            "Tannie from behind at window",
-            "hand on glass reflective",
-            "Princess Kay beside",
-            "silver cross ivory robe"
-          ]
-        },
-        {
-          "panel_number": 4,
-          "scene_description": "Princess Kay close-up — eyes soft with knowing. Been through things. Still here. True red harness. Warm morning light. Faithful survivor. Quote space.",
-          "emotion": "quiet knowing of one who has been held through everything",
-          "elements": [
-            "Princess Kay soft knowing expression",
-            "been through things still here",
-            "true red harness",
-            "quote text space"
-          ]
-        },
-        {
-          "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted against midweek morning. Both forward-facing. Faithful past, faithful present, faithful future. CTA space.",
-          "emotion": "walking into Wednesday on a foundation of faithful history",
-          "elements": [
-            "Tannie and Princess Kay silhouette",
-            "midweek morning light",
-            "forward-facing posture",
-            "CTA space"
-          ]
-        }
-      ]
-    },
-    {
-      "slot": "W4-WED-PM",
-      "date": "2026-05-13",
-      "time_est": "18:00",
-      "theme": "Still Waters — Aguas Tranquilas",
-      "caption": "Mija, can you breathe for a second?\n\nHe leadeth me beside still waters. Psalm 23:2.\n\nNot rushing waters. Not overwhelming waters. STILL waters.\n\nAguas tranquilas. Still waters.\n\nFind five minutes tonight — no phone, just stillness. He restores souls there.\n\nYou deserve still waters tonight.\n\nDrop a drop if you needed this.",
-      "hashtags": "#TannieTalks #StillWaters #AguasTranquilas #Psalm23 #FaithOverFear #AbuelasWisdom #MidweekPeace #FamiliaFirst #BilingualFaith #RestoreMySOul",
-      "panels": [
-        {
-          "panel_number": 1,
-          "scene_description": "Princess Kay near calm pool of reflected evening light on floor. Peaceful. Unhurried. True red harness. Arriving at stillness.",
-          "emotion": "arriving at stillness",
-          "elements": [
-            "Princess Kay near calm reflected light pool",
-            "still peaceful pattern",
-            "true red harness",
-            "evening golden light"
-          ]
-        },
-        {
-          "panel_number": 2,
-          "scene_description": "Princess Kay frozen mid-reaction — paw raised, expression held. The conscious choice to be still rather than react. Warm evening light.",
-          "emotion": "choosing stillness over reaction",
-          "elements": [
-            "Princess Kay frozen mid-reaction",
-            "conscious stillness choice",
-            "paw raised stopped",
-            "warm evening light"
-          ]
-        },
-        {
-          "panel_number": 3,
-          "scene_description": "Tannie from behind, seated cross-legged on floor. Eyes closed in stillness. Princess Kay resting across lap. No phone. Evening. Silver cross.",
-          "emotion": "soul being restored in stillness",
-          "elements": [
-            "Tannie from behind cross-legged",
-            "Princess Kay across lap",
-            "no phone",
-            "silver cross evening peace"
-          ]
-        },
-        {
-          "panel_number": 4,
-          "scene_description": "Princess Kay close-up — eyes at half mast, completely still. The expression of a soul being restored. True red harness. Soft evening light. Quote space.",
-          "emotion": "Psalm 23 — restored beside still waters",
-          "elements": [
-            "Princess Kay half-mast peaceful eyes",
-            "soul being restored expression",
-            "true red harness",
-            "quote text space"
-          ]
-        },
-        {
-          "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted against still Wednesday evening. Calm. No urgency. Gold to deep blue. Stars. CTA space.",
-          "emotion": "the peace that passes understanding",
-          "elements": [
-            "Tannie and Princess Kay calm silhouette",
-            "still Wednesday evening",
-            "gold to deep blue sky",
-            "CTA space"
-          ]
-        }
-      ]
-    },
-    {
-      "slot": "W4-THU-AM",
-      "date": "2026-05-14",
-      "time_est": "08:00",
-      "theme": "Gratitude — Gracias en Todo",
-      "caption": "Buenos dias, mija!\n\nGratitude is a superpower that broke Tannie open.\n\nNot gratitude FOR everything. Gratitude IN everything. 1 Thessalonians 5:18.\n\nGracias en todo. Thanks in everything.\n\nEven the hard Thursdays. Even the difficult season. Even the waiting.\n\nStart today with three things. Just three.\n\nDrop your three below!",
-      "hashtags": "#TannieTalks #ThankfulThursday #GraciasEnTodo #1Thessalonians518 #FaithOverFear #AbuelasWisdom #GratefulHeart #FamiliaFirst #BilingualFaith #GratitudeIsAPrayer",
-      "panels": [
-        {
-          "panel_number": 1,
-          "scene_description": "Princess Kay nose up, taking in morning air — gratitude for the simple act of breathing. True red harness. Warm morning light. Small but profound appreciation.",
-          "emotion": "gratitude for the smallest things first",
-          "elements": [
-            "Princess Kay nose up smelling morning",
-            "gratitude in simple breath",
-            "true red harness",
-            "warm morning light"
-          ]
-        },
-        {
-          "panel_number": 2,
-          "scene_description": "Princess Kay discovering something small and wonderful — a sunbeam on the floor. Comic delight in tiny gift. Morning light. Wide eyes.",
-          "emotion": "finding God's gifts in the overlooked",
-          "elements": [
-            "Princess Kay discovering sunbeam",
-            "joy in tiny gift",
-            "wide eyes of delight",
-            "warm morning light"
-          ]
-        },
-        {
-          "panel_number": 3,
-          "scene_description": "Tannie from behind, hands clasped in thanksgiving, head bowed. Princess Kay beside her mirroring the energy. Morning window. Silver cross.",
-          "emotion": "intentional gratitude as morning practice",
-          "elements": [
-            "Tannie from behind hands clasped",
-            "head bowed in gratitude",
-            "Princess Kay mirroring",
-            "silver cross morning light"
-          ]
-        },
-        {
-          "panel_number": 4,
-          "scene_description": "Princess Kay close-up — face open, grateful, present. Three small flowers near her paws. True red harness. Morning. Gratitude overflowing. Quote space.",
-          "emotion": "overflow of gratitude for simple gifts",
-          "elements": [
-            "Princess Kay grateful open face",
-            "three small flowers near her",
-            "true red harness",
-            "quote text space"
-          ]
-        },
-        {
-          "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted, both faces turned upward — gratitude lifted. Thursday morning. Wide. Joyful. CTA space.",
-          "emotion": "gratitude rising like morning light",
-          "elements": [
-            "Tannie and Princess Kay faces upward",
-            "gratitude lifted silhouette",
-            "Thursday morning light",
-            "CTA space"
-          ]
-        }
-      ]
-    },
-    {
-      "slot": "W4-THU-PM",
-      "date": "2026-05-14",
-      "time_est": "18:00",
-      "theme": "Worship — Mi Ofrenda",
-      "caption": "Mija.\n\nWorship isn't just a Sunday thing.\n\nTannie learned to worship in the middle of Tuesday. In the wreckage of Wednesday. In the quiet of a Thursday night.\n\nMi ofrenda es esta noche. My offering is tonight — this tired heart, this simple prayer.\n\nHe doesn't need your best. He wants your real.\n\nGive Him your Thursday night. That's worship.\n\nDrop a hand if your Thursday heart is His tonight.",
-      "hashtags": "#TannieTalks #ThursdayWorship #MiOfrenda #WorshipIsLifestyle #FaithOverFear #AbuelasWisdom #NightWorship #FamiliaFirst #BilingualFaith #GiveHimYourReal",
-      "panels": [
-        {
-          "panel_number": 1,
-          "scene_description": "Princess Kay curled in reverent stillness on true red cushion. Like a small offering. Warm amber light. Silver cross on wall. Thursday evening quiet.",
-          "emotion": "the offering of a tired heart",
-          "elements": [
-            "Princess Kay curled reverent stillness",
-            "like a small offering",
-            "true red cushion",
-            "silver cross on wall"
-          ]
-        },
-        {
-          "panel_number": 2,
-          "scene_description": "Comic: Princess Kay in dramatic Thursday worship dance — paws up, spinning, joyful and a little ridiculous. Lamplight. Pure sincere heart offering.",
-          "emotion": "worshipping with what you have, even imperfectly",
-          "elements": [
-            "Princess Kay worship dance",
-            "paws up spinning",
-            "ridiculous and sincere",
-            "warm lamplight"
-          ]
-        },
-        {
-          "panel_number": 3,
-          "scene_description": "Tannie from behind, arms raised in worship. Princess Kay sitting beside, paws up imitating. Evening light. Silver cross. True red. The offering is simple and real.",
-          "emotion": "worship as lifestyle, not performance",
-          "elements": [
-            "Tannie from behind arms raised",
-            "Princess Kay imitating paws up",
-            "worship posture",
-            "silver cross evening light"
-          ]
-        },
-        {
-          "panel_number": 4,
-          "scene_description": "Princess Kay face close-up — eyes closed, sincere surrender in worship. True red harness. Warm lamplight. Heart offered fully. Quote space.",
-          "emotion": "the sincerity of a heart fully given",
-          "elements": [
-            "Princess Kay eyes closed sincere worship",
-            "heart fully offered",
-            "true red harness",
-            "quote text space"
-          ]
-        },
-        {
-          "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted, both in worship posture. Thursday evening. Stars. The offering rises. CTA space.",
-          "emotion": "Thursday night worship rising",
-          "elements": [
-            "Tannie and Princess Kay worship silhouette",
-            "Thursday evening stars",
-            "offering rising posture",
-            "CTA space"
-          ]
-        }
-      ]
-    },
-    {
-      "slot": "W4-FRI-AM",
-      "date": "2026-05-15",
-      "time_est": "08:00",
-      "theme": "Victory — La Victoria Es Mia",
-      "caption": "Buenos dias! Victory Friday!\n\nNot because everything is perfect. But because He gives us the victory.\n\nLa victoria ya es mia. The victory is already mine.\n\nTannie doesn't walk into Friday hoping for victory. She walks in knowing it's already settled.\n\nYou are not fighting FOR victory. You are fighting FROM it.\n\nWalk in like you already won — because you have.\n\nTag your victory partner!",
-      "hashtags": "#TannieTalks #VictoryFriday #LaVictoriaEsMia #VictoryInJesus #FaithOverFear #AbuelasWisdom #FridayMotivation #FamiliaFirst #BilingualFaith #AlreadyWon",
-      "panels": [
-        {
-          "panel_number": 1,
-          "scene_description": "Princess Kay in full zoomie victory run — all four paws off ground, true red harness flying. Friday morning victory lap. Golden light. Unstoppable.",
-          "emotion": "running from victory, not toward it",
-          "elements": [
-            "Princess Kay full victory zoomie",
-            "all four paws off ground",
-            "true red harness flying",
-            "Friday golden morning light"
-          ]
-        },
-        {
-          "panel_number": 2,
-          "scene_description": "Princess Kay standing on elevated cushion — champion posture, head high. True red harness. Eyes ahead. Small but mighty. Victory already won.",
-          "emotion": "standing on the victory God already won",
-          "elements": [
-            "Princess Kay on elevated cushion",
-            "champion posture head high",
-            "true red harness",
-            "eyes ahead confident"
-          ]
-        },
-        {
-          "panel_number": 3,
-          "scene_description": "Tannie from behind in true red dress, one arm raised in quiet celebration. Princess Kay jumping beside her. Morning window. Silver cross.",
-          "emotion": "celebrating the victory of faith",
-          "elements": [
-            "Tannie from behind arm raised",
-            "Princess Kay jumping",
-            "true red dress morning",
-            "silver cross celebrating"
-          ]
-        },
-        {
-          "panel_number": 4,
-          "scene_description": "Princess Kay close-up — chin raised, chest forward, conqueror expression. Toddler who knows she already won. True red harness. Morning light. Quote space.",
-          "emotion": "walking in the victory already given",
-          "elements": [
-            "Princess Kay chin raised conqueror",
-            "already won expression",
-            "true red harness",
-            "quote text space"
-          ]
-        },
-        {
-          "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted against triumphant Friday morning. Both raised posture. Victory claimed. Wide shot. CTA space.",
-          "emotion": "Friday victory claimed and walking in it",
-          "elements": [
-            "Tannie and Princess Kay victory silhouette",
-            "triumphant Friday morning",
-            "raised victorious posture",
-            "CTA space"
-          ]
-        }
-      ]
-    },
-    {
-      "slot": "W4-FRI-PM",
-      "date": "2026-05-15",
-      "time_est": "18:00",
-      "theme": "Let Go — Sueltalo",
-      "caption": "Mija, the work week is DONE.\n\nWhatever didn't happen this week — let it go.\nWhatever didn't get fixed — let it go.\nWhoever hurt you — let it go.\n\nSueltalo. Drop it.\n\nNot for them. For you.\n\nOpen hands receive. Closed fists get nothing.\n\nOpen your hands this Friday night.\n\nDrop a hand if you're letting this week GO.",
-      "hashtags": "#TannieTalks #FridayRelease #Sueltalo #LetItGo #FaithOverFear #AbuelasWisdom #WeekendFreedom #FamiliaFirst #BilingualFaith #OpenHands",
-      "panels": [
-        {
-          "panel_number": 1,
-          "scene_description": "Princess Kay stretching out long and luxurious on true red cushion — full body release of completed week. Amber light. Silver hardware. Maximum Friday exhale.",
-          "emotion": "the full release of a completed week",
-          "elements": [
-            "Princess Kay long stretch on red cushion",
-            "full body release",
-            "amber evening light",
-            "silver hardware"
-          ]
-        },
-        {
-          "panel_number": 2,
-          "scene_description": "Comic: Princess Kay flinging a bundle labeled THE WEEK into the distance with gusto. Items flying. Expression of total liberation. Lamplight.",
-          "emotion": "releasing the week with gleeful finality",
-          "elements": [
-            "Princess Kay flinging week bundle",
-            "items flying away",
-            "total liberation expression",
-            "warm lamplight"
-          ]
-        },
-        {
-          "panel_number": 3,
-          "scene_description": "Tannie from behind, seated at window, palms opening outward. Princess Kay watching. True red elements. Silver cross. Peace in the release.",
-          "emotion": "the deliberate act of releasing the week to God",
-          "elements": [
-            "Tannie from behind palms opening",
-            "releasing posture",
-            "Princess Kay watching",
-            "silver cross evening"
-          ]
-        },
-        {
-          "panel_number": 4,
-          "scene_description": "Princess Kay looking outward — open, free, lighter. True red harness. The face of someone who set down a load they weren't meant to carry. Amber light. Quote space.",
-          "emotion": "the lightness of open hands",
-          "elements": [
-            "Princess Kay open free expression",
-            "lighter after release",
-            "true red harness",
-            "quote text space"
-          ]
-        },
-        {
-          "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted against amber-to-purple Friday sky. Arms open, not crossed. Week released. CTA space.",
-          "emotion": "the week is God's — the weekend is gift",
-          "elements": [
-            "Tannie and Princess Kay open arms silhouette",
-            "amber to purple Friday sky",
-            "week released",
-            "CTA space"
-          ]
-        }
-      ]
-    },
-    {
-      "slot": "W4-SAT-AM",
-      "date": "2026-05-16",
-      "time_est": "08:00",
-      "theme": "Sabbath — Dia de Reposo",
-      "caption": "Buenos dias, mija.\n\nHe rested on the seventh day. Not because He was tired. Because rest is holy.\n\nDia de reposo. A day of rest. God said it was good.\n\nTannie takes her Sabbath seriously. Not as a rule — as a gift. The world will wait.\n\nToday — breathe slower. Move slower. Receive. You were not created to produce seven days a week.\n\nTag someone who needs a real rest day!",
-      "hashtags": "#TannieTalks #SabbathRest #DiaDeReposo #HolyRest #FaithOverFear #AbuelasWisdom #SaturdaySabbath #FamiliaFirst #BilingualFaith #RestIsHoly",
-      "panels": [
-        {
-          "panel_number": 1,
-          "scene_description": "Princess Kay in full morning rest — curled like a croissant, unhurried. Soft Saturday light. No harness urgency — pure holy rest. Ivory tones. Sacred stillness.",
-          "emotion": "holy rest, no performance needed",
-          "elements": [
-            "Princess Kay curled in morning rest",
-            "unhurried Saturday light",
-            "ivory tones sacred",
-            "no urgency in posture"
-          ]
-        },
-        {
-          "panel_number": 2,
-          "scene_description": "Princess Kay yawning magnificently — whole-body holy yawn. Eyes squeezed shut. Not embarrassed. Maximum rest creature. Soft morning light.",
-          "emotion": "the unapologetic body-release of true rest",
-          "elements": [
-            "Princess Kay magnificent full yawn",
-            "whole body yawn expression",
-            "eyes squeezed shut",
-            "soft Saturday morning light"
-          ]
-        },
-        {
-          "panel_number": 3,
-          "scene_description": "Tannie from behind at table with Scripture open. Morning tea. Princess Kay curled in lap. Silver cross catching light. Saturday morning stillness. No schedule.",
-          "emotion": "Sabbath as holy appointment kept",
-          "elements": [
-            "Tannie from behind with open Scripture",
-            "morning tea",
-            "Princess Kay in lap",
-            "silver cross morning light"
-          ]
-        },
-        {
-          "panel_number": 4,
-          "scene_description": "Princess Kay completely at rest, eyes heavy but peaceful. Accepted the invitation to stop. True red harness. Soft light. Holy. Quote space.",
-          "emotion": "rest received without guilt",
-          "elements": [
-            "Princess Kay at complete rest",
-            "peaceful heavy-lidded eyes",
-            "true red harness soft light",
-            "quote text space"
-          ]
-        },
-        {
-          "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted against peaceful Saturday morning. Slow. Unhurried. The world can wait. Sacred morning. CTA space.",
-          "emotion": "Sabbath morning — holy and unhurried",
-          "elements": [
-            "Tannie and Princess Kay unhurried silhouette",
-            "peaceful Saturday morning",
-            "slow sacred energy",
-            "CTA space"
-          ]
-        }
-      ]
-    },
-    {
-      "slot": "W4-SAT-PM",
-      "date": "2026-05-16",
-      "time_est": "18:00",
-      "theme": "Quiet — En Silencio",
-      "caption": "Mija.\n\nBe still and know. Just that. Psalm 46:10.\n\nEn silencio te espero, Senor. In silence I wait for You, Lord.\n\nYou cannot hear a whisper in a crowd. And God mostly whispers.\n\nSaturday evening. The week is behind. The busyness of Sunday is coming. But right now — this moment — belongs to stillness.\n\nFive minutes. No phone. Just you and Him.\n\nDrop a quiet emoji if you're choosing silence tonight.",
-      "hashtags": "#TannieTalks #SaturdayQuiet #EnSilencio #BeStillAndKnow #Psalm4610 #FaithOverFear #AbuelasWisdom #EveningSilence #FamiliaFirst #BilingualFaith",
-      "panels": [
-        {
-          "panel_number": 1,
-          "scene_description": "Princess Kay sitting perfectly still at window — like a small statue of attention. Evening light. True red harness. The discipline of stillness. Expectant quiet.",
-          "emotion": "stillness as an act of listening",
-          "elements": [
-            "Princess Kay sitting perfectly still",
-            "statue-like attention posture",
-            "true red harness",
-            "evening window light"
-          ]
-        },
-        {
-          "panel_number": 2,
-          "scene_description": "Princess Kay with one ear perked, head tilted — hearing something in the quiet. Eyes soft. Not startled. Listening deep. God's whisper. Warm lamplight.",
-          "emotion": "holy alertness of active listening",
-          "elements": [
-            "Princess Kay ear perked deep listening",
-            "head tilted hearing",
-            "eyes soft attentive",
-            "warm evening lamplight"
-          ]
-        },
-        {
-          "panel_number": 3,
-          "scene_description": "Tannie from behind, sitting completely still. Princess Kay beside her — also still. Side by side in holy silence. Evening light. Silver cross visible.",
-          "emotion": "shared stillness — communion with God",
-          "elements": [
-            "Tannie and Princess Kay both still",
-            "side by side in silence",
-            "no movement",
-            "silver cross evening light"
-          ]
-        },
-        {
-          "panel_number": 4,
-          "scene_description": "Princess Kay close-up — eyes open but interior. Listening beyond the room. True red harness. Soft light. Hearing what others miss. Quote space.",
-          "emotion": "hearing God in the quiet",
-          "elements": [
-            "Princess Kay interior listening gaze",
-            "hearing beyond the room",
-            "true red harness soft light",
-            "quote text space"
-          ]
-        },
-        {
-          "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted against deep violet Saturday evening. All movement stilled. Stars bright. The quiet is full. CTA space.",
-          "emotion": "full quiet — Saturday evening, God speaking",
-          "elements": [
-            "Tannie and Princess Kay still silhouette",
-            "deep violet Saturday evening",
-            "stars bright",
-            "CTA space"
-          ]
-        }
-      ]
-    },
-    {
-      "slot": "W4-SUN-AM",
-      "date": "2026-05-17",
-      "time_est": "08:00",
-      "theme": "Resurrection — Manana de Resurreccion",
-      "caption": "Buenos dias! HE IS RISEN!\n\nEvery Sunday is a resurrection morning.\n\nManana de resurreccion. The morning that changes everything.\n\nBefore the week begins, before the calendar fills — this morning belongs to the One who defeated death.\n\nTannie doesn't start her Sunday. She receives it. As a gift from Someone who couldn't be held by a tomb.\n\nWalk in that reality today.\n\nTag your Sunday morning worship partner!",
-      "hashtags": "#TannieTalks #SundayMorning #MananaDeResurreccion #HeIsRisen #FaithOverFear #AbuelasWisdom #SundayWorship #FamiliaFirst #BilingualFaith #ResurrectionMorning",
-      "panels": [
-        {
-          "panel_number": 1,
-          "scene_description": "Princess Kay at window — the most golden morning light of the week. Eyes wide with Sunday wonder. True red harness. Silver cross charm bright. Radiant.",
-          "emotion": "Sunday morning awe — something holy is in this light",
-          "elements": [
-            "Princess Kay at window Sunday light",
-            "most golden morning of the week",
-            "true red harness silver cross",
-            "Sunday wonder expression"
-          ]
-        },
-        {
-          "panel_number": 2,
-          "scene_description": "Princess Kay in joyful Sunday spin — resurrection energy zoomie. True red harness. Morning light. Joy that the tomb is empty. Reverent and unstoppable.",
-          "emotion": "resurrection joy — morning of the victory",
-          "elements": [
-            "Princess Kay Sunday joy spin",
-            "resurrection energy",
-            "true red harness",
-            "golden morning light"
-          ]
-        },
-        {
-          "panel_number": 3,
-          "scene_description": "Tannie from behind in ivory Sunday dress, arms slightly raised. Princess Kay at her feet, head up. Morning light. Silver cross catching everything. Worship posture.",
-          "emotion": "receiving Sunday morning as resurrection gift",
-          "elements": [
-            "Tannie from behind ivory Sunday dress",
-            "arms slightly raised",
-            "Princess Kay at her feet",
-            "silver cross morning light"
-          ]
-        },
-        {
-          "panel_number": 4,
-          "scene_description": "Princess Kay close-up — brightest eyes of the week. Sunday morning awe. True red harness. Golden light on white fur. Resurrection morning. Quote space.",
-          "emotion": "Sunday morning — risen Lord, and she knows it",
-          "elements": [
-            "Princess Kay brightest Sunday eyes",
-            "morning awe expression",
-            "true red harness golden light",
-            "quote text space"
-          ]
-        },
-        {
-          "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted against the most radiant sunrise of the week. Triumphant but reverent. Resurrection Sunday. CTA space.",
-          "emotion": "resurrection Sunday — He is risen, this is the day",
-          "elements": [
-            "Tannie and Princess Kay radiant sunrise silhouette",
-            "most triumphant morning",
-            "resurrection Sunday",
-            "CTA space"
-          ]
-        }
-      ]
-    },
-    {
-      "slot": "W4-SUN-PM",
-      "date": "2026-05-17",
-      "time_est": "18:00",
-      "theme": "Open Hands — Manos Abiertas",
-      "caption": "Mija, end of week. End of the day. End of the arc.\n\nManos abiertas. Open hands.\n\nThis is how Tannie ends every week. Not clenching what she accomplished. Not gripping what she didn't. Just open.\n\nOpen to receive next week's mercies. Open to release this week's worries.\n\nBecause open hands receive. And this week — you deserve to receive.\n\nThank you for doing life with Tannie and Princess Kay. See you next week!",
-      "hashtags": "#TannieTalks #SundayEvening #ManosAbiertas #OpenHands #FaithOverFear #AbuelasWisdom #EndOfWeek #FamiliaFirst #BilingualFaith #UntilNextWeek",
-      "panels": [
-        {
-          "panel_number": 1,
-          "scene_description": "Princess Kay sitting peacefully as Sunday sun sets — week complete. True red harness. Golden amber light. Paws relaxed open. Not clutching anything.",
-          "emotion": "week complete, hands open",
-          "elements": [
-            "Princess Kay peaceful Sunday sunset",
-            "paws relaxed open",
-            "true red harness",
-            "golden amber final light"
-          ]
-        },
-        {
-          "panel_number": 2,
-          "scene_description": "Princess Kay gently nudging toward camera with nose — saying goodbye to the week, goodbye to us. Warm lamplight. Sweet, gentle, personal farewell.",
-          "emotion": "personal farewell — see you next week",
-          "elements": [
-            "Princess Kay nose nudging toward camera",
-            "gentle goodbye energy",
-            "warm lamplight",
-            "sweet personal expression"
-          ]
-        },
-        {
-          "panel_number": 3,
-          "scene_description": "Tannie from behind, both palms open and raised slightly — manos abiertas. Princess Kay on her lap, paws draped over Tannie's arms. Sunday evening. Silver cross.",
-          "emotion": "the final prayer of the week — open hands",
-          "elements": [
-            "Tannie from behind palms open raised",
-            "manos abiertas posture",
-            "Princess Kay paws over arms",
-            "silver cross Sunday evening"
-          ]
-        },
-        {
-          "panel_number": 4,
-          "scene_description": "Princess Kay close-up — softest expression of the week. Eyes gentle. True red harness. Sunday evening light. Finished well. Quote space.",
-          "emotion": "Sunday evening — finished well",
-          "elements": [
-            "Princess Kay softest Sunday expression",
-            "gentle eyes finished well",
-            "true red harness",
-            "quote text space"
-          ]
-        },
-        {
-          "panel_number": 5,
-          "scene_description": "Tannie and Princess Kay silhouetted against the last light of Sunday. Gold becoming deep blue. Week complete. See you next week. CTA space.",
-          "emotion": "week complete, God faithful, see you next week",
-          "elements": [
-            "Tannie and Princess Kay final Sunday silhouette",
-            "last golden light",
-            "week complete",
-            "CTA space"
-          ]
+          "scene_description": "Wide quiet scene. Candle burning low. Open journal. Red pen. Silver cross. Princess Kay sleeping. The whole week in one frame. Still here. Still burning.",
+          "emotion": "witness, survival, faith still lit",
+          "elements": ["candle burning low", "open journal", "red pen", "silver cross", "Princess Kay sleeping", "ivory blanket"]
         }
       ]
     }
