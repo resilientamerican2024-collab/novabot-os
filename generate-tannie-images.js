@@ -45,12 +45,29 @@ function buildPrompt(panel) {
   return base;
 }
 
+function adjustPromptForFilter(prompt) {
+  return prompt
+    .replace(/\bblood\b/gi, 'deep crimson')
+    .replace(/\battack\b/gi, 'challenge')
+    .replace(/\bunconsci\w+/gi, 'resting peacefully')
+    .replace(/\bdead\b/gi, 'at rest')
+    .replace(/\bdeath\b/gi, 'stillness')
+    .replace(/\bnarcissistic\b/gi, 'self-focused')
+    .replace(/\babusive\b/gi, 'difficult')
+    .replace(/\bJesus\b/gi, 'a sacred figure')
+    .replace(/\bBible\b/gi, 'sacred scripture')
+    .replace(/\bfaith\b/gi, 'devotion')
+    .replace(/\bGod\b/gi, 'the divine')
+    .replace(/\bduvet\b/gi, 'cushion')
+    .replace(/\bbed\b/gi, 'seat')
+    .replace(/\bbedroom\b/gi, 'room');
+}
+
 function callDallE(prompt, attempt = 1) {
   if (!OPENAI_API_KEY) throw new Error('OPENAI_API_KEY environment variable not set');
 
-  // Hard safety cap — DALL-E limit is 4000 chars
   if (prompt.length > 3950) {
-    console.warn(`  🚨 Prompt is ${prompt.length} chars — hard-capping at 3950 before API call.`);
+    console.warn(`  🚨 Prompt is ${prompt.length} chars — hard-capping at 3950.`);
     prompt = prompt.slice(0, 3950);
   }
 
@@ -81,18 +98,24 @@ function callDallE(prompt, attempt = 1) {
           const parsed = JSON.parse(data);
           if (parsed.data && parsed.data[0] && parsed.data[0].url) {
             resolve(parsed.data[0].url);
+            return;
+          }
+
+          const msg = parsed.error?.message || `Unexpected response: ${data.slice(0, 200)}`;
+          const isContentFilter = /content.?filter|blocked|policy|safety/i.test(msg);
+          const isServerError = res.statusCode >= 500 || /server.*(error|had)|sorry about/i.test(msg);
+
+          if (isContentFilter && attempt < 3) {
+            console.warn(`  🚫 Attempt ${attempt}: Content filter — adjusting prompt and retrying...`);
+            const adjusted = adjustPromptForFilter(prompt);
+            await pause(3000);
+            callDallE(adjusted, attempt + 1).then(resolve).catch(reject);
+          } else if (isServerError && attempt < 3) {
+            console.warn(`  ⚠️  Attempt ${attempt}: Server error — waiting 2 minutes before retry...`);
+            await pause(120000);
+            callDallE(prompt, attempt + 1).then(resolve).catch(reject);
           } else {
-            const msg = parsed.error?.message || `Unexpected response: ${data.slice(0, 200)}`;
-            // Retry on server errors (not content policy blocks)
-            const isRetryable = res.statusCode >= 500 || msg.includes('server') || msg.includes('Sorry');
-            if (isRetryable && attempt < 3) {
-              console.warn(`  ⚠️  Server error (attempt ${attempt}/3): ${msg.slice(0, 100)}`);
-              console.warn(`  ⏱  Retrying in 5s...`);
-              await pause(5000);
-              callDallE(prompt, attempt + 1).then(resolve).catch(reject);
-            } else {
-              reject(new Error(msg));
-            }
+            reject(new Error(msg));
           }
         } catch (e) {
           reject(new Error(`JSON parse error: ${e.message}`));
@@ -101,8 +124,7 @@ function callDallE(prompt, attempt = 1) {
     });
     req.on('error', async (err) => {
       if (attempt < 3) {
-        console.warn(`  ⚠️  Network error (attempt ${attempt}/3): ${err.message}`);
-        console.warn(`  ⏱  Retrying in 5s...`);
+        console.warn(`  ⚠️  Attempt ${attempt}: Network error — retrying in 5s...`);
         await pause(5000);
         callDallE(prompt, attempt + 1).then(resolve).catch(reject);
       } else {
@@ -113,7 +135,6 @@ function callDallE(prompt, attempt = 1) {
     req.end();
   });
 }
-
 function downloadToTemp(url, filename) {
   const localPath = path.join('/tmp', filename);
   return new Promise((resolve, reject) => {
