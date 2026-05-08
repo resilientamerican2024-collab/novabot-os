@@ -26,8 +26,8 @@ jobs:
       - name: Install Node dependencies
         run: npm install form-data node-fetch@2
 
-      - name: Install ffmpeg + ImageMagick
-        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg imagemagick
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
 
       - name: Generate all slots (panels + reels)
         id: batch

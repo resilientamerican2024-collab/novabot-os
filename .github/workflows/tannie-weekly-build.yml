@@ -1,12 +1,10 @@
-name: Tannie Talks — Weekly Content Build
+name: Tannie Talks Weekly Content Build
 
 on:
-  # Every Wednesday: 8am EST (13:00 UTC) and 6pm EST (23:00 UTC)
   schedule:
     - cron: '0 13 * * 3'
     - cron: '0 23 * * 3'
 
-  # Manual trigger for testing and one-off runs
   workflow_dispatch:
     inputs:
       slot:
@@ -26,9 +24,6 @@ on:
 jobs:
   build-content:
     runs-on: ubuntu-latest
-    # This job generates images and emails a review package.
-    # It does NOT post to Instagram or Facebook.
-    # Nothing goes live without Ingrid's manual approval.
 
     steps:
       - name: Checkout repo
@@ -42,8 +37,8 @@ jobs:
       - name: Install dependencies
         run: npm install form-data node-fetch@2
 
-      - name: Install system tools (ffmpeg + ImageMagick)
-        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg imagemagick
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
 
       - name: Determine slot
         id: slot
@@ -51,7 +46,6 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "slot=${{ github.event.inputs.slot }}" >> $GITHUB_OUTPUT
           else
-            # Scheduled: 13 UTC = AM, 23 UTC = PM
             HOUR=$(date -u +%H)
             if [ "$HOUR" -ge 12 ] && [ "$HOUR" -lt 20 ]; then
               echo "slot=WED-AM" >> $GITHUB_OUTPUT
@@ -60,11 +54,10 @@ jobs:
             fi
           fi
 
-      - name: Generate panel images (gpt-image-1)
+      - name: Generate panel images (DALL-E 3)
         id: generate
         run: |
           SLOT="${{ steps.slot.outputs.slot }}"
-          echo "🌹 Generating $SLOT — in memory of Kassandra, honoring the canon."
           node generate-tannie-images.js "$SLOT"
           SAFE="${SLOT//-/_}"
           LOWER=$(echo "$SAFE" | tr '[:upper:]' '[:lower:]')
@@ -73,14 +66,18 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
 
-      - name: Add text overlays + generate Panel 5 text card
-        id: overlays
+      - name: Create reel from panels
+        id: reel
+        if: steps.generate.outcome == 'success'
         run: |
           SLOT="${{ steps.slot.outputs.slot }}"
           RESULTS="${{ steps.generate.outputs.results_file }}"
-          node add-text-overlays.js "$SLOT" "$RESULTS"
+          node create-reel.js "$SLOT" "$RESULTS"
+          SAFE="${SLOT//-/_}"
+          LOWER=$(echo "$SAFE" | tr '[:upper:]' '[:lower:]')
+          cp /tmp/tannie_${LOWER}_week3.mp4 . 2>/dev/null || echo "MP4 copy skipped"
         env:
-          IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
 
       - name: Write GitHub Actions summary
         run: |
@@ -91,43 +88,39 @@ jobs:
             const calendar = require('./content-calendar.json');
             const slot = '$SLOT';
             const slotData = calendar.posts.find(p => p.slot === slot);
-            let panels = [];
+            let panels = [], reelUrl = null;
             if (fs.existsSync('$RESULTS')) {
-              panels = JSON.parse(fs.readFileSync('$RESULTS')).panels || [];
+              const r = JSON.parse(fs.readFileSync('$RESULTS'));
+              panels = r.panels || [];
+              reelUrl = r.reel_url || null;
             }
             const ok = panels.filter(p => !p.error);
             const fail = panels.filter(p => p.error);
             const panelLinks = ok.map(p =>
-              '- **Panel ' + p.panel_number + ':** [View →](' + p.imgbb_url + ')  \`' + p.emotion + '\`'
-            ).join('\n');
-            const errorList = fail.map(p =>
-              '- Panel ' + p.panel_number + ': ' + p.error
+              '- **Panel ' + p.panel_number + ':** [View](' + p.imgbb_url + ') ' + p.emotion
             ).join('\n');
             const lines = [
-              '## 🌹 Tannie Talks — ' + slot + ' Content Ready for Review',
+              '## Tannie Talks ' + slot + ' Content Ready for Review',
               '',
-              '> ⚠️ **Nothing has been posted.** Review below and post manually when ready.',
+              '> Nothing has been posted. Review and post manually when ready.',
               '',
-              '### 📝 Caption',
-              '\`\`\`',
+              '### Caption',
               slotData.caption,
-              '\`\`\`',
               '',
-              '### #️⃣ Hashtags',
+              '### Hashtags',
               slotData.hashtags,
               '',
-              '### 🖼️ Generated Panels (' + ok.length + '/5)',
-              panelLinks || '_No panels generated._',
-              fail.length ? '\n### ❌ Errors\n' + errorList : '',
+              reelUrl ? '### Reel\n[View/Download Reel](' + reelUrl + ')' : '### Reel\n_Reel upload failed._',
               '',
-              '---',
-              '_Every image honors Kassandra. In memory. In love. In faith._',
+              '### Carousel Panels (' + ok.length + '/5)',
+              panelLinks || '_No panels generated._',
+              fail.length ? '\n### Errors\n' + fail.map(p => '- Panel ' + p.panel_number + ': ' + p.error).join('\n') : '',
             ];
             fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n'));
             console.log('Summary written.');
           "
 
-      - name: Send review email to Ingrid
+      - name: Send review email
         if: ${{ github.event.inputs.skip_email != 'true' }}
         run: |
           SLOT="${{ steps.slot.outputs.slot }}"
@@ -135,7 +128,7 @@ jobs:
           node email-weekly-package.js "$SLOT" "$RESULTS"
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          TO_EMAIL: rhismygirl@gmail.com
+          TO_EMAIL: admin@novaverseplatform.com
           FROM_EMAIL: onboarding@resend.dev
 
       - name: Save content artifact
@@ -143,5 +136,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tannie-${{ steps.slot.outputs.slot }}-week3
-          path: tannie_*_results.json
+          path: |
+            tannie_*_results.json
+            tannie_*_week3.mp4
           retention-days: 14
