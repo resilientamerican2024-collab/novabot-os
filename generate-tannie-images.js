@@ -34,10 +34,11 @@ function buildPrompt(panel) {
     'innocent wide expressive eyes, deep crimson red harness with silver D-ring hardware.',
     'One dog only. Consistent real dog — not cartoon, not chibi, not mascot.',
     '',
-    // TANNIE LOCK — only visible element, never full body
-    'If any person appears: show ONLY a hand, forearm, sleeve, or back.',
-    'Hand details when shown: warm brown skin, deep red manicured nails, gold or silver jewelry.',
-    'Face is never visible. Never show a full body or front-facing person.',
+    // TANNIE LOCK — seen from behind only, never front-facing
+    'If Tannie appears: show her strictly from behind — flowing ivory white satin robe,',
+    'long flowing wavy dark hair, full curvaceous figure, tasteful and elegant.',
+    'Face is NEVER visible. NEVER front-facing. NEVER a silhouette — show fabric and hair detail.',
+    'When only her hand is shown: warm brown skin, deep red manicured nails, gold or silver jewelry.',
     '',
     // NO TEXT
     'NO text. NO words. NO letters. NO numbers. NO captions.',
