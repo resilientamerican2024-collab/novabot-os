@@ -9,6 +9,7 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 const { uploadImage } = require('./upload-to-imgbb');
+const { addOverlays } = require('./add-text-overlays');
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
@@ -236,7 +237,15 @@ async function generatePanelSet(slot) {
   console.log(`\n✅ Complete: ${ok} panels OK, ${fail} failed`);
   console.log(`📄 Results: ${outFile}\n`);
 
-  return output;
+  // Step 2: Apply text overlays + generate Panel 5 text card
+  try {
+    await addOverlays(slot, outFile);
+  } catch (err) {
+    console.warn(`⚠️  Text overlays skipped: ${err.message}`);
+  }
+
+  // Re-read in case overlays updated local_path references
+  return JSON.parse(fs.readFileSync(outFile, 'utf8'));
 }
 
 if (require.main === module) {
