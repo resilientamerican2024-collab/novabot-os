@@ -7,6 +7,7 @@
 const fs = require('fs');
 const path = require('path');
 const { generatePanelSet } = require('./generate-tannie-images');
+const { addOverlays } = require('./add-text-overlays');
 const { createReel } = require('./create-reel');
 
 function pause(ms) {
@@ -40,7 +41,15 @@ async function buildAll() {
       fs.writeFileSync(resultsFile, JSON.stringify(panelResult, null, 2));
       console.log(`   ✅ Panels saved: ${resultsFile}`);
 
-      // Step 2: Generate reel
+      // Step 2: Add text overlays + generate Panel 5 text card
+      try {
+        await addOverlays(slot, resultsFile);
+        console.log(`   ✅ Text overlays applied`);
+      } catch (err) {
+        console.error(`   ⚠️  Text overlays failed: ${err.message}`);
+      }
+
+      // Step 3: Generate reel
       try {
         const reelData = await createReel(slot, resultsFile);
         reelResult = reelData;
