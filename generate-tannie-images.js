@@ -30,8 +30,8 @@ function buildPrompt(panel) {
     '',
     // LOCKED: Princess Kay
     'Princess Kay: small white fluffy Maltese dog, photorealistic fur texture,',
-    'innocent expressive eyes, deep red harness with silver metal hardware.',
-    'Real dog in every panel. NOT cartoon. NOT mascot. NOT stylized.',
+    'innocent expressive eyes, TRUE RED harness with SILVER hardware.',
+    'Real dog in every panel. NOT cartoon. NOT mascot. NOT chibi. NOT stylized.',
     '',
     // LOCKED: Tannie
     'Tannie: Latina woman, warm brown skin, long wavy dark hair.',
@@ -66,7 +66,7 @@ function callDallE(prompt) {
     model: 'dall-e-3',
     prompt,
     n: 1,
-    size: '1024x1792',
+    size: '1024x1024',
     quality: 'hd',
     style: 'vivid',
   });
