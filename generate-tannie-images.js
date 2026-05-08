@@ -40,10 +40,10 @@ function buildPrompt(panel) {
     'Face is NEVER visible. NEVER front-facing. NEVER a silhouette — show fabric and hair detail.',
     'When only her hand is shown: warm brown skin, deep red manicured nails, gold or silver jewelry.',
     '',
-    // NO TEXT
-    'NO text. NO words. NO letters. NO numbers. NO captions.',
-    'NO speech bubbles. NO labels. NO panel borders. No logos.',
-    'Pure visual scene only. 15% clear space at bottom for caption overlay.',
+    // NO TEXT — explicit, no design elements of any kind
+    'NO text. NO words. NO letters. NO numbers. NO captions. NO caption bars.',
+    'NO speech bubbles. NO labels. NO panel borders. NO color swatches. NO color palettes.',
+    'NO design overlays. NO logos. Pure visual scene only.',
   ].join('\n');
 
   if (base.length > 3950) {
