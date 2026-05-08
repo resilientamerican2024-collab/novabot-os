@@ -16,43 +16,39 @@ const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 // DALL-E prompts use the compact template below to stay under 4000 chars.
 
 function buildPrompt(panel) {
+  // Sanitize: remove sacred name, replace silhouette
+  const scene = panel.scene_description
+    .replace(/kassandra['s]*/gi, '')
+    .replace(/\bsilhouette\b/gi, 'seen from behind, face never visible');
+
   const base = [
-    // STYLE
-    'Warm painterly illustration, subtle sketchy ink lines, soft halftone dots only in corners,',
-    'textured warm ivory background. Intimate, story-driven, pre-reveal mood.',
-    'Slightly melancholy but hopeful. NOT comedic. NOT pop art. NOT loud.',
+    // STYLE — matches the working reference images exactly
+    'Modern graphic novel illustration with halftone dot texture, thick black ink outlines.',
+    'Deep crimson red halftone dots in corners. Warm amber and ivory tones. 9:16 vertical.',
     '',
-    // NO TEXT — listed first so DALL-E prioritizes it
-    'NO text. NO words. NO letters. NO numbers. NO color swatches.',
-    'NO captions. NO speech bubbles. NO labels. NO headers.',
-    'NO panel borders. NO layout grids. NO comic book elements.',
-    'Pure visual scene only. All text added in post-production.',
+    // SCENE — narrative, characters embedded
+    scene,
     '',
-    // LOCKED: Princess Kay
-    'Princess Kay: small white fluffy Maltese dog, photorealistic fur texture,',
-    'innocent expressive eyes, TRUE RED harness with SILVER hardware.',
-    'Real dog in every panel. NOT cartoon. NOT mascot. NOT chibi. NOT stylized.',
+    // PRINCESS KAY LOCK
+    'Princess Kay is a small white fluffy Maltese dog with textured painterly fur,',
+    'innocent wide expressive eyes, deep crimson red harness with silver D-ring hardware.',
+    'One dog only. Consistent real dog — not cartoon, not chibi, not mascot.',
     '',
-    // LOCKED: Tannie
-    'Tannie: Latina woman, warm brown skin, long wavy dark hair.',
-    'Seen from behind or partial view only — face always hidden by angle or hair.',
-    'Modest, elegant. Silver cross necklace when lighting allows.',
+    // TANNIE LOCK — only visible element, never full body
+    'If any person appears: show ONLY a hand, forearm, sleeve, or back.',
+    'Hand details when shown: warm brown skin, deep red manicured nails, gold or silver jewelry.',
+    'Face is never visible. Never show a full body or front-facing person.',
     '',
-    // COLORS — descriptive, no hex codes, no negatives
-    'Color palette: deep crimson red, warm silver, ivory cream, golden warm light.',
-    '',
-    // SCENE
-    'Scene: ' + panel.scene_description,
-    'Mood: ' + panel.emotion,
-    'Visual elements: ' + panel.elements.join(', '),
-    '',
-    'Leave clear 15% space at bottom for caption overlay added in post-production.',
+    // NO TEXT
+    'NO text. NO words. NO letters. NO numbers. NO captions.',
+    'NO speech bubbles. NO labels. NO panel borders. No logos.',
+    'Pure visual scene only. 15% clear space at bottom for caption overlay.',
   ].join('\n');
 
   if (base.length > 3950) {
     console.warn(`  ⚠️  Panel ${panel.panel_number} prompt is ${base.length} chars — trimming scene.`);
-    const trimmed = panel.scene_description.slice(0, 200) + '...';
-    return base.replace(panel.scene_description, trimmed);
+    const trimmed = scene.slice(0, 200) + '...';
+    return base.replace(scene, trimmed);
   }
 
   console.log(`  📏 Panel ${panel.panel_number} prompt: ${base.length} chars`);
