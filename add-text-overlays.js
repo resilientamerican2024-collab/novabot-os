@@ -2,6 +2,7 @@
 // Step 2 of the Tannie Talks pipeline:
 //   - Applies Column F on-screen text to panels 1–4 (2 lines per panel, bottom of image)
 //   - Generates Panel 5 as a branded text card (cream/yellow/red design)
+//   - Re-uploads all finished panels to imgbb and updates the results JSON
 //
 // Requires: ImageMagick (convert), already on ubuntu-latest
 //
@@ -12,6 +13,7 @@
 const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const { uploadImage } = require('./upload-to-imgbb');
 
 // Brand colors
 const CREAM   = '#FFFAEC';
@@ -20,7 +22,6 @@ const RED     = '#8B0000';
 const BLACK   = '#1a1a1a';
 
 // ─── Font setup ──────────────────────────────────────────────────────────────
-// Download Bangers (display) and Lato-Bold (body) from Google Fonts if missing
 
 const FONT_DIR   = '/tmp/tannie_fonts';
 const BANGERS    = path.join(FONT_DIR, 'Bangers-Regular.ttf');
@@ -47,11 +48,9 @@ function ensureFonts() {
 // ─── Text helpers ─────────────────────────────────────────────────────────────
 
 function imEscape(str) {
-  // Escape for ImageMagick label: text
   return str.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/%/g, '\\%').replace(/@/g, '\\@');
 }
 
-// Wrap text to maxChars per line
 function wrapText(text, maxChars) {
   const words = text.split(' ');
   const lines = [];
@@ -68,7 +67,6 @@ function wrapText(text, maxChars) {
   return lines.join('\n');
 }
 
-// Distribute on-screen text lines across 4 panels (2 lines each)
 function distributeLines(lines) {
   const n = lines.length;
   const panels = [[], [], [], []];
@@ -81,7 +79,6 @@ function distributeLines(lines) {
       panels[i] = lines.slice(i * half, (i + 1) * half);
     }
   } else {
-    // More than 8: drop the CTA line from panels (it goes on Panel 5)
     const body = lines.slice(0, lines.length - 1);
     const half = Math.ceil(body.length / 4);
     for (let i = 0; i < 4; i++) {
@@ -103,13 +100,10 @@ function addTextOverlay(inputPath, outputPath, text) {
   const wrapped = wrapText(text, 32);
   const escaped = imEscape(wrapped);
 
-  // Semi-transparent black bar at bottom, white Lato-Bold text on top
   execSync([
     `convert "${inputPath}"`,
-    // Draw translucent black bar at bottom (covers ~22% of image height)
     `-fill "rgba(0,0,0,0.55)"`,
     `-draw "rectangle 0,800 1024,1024"`,
-    // White text, centered in the bar
     `-font "${LATO_BOLD}"`,
     `-pointsize 46`,
     `-fill white`,
@@ -122,10 +116,6 @@ function addTextOverlay(inputPath, outputPath, text) {
 // ─── Panel 5: text card ───────────────────────────────────────────────────────
 
 function generateTextCard(outputPath, hook, bodyLines, ctaLine) {
-  // hook      → yellow header box
-  // bodyLines → bold center text (1–3 punchiest lines before CTA)
-  // ctaLine   → red CTA at bottom
-
   const hookWrapped  = wrapText(hook, 38);
   const bodyWrapped  = wrapText(bodyLines.join('\n'), 24);
   const ctaWrapped   = wrapText(ctaLine, 32);
@@ -134,23 +124,19 @@ function generateTextCard(outputPath, hook, bodyLines, ctaLine) {
   const bodyEsc = imEscape(bodyWrapped);
   const ctaEsc  = imEscape(ctaWrapped);
 
-  // Count lines to size the header box
-  const hookLines = hookWrapped.split('\n').length;
-  const headerH = 90 + hookLines * 60;  // ~90px padding + 60px per line
+  const hookLineCount = hookWrapped.split('\n').length;
+  const headerH = 90 + hookLineCount * 60;
   const headerY2 = 60 + headerH;
 
-  // Step 1: cream base + header box
+  // Step 1: cream base + yellow header
   execSync([
     `convert -size 1024x1024 "xc:${CREAM}"`,
-    // Yellow header rectangle
     `-fill "${YELLOW}"`,
     `-draw "roundrectangle 40,40 984,${headerY2} 12,12"`,
-    // Black border on header
     `-fill none`,
     `-stroke "${BLACK}"`,
     `-strokewidth 4`,
     `-draw "roundrectangle 40,40 984,${headerY2} 12,12"`,
-    // Hook text in header
     `-stroke none`,
     `-fill "${BLACK}"`,
     `-font "${LATO_BOLD}"`,
@@ -160,7 +146,7 @@ function generateTextCard(outputPath, hook, bodyLines, ctaLine) {
     `"/tmp/tannie_card_base.png"`,
   ].join(' '));
 
-  // Step 2: bold body text centered in remaining space
+  // Step 2: bold body text
   execSync([
     `convert "/tmp/tannie_card_base.png"`,
     `-font "${BANGERS}"`,
@@ -171,7 +157,7 @@ function generateTextCard(outputPath, hook, bodyLines, ctaLine) {
     `"/tmp/tannie_card_body.png"`,
   ].join(' '));
 
-  // Step 3: red CTA at bottom
+  // Step 3: red CTA
   execSync([
     `convert "/tmp/tannie_card_body.png"`,
     `-font "${BANGERS}"`,
@@ -182,7 +168,6 @@ function generateTextCard(outputPath, hook, bodyLines, ctaLine) {
     `"${outputPath}"`,
   ].join(' '));
 
-  // Cleanup temp files
   ['/tmp/tannie_card_base.png', '/tmp/tannie_card_body.png'].forEach(f => {
     if (fs.existsSync(f)) fs.unlinkSync(f);
   });
@@ -204,8 +189,8 @@ async function addOverlays(slot, resultsJsonPath, calendarPath) {
   }
 
   const lines    = slotData.on_screen_lines;
-  const ctaLine  = lines[lines.length - 1];            // last line is always the CTA
-  const bodyOnly = lines.slice(0, lines.length - 1);   // body without CTA
+  const ctaLine  = lines[lines.length - 1];
+  const bodyOnly = lines.slice(0, lines.length - 1);
   const panelTexts = distributeLines(bodyOnly);
 
   console.log(`\n✍️  Adding text overlays — ${slot}`);
@@ -219,20 +204,47 @@ async function addOverlays(slot, resultsJsonPath, calendarPath) {
 
     if (panelNum >= 1 && panelNum <= 4) {
       const text = panelTexts[panelNum - 1] || '';
-      const overlaidPath = panel.local_path.replace('.jpg', '_text.jpg');
+      const overlaidPath = panel.local_path.replace(/\.(jpg|png)$/, '_text.$1');
       console.log(`  🖊  Panel ${panelNum}: "${text.replace(/\n/g, ' / ')}"`);
       addTextOverlay(panel.local_path, overlaidPath, text);
-      updatedPanels.push({ ...panel, local_path: overlaidPath, overlaid: true });
+
+      // Re-upload overlaid image to imgbb
+      let imgbbUrl = panel.imgbb_url;
+      let thumbUrl = panel.thumb_url;
+      try {
+        const uploaded = await uploadImage(overlaidPath);
+        imgbbUrl = uploaded.url;
+        thumbUrl = uploaded.thumb || uploaded.url;
+        console.log(`   ✅ imgbb re-upload (Panel ${panelNum}): ${imgbbUrl}`);
+      } catch (err) {
+        console.warn(`   ⚠️  imgbb re-upload failed (Panel ${panelNum}): ${err.message}`);
+      }
+
+      updatedPanels.push({ ...panel, local_path: overlaidPath, imgbb_url: imgbbUrl, thumb_url: thumbUrl, overlaid: true });
 
     } else if (panelNum === 5) {
-      // Replace Panel 5 with generated text card
-      const cardPath = panel.local_path.replace('.jpg', '_card.jpg');
-      const bodyLines = bodyOnly.slice(-3);  // last 3 body lines = punchiest
+      const cardPath = panel.local_path.replace(/\.(jpg|png)$/, '_card.png');
+      const bodyLines = bodyOnly.slice(-3);
       console.log(`  🃏  Panel 5: generating text card`);
       generateTextCard(cardPath, slotData.hook, bodyLines, ctaLine);
+
+      // Upload Panel 5 text card to imgbb
+      let imgbbUrl = panel.imgbb_url;
+      let thumbUrl = panel.thumb_url;
+      try {
+        const uploaded = await uploadImage(cardPath);
+        imgbbUrl = uploaded.url;
+        thumbUrl = uploaded.thumb || uploaded.url;
+        console.log(`   ✅ imgbb upload (Panel 5 card): ${imgbbUrl}`);
+      } catch (err) {
+        console.warn(`   ⚠️  imgbb upload failed (Panel 5): ${err.message}`);
+      }
+
       updatedPanels.push({
         ...panel,
         local_path: cardPath,
+        imgbb_url: imgbbUrl,
+        thumb_url: thumbUrl,
         scene: 'Text card — ' + slotData.hook,
         text_card: true,
       });
@@ -242,7 +254,7 @@ async function addOverlays(slot, resultsJsonPath, calendarPath) {
   results.panels = updatedPanels;
   fs.writeFileSync(resultsJsonPath, JSON.stringify(results, null, 2));
 
-  console.log(`  ✅ Text overlays complete`);
+  console.log(`  ✅ Text overlays complete — all panels re-uploaded to imgbb`);
   return results;
 }
 
