@@ -1,0 +1,98 @@
+name: Tannie Talks Batch Build W3+W4
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Skip sending email (dry run)'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  batch-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Node dependencies
+        run: npm install form-data node-fetch@2
+
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+
+      - name: Generate all slots (panels + reels)
+        id: batch
+        run: |
+          echo "🌹 Starting batch build — in memory of Kassandra, honoring the canon."
+          node build-all.js
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+
+      - name: Write GitHub Actions summary
+        if: always()
+        run: |
+          node -e "
+            const fs = require('fs');
+            if (!fs.existsSync('tannie_batch_results.json')) {
+              fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, '## Batch build did not produce results file.\n');
+              process.exit(0);
+            }
+            const batch = JSON.parse(fs.readFileSync('tannie_batch_results.json', 'utf8'));
+            const slots = batch.slots || [];
+            const ok = slots.filter(s => s.panels && !s.panels.error).length;
+            const reelOk = slots.filter(s => s.reel && !s.reel.error).length;
+            const lines = [
+              '## 🌹 Tannie Talks — Batch W3+W4 Content Ready',
+              '',
+              '> ⚠️ **Nothing has been posted.** Review the email and post manually.',
+              '',
+              '| Metric | Count |',
+              '|--------|-------|',
+              '| Total slots | ' + slots.length + ' |',
+              '| Panel sets OK | ' + ok + '/' + slots.length + ' |',
+              '| Reels OK | ' + reelOk + '/' + slots.length + ' |',
+              '| Total panels | ' + (slots.length * 5) + ' |',
+              '',
+              '### Slots',
+              ...slots.map(s => {
+                const pOk = (s.panels && s.panels.panels) ? s.panels.panels.filter(p => !p.error).length : 0;
+                const rOk = s.reel && !s.reel.error;
+                return '- **' + s.slot + '**: ' + pOk + '/5 panels, reel ' + (rOk ? '✓' : '✗');
+              }),
+              '',
+              '---',
+              '_Every image honors Kassandra. In memory. In love. In faith._',
+            ];
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n'));
+            console.log('Summary written.');
+          "
+
+      - name: Send batch review email to Ingrid
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: node email-batch-package.js tannie_batch_results.json
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          TO_EMAIL: admin@novaverseplatform.com
+          FROM_EMAIL: onboarding@resend.dev
+
+      - name: Save all artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tannie-batch-w3-w4
+          path: |
+            tannie_*_results.json
+            tannie_batch_results.json
+            tannie_*.mp4
+          retention-days: 30
