@@ -140,6 +140,10 @@ async function createReel(slot, resultsJsonPath) {
   results.reel_filename = reelFilename;
   fs.writeFileSync(resultsJsonPath, JSON.stringify(results, null, 2));
 
+  // Copy to workspace with _week3 suffix so the artifact upload step finds it
+  const workspaceCopy = `tannie_${safeSlot}_week3.mp4`;
+  try { fs.copyFileSync(reelPath, workspaceCopy); console.log(`  ✅ Workspace copy: ${workspaceCopy}`); } catch(e) { console.warn(`  ⚠️  Workspace copy failed: ${e.message}`); }
+
   return { reelPath, reelUrl, reelFilename, local_path: reelPath };
 }
 
