@@ -108,7 +108,7 @@ async function createReel(slot, resultsJsonPath) {
   // Build one Ken Burns clip per panel
   const clipPaths = [];
   for (const panel of panels) {
-    const clipPath = panel.local_path.replace('.jpg', '_clip.mp4');
+    const clipPath = panel.local_path.replace(/\.(jpg|jpeg|png)$/i, '_clip.mp4');
     console.log(`  🎞  Panel ${panel.panel_number}: Ken Burns → ${path.basename(clipPath)}`);
     buildClip(panel.local_path, clipPath, panel.panel_number - 1);
     clipPaths.push(clipPath);
