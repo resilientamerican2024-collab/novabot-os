@@ -1,15 +1,13 @@
 // add-text-overlays.js
 // Step 2 of the Tannie Talks pipeline:
-//   - Applies Column F on-screen text to panels 1–4 (2 lines per panel, bottom of image)
-//   - Generates Panel 5 as a branded text card (cream/yellow/red design)
-//   - Re-uploads all finished panels to imgbb and updates the results JSON
-//
-// Requires: ImageMagick — auto-installed and policy.xml removed if needed
+//   - Applies Column F on-screen text to panels 1–4 (bottom bar + white text)
+//   - Generates Panel 5 as a branded text card (cream/yellow/red)
+//   - Re-uploads all finished panels to imgbb and updates results JSON
 
 'use strict';
 
 const { execSync, spawnSync } = require('child_process');
-const fs = require('fs');
+const fs   = require('fs');
 const path = require('path');
 const { uploadImage } = require('./upload-to-imgbb');
 
@@ -22,37 +20,64 @@ const FONT_DIR  = '/tmp/tannie_fonts';
 const BANGERS   = path.join(FONT_DIR, 'Bangers-Regular.ttf');
 const LATO_BOLD = path.join(FONT_DIR, 'Lato-Bold.ttf');
 
-// ─── Ensure ImageMagick ───────────────────────────────────────────────────────
+// ─── ImageMagick setup ────────────────────────────────────────────────────────
 
 function ensureImageMagick() {
   try {
     execSync('which convert', { stdio: 'pipe' });
-  } catch (e) {
+  } catch (_) {
     console.log('  📦 Installing ImageMagick...');
     execSync('sudo apt-get update -qq && sudo apt-get install -y imagemagick', { stdio: 'inherit' });
   }
-  // Ubuntu ships IM with a restrictive policy.xml that blocks @file reads and /tmp paths.
-  // Remove it entirely — this is a CI runner, not a production server.
-  execSync(
-    'sudo rm -f /etc/ImageMagick-6/policy.xml /etc/ImageMagick-7/policy.xml 2>/dev/null; true',
-    { stdio: 'pipe', shell: true }
-  );
+  // Remove restrictive policy.xml that blocks @file reads and /tmp paths
+  execSync('sudo rm -f /etc/ImageMagick-6/policy.xml /etc/ImageMagick-7/policy.xml 2>/dev/null; true', { stdio: 'pipe', shell: true });
   console.log('  ✅ ImageMagick ready');
 }
 
-// ─── Font setup ──────────────────────────────────────────────────────────────
+// ─── Font setup ───────────────────────────────────────────────────────────────
+// Uses GitHub raw URLs — stable, no versioned paths, no User-Agent required.
+// curl -f fails on HTTP errors so we never silently save an HTML error page as a font.
 
 function ensureFonts() {
   if (!fs.existsSync(FONT_DIR)) fs.mkdirSync(FONT_DIR, { recursive: true });
+
   const downloads = [
-    { path: BANGERS,   url: 'https://fonts.gstatic.com/s/bangers/v24/FeVQS0BTqb0h60ACL5la2bxii28wYQ.ttf' },
-    { path: LATO_BOLD, url: 'https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh6UVSwiPGQ3q5d0.ttf' },
+    {
+      path: BANGERS,
+      urls: [
+        'https://raw.githubusercontent.com/google/fonts/main/ofl/bangers/Bangers-Regular.ttf',
+        'https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/bangers/Bangers-Regular.ttf',
+      ],
+    },
+    {
+      path: LATO_BOLD,
+      urls: [
+        'https://raw.githubusercontent.com/google/fonts/main/ofl/lato/Lato-Bold.ttf',
+        'https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/lato/Lato-Bold.ttf',
+      ],
+    },
   ];
-  for (const { path: fp, url } of downloads) {
-    if (!fs.existsSync(fp)) {
-      console.log(`  ⬇️  Downloading: ${path.basename(fp)}`);
-      execSync(`curl -sL "${url}" -o "${fp}"`);
+
+  for (const { path: fp, urls } of downloads) {
+    const alreadyGood = fs.existsSync(fp) && fs.statSync(fp).size > 10000;
+    if (alreadyGood) continue;
+
+    let downloaded = false;
+    for (const url of urls) {
+      try {
+        console.log(`  ⬇️  Downloading ${path.basename(fp)} from ${url}`);
+        execSync(`curl -fsSL "${url}" -o "${fp}"`, { stdio: 'pipe' });
+        const size = fs.statSync(fp).size;
+        if (size < 10000) throw new Error(`Too small: ${size} bytes`);
+        console.log(`  ✅ ${path.basename(fp)} (${size} bytes)`);
+        downloaded = true;
+        break;
+      } catch (e) {
+        console.warn(`  ⚠️  Failed from ${url}: ${e.message}`);
+        if (fs.existsSync(fp)) fs.unlinkSync(fp);
+      }
     }
+    if (!downloaded) throw new Error(`Could not download font: ${path.basename(fp)}`);
   }
 }
 
@@ -75,7 +100,7 @@ function wrapText(text, maxChars) {
 }
 
 function writeTmp(text) {
-  const fp = `/tmp/im_text_${Date.now()}_${Math.random().toString(36).slice(2)}.txt`;
+  const fp = `/tmp/im_${Date.now()}_${Math.random().toString(36).slice(2)}.txt`;
   fs.writeFileSync(fp, text, 'utf8');
   return fp;
 }
@@ -89,13 +114,11 @@ function distributeLines(lines) {
   return panels.map(p => p.join('\n'));
 }
 
-// Run a convert command using spawnSync to avoid shell interpretation issues
 function imConvert(args) {
   const result = spawnSync('convert', args, { stdio: ['pipe', 'pipe', 'pipe'] });
   if (result.status !== 0) {
-    const stderr = result.stderr ? result.stderr.toString() : '';
-    const stdout = result.stdout ? result.stdout.toString() : '';
-    throw new Error(`convert failed (${result.status}): ${stderr || stdout}`);
+    const msg = (result.stderr || result.stdout || Buffer.alloc(0)).toString().slice(0, 400);
+    throw new Error(`convert failed (${result.status}): ${msg}`);
   }
 }
 
@@ -106,7 +129,6 @@ function addTextOverlay(inputPath, outputPath, text) {
     fs.copyFileSync(inputPath, outputPath);
     return;
   }
-
   const tmp = writeTmp(text);
   try {
     imConvert([
@@ -135,12 +157,12 @@ function generateTextCard(outputPath, hook, bodyLines, ctaLine) {
   const hookFile = writeTmp(hookText);
   const bodyFile = writeTmp(bodyText);
   const ctaFile  = writeTmp(ctaText);
-  const baseFile = `/tmp/tc_base_${Date.now()}.png`;
-  const bodyOut  = `/tmp/tc_body_${Date.now()}.png`;
+  const ts       = Date.now();
+  const baseFile = `/tmp/tc_base_${ts}.png`;
+  const bodyOut  = `/tmp/tc_body_${ts}.png`;
 
   try {
-    const hookLineCount = hookText.split('\n').length;
-    const headerY2 = String(60 + 90 + hookLineCount * 60);
+    const headerY2 = String(60 + 90 + hookText.split('\n').length * 60);
 
     imConvert([
       '-size', '1024x1024', `xc:${CREAM}`,
@@ -169,7 +191,6 @@ function generateTextCard(outputPath, hook, bodyLines, ctaLine) {
       '-gravity', 'South', '-annotate', '+0+50', `@${ctaFile}`,
       outputPath,
     ]);
-
   } finally {
     [hookFile, bodyFile, ctaFile, baseFile, bodyOut].forEach(f => {
       if (fs.existsSync(f)) try { fs.unlinkSync(f); } catch (_) {}
@@ -189,7 +210,7 @@ async function addOverlays(slot, resultsJsonPath, calendarPath) {
 
   if (!slotData) throw new Error(`Slot "${slot}" not found in calendar`);
   if (!slotData.on_screen_lines || !slotData.hook) {
-    console.warn(`  ⚠️  No on_screen_lines/hook for ${slot}`);
+    console.warn(`  ⚠️  No on_screen_lines/hook for ${slot} — skipping`);
     return results;
   }
 
@@ -205,48 +226,38 @@ async function addOverlays(slot, resultsJsonPath, calendarPath) {
   for (const panel of results.panels) {
     if (panel.error) { updatedPanels.push(panel); continue; }
 
-    const panelNum = panel.panel_number;
+    const n = panel.panel_number;
 
-    if (panelNum >= 1 && panelNum <= 4) {
-      const text = panelTexts[panelNum - 1] || '';
+    if (n >= 1 && n <= 4) {
+      const text        = panelTexts[n - 1] || '';
       const overlaidPath = panel.local_path.replace(/\.(jpg|jpeg|png)$/i, '_text.jpg');
-      console.log(`  🖊  Panel ${panelNum}: "${text.replace(/\n/g, ' / ')}"`);
+      console.log(`  🖊  Panel ${n}: "${text.replace(/\n/g, ' / ')}"`);
       addTextOverlay(panel.local_path, overlaidPath, text);
 
-      let imgbbUrl = panel.imgbb_url;
-      let thumbUrl = panel.thumb_url;
+      let imgbbUrl = panel.imgbb_url, thumbUrl = panel.thumb_url;
       try {
         const up = await uploadImage(overlaidPath);
-        imgbbUrl = up.url;
-        thumbUrl = up.thumb || up.url;
-        console.log(`   ✅ imgbb Panel ${panelNum}: ${imgbbUrl}`);
-      } catch (err) {
-        console.warn(`   ⚠️  imgbb Panel ${panelNum} failed: ${err.message}`);
+        imgbbUrl = up.url; thumbUrl = up.thumb || up.url;
+        console.log(`   ✅ imgbb Panel ${n}: ${imgbbUrl}`);
+      } catch (e) {
+        console.warn(`   ⚠️  imgbb Panel ${n} failed: ${e.message}`);
       }
 
-      updatedPanels.push({
-        ...panel,
-        local_path: overlaidPath,
-        imgbb_url: imgbbUrl,
-        thumb_url: thumbUrl,
-        overlaid: true,
-      });
+      updatedPanels.push({ ...panel, local_path: overlaidPath, imgbb_url: imgbbUrl, thumb_url: thumbUrl, overlaid: true });
 
-    } else if (panelNum === 5) {
+    } else if (n === 5) {
       const cardPath  = panel.local_path.replace(/\.(jpg|jpeg|png)$/i, '_card.png');
       const bodyLines = bodyOnly.slice(-3);
       console.log(`  🃏  Panel 5: text card`);
       generateTextCard(cardPath, slotData.hook, bodyLines, ctaLine);
 
-      let imgbbUrl = panel.imgbb_url;
-      let thumbUrl = panel.thumb_url;
+      let imgbbUrl = panel.imgbb_url, thumbUrl = panel.thumb_url;
       try {
         const up = await uploadImage(cardPath);
-        imgbbUrl = up.url;
-        thumbUrl = up.thumb || up.url;
+        imgbbUrl = up.url; thumbUrl = up.thumb || up.url;
         console.log(`   ✅ imgbb Panel 5 card: ${imgbbUrl}`);
-      } catch (err) {
-        console.warn(`   ⚠️  imgbb Panel 5 failed: ${err.message}`);
+      } catch (e) {
+        console.warn(`   ⚠️  imgbb Panel 5 failed: ${e.message}`);
       }
 
       updatedPanels.push({
